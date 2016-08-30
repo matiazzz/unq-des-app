@@ -1,7 +1,12 @@
+<!DOCTYPE html>
 <html>
-<body>
-  <h2>¿A donde vamos?</h2>
-  <br>
-  <h3>En construccion</h3>
-</body>
+
+  <head>
+    <title>¿A donde vamos?</title>
+  </head>
+
+  <body>
+    <h3>En construccion</h3>
+  </body>
+  
 </html>
