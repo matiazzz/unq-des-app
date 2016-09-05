@@ -29,7 +29,7 @@ public class UserTest {
         User user = new User();
         EventData eventData = new EventData("Test");
 
-        Assert.assertTrue(user.createEvent(eventData).getTitle() == "Test");
+        Assert.assertEquals(user.createEvent(eventData).getTitle(), "Test");
     }
 
     @Test
