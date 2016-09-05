@@ -83,6 +83,7 @@ public class ProfileTest{
         Assert.assertTrue(profile.likeMovieGenre(MovieGenre.ACTION));
     }
 
+    @Test
     public void shouldRemoveAMovieGenre(){
         Profile profile = new Profile();
 

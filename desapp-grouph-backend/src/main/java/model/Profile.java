@@ -1,18 +1,16 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Profile {
-    private List<MusicalGenre> musicalGenres = new ArrayList<MusicalGenre>();
-    private List<MovieGenre> movieGenres = new ArrayList<MovieGenre>();
-    private List<FoodType> foodTypes = new ArrayList<FoodType>();
+    private Set<MusicalGenre> musicalGenres = new HashSet<MusicalGenre>();
+    private Set<MovieGenre> movieGenres = new HashSet<MovieGenre>();
+    private Set<FoodType> foodTypes = new HashSet<FoodType>();
     private int maxAmount = 0;
 
 
-    public void addMusicalGenre(MusicalGenre genre){
-        musicalGenres.add(genre);
-    }
+    public void addMusicalGenre(MusicalGenre genre){ musicalGenres.add(genre); }
 
     public void removeMusicalGenre(MusicalGenre genre){ musicalGenres.remove(genre); }
 
@@ -35,4 +33,6 @@ public class Profile {
     public void setAmount(int amount){
         maxAmount = amount;
     }
+
+    public int getMaxAmount() { return maxAmount; }
 }

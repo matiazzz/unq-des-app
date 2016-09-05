@@ -42,4 +42,6 @@ public class Event {
         Date today = Calendar.getInstance().getTime();
         return today.compareTo(date) > 0;
     }
+
+    public String getTitle() {return title;}
 }

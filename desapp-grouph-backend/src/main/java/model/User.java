@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class User {
+
     private String name;
     private String lastname;
     private Date birthday;
@@ -29,7 +30,7 @@ public class User {
         friends.add(friend );
     }
 
-    public void acceptFriend(User friend){
+    public void connectFriend(User friend){
         friend.addFriend(this);
         this.addFriend(friend);
     }
@@ -68,6 +69,8 @@ public class User {
         profile.setAmount(amount);
     }
 
+
+
     public String getName() {
         return name;
     }
@@ -91,4 +94,6 @@ public class User {
     public List<User> getFriends() {
         return friends;
     }
+
+    public Profile getProfile() { return profile; }
 }

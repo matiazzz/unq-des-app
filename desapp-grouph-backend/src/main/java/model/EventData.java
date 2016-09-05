@@ -12,4 +12,6 @@ public class EventData {
     int duration;
     String img;
     String facebook;
+
+    public EventData(String title){this.title = title;}
 }
