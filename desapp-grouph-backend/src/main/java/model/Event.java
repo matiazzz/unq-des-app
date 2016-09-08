@@ -1,32 +1,31 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.time.LocalTime;
+import java.util.Set;
+//import java.util.HashSet;
 
 public class Event {
+
     private String title;
     private String description;
     private int price = 0;
-    private String resume;
     private String address;
-    private Date date;
+    private LocalDate date;
+    private LocalTime time;
     private int duration;
-    private String img;
-    private String facebook;
-    private List<User> attendees = new ArrayList<User>();
+    private Set<User> attendees = new HashSet<User>();
+    //private EventType type; TODO
 
     public Event(EventData eventData){
         title = eventData.title;
         description = eventData.description;
         price = eventData.price;
-        resume = eventData.resume;
         address = eventData.address;
         date = eventData.date;
         duration = eventData.duration;
-        img = eventData.img;
-        facebook = eventData.facebook;
+        time = eventData.time;
     }
 
     public void addAttendee(User user){
@@ -34,13 +33,13 @@ public class Event {
     }
 
     public boolean isActive(){
-        Date today = Calendar.getInstance().getTime();
-        return today.compareTo(date) < 0;
+        LocalDate today = LocalDate.now();
+        return today.isBefore(date) || today.isEqual(date);
     }
 
-    public boolean isInactive(){
-        Date today = Calendar.getInstance().getTime();
-        return today.compareTo(date) > 0;
+    public Set<Event> suggestions(){
+        //TODO
+        return null;
     }
 
     public String getTitle() {return title;}

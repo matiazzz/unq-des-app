@@ -8,5 +8,4 @@ public abstract class Planning {
     protected User owner;
     protected Date date;
     protected List<Event> events = new ArrayList<Event>();
-    protected State state;
 }

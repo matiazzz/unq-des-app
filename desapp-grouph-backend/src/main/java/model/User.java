@@ -16,6 +16,7 @@ public class User {
     private List<Event> events = new ArrayList<Event>();
     private List<Planning> plannings = new ArrayList<Planning>();
 
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -39,6 +40,29 @@ public class User {
         Event event = new Event(eventData);
         events.add(event);
         return event;
+    }
+
+    public Individual createIndividualPlan(){
+        //TODO
+        return null;
+    }
+
+    public Couple createCouplePlan(){
+        //TODO
+        return null;
+    }
+
+    public WithFriends createWithFriendsPlan(){
+        //TODO
+        return null;
+    }
+
+    public void inviteFriendTo(Planning plan, User friend){
+        //TODO
+    }
+
+    public void aceptInvitationTo(Planning plan){
+        //TODO
     }
 
     public void addMusicGenre(MusicalGenre genre){
@@ -96,4 +120,5 @@ public class User {
     }
 
     public Profile getProfile() { return profile; }
+
 }
