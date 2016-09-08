@@ -6,91 +6,72 @@ import static org.mockito.Mockito.*;
 
 public class ProfileTest{
 
+
+    public Profile newProfileWith(FoodType type){
+        return ProfileBuilder.anyProfile().with(type).build();
+    }
+    public Profile newProfileWith(MusicalGenre genre){
+        return ProfileBuilder.anyProfile().with(genre).build();
+    }
+    public Profile newProfileWith(MovieGenre genre){
+        return ProfileBuilder.anyProfile().with(genre).build();
+    }
+
+
     @Test
     public void likeMusicalGenreShouldReturnTrue(){
-        Profile profile = new Profile();
-
-        profile.addMusicalGenre(MusicalGenre.JAZZ);
-
-        boolean ret = profile.likeMusicalGenre(MusicalGenre.JAZZ);
-
-        Assert.assertTrue(ret);
+        Profile profile = newProfileWith(MusicalGenre.JAZZ);
+        Assert.assertTrue(profile.likeMusicalGenre(MusicalGenre.JAZZ));
     }
 
     @Test
     public void likeFoodTypeShouldReturnTrue(){
-        Profile profile = new Profile();
-        profile.addFoodType(FoodType.CHINESE);
-        boolean ret = profile.likeFoodType(FoodType.CHINESE);
-        Assert.assertTrue(ret);
+        Profile profile = newProfileWith(FoodType.CHINESE);
+        Assert.assertTrue(profile.likeFoodType(FoodType.CHINESE));
     }
 
     @Test
     public void likeMovieGenreShouldReturnTrue(){
-        Profile profile = new Profile();
-        profile.addMovieGenre(MovieGenre.ACTION);
-        boolean ret = profile.likeMovieGenre(MovieGenre.ACTION);
-        Assert.assertTrue(ret);
+        Profile profile = newProfileWith(MovieGenre.ACTION);
+        Assert.assertTrue(profile.likeMovieGenre(MovieGenre.ACTION));
     }
 
     @Test
     public void shouldAddMusicalGenre(){
-        Profile profile = new Profile();
-
-        profile.addMusicalGenre(MusicalGenre.JAZZ);
-
+        Profile profile = newProfileWith(MusicalGenre.JAZZ);
         Assert.assertTrue(profile.likeMusicalGenre(MusicalGenre.JAZZ));
     }
 
     @Test
     public void shouldRemoveAMusicalGenre(){
-        Profile profile = new Profile();
-
-        profile.addMusicalGenre(MusicalGenre.JAZZ);
-
+        Profile profile = newProfileWith(MusicalGenre.JAZZ);
         profile.removeMusicalGenre(MusicalGenre.JAZZ);
-
         Assert.assertFalse(profile.likeMusicalGenre(MusicalGenre.JAZZ));
     }
 
-
     @Test
     public void shouldAddaFoodType(){
-        Profile profile = new Profile();
-
-        profile.addFoodType(FoodType.CHINESE);
-
+        Profile profile = newProfileWith(FoodType.CHINESE);
         Assert.assertTrue(profile.likeFoodType(FoodType.CHINESE));
     }
 
     @Test
     public void shouldRemoveAFoodType(){
-        Profile profile = new Profile();
-
-        profile.addFoodType(FoodType.CHINESE);
-
+        Profile profile = newProfileWith(FoodType.CHINESE);
         profile.removeFoodType(FoodType.CHINESE);
-
         Assert.assertFalse(profile.likeFoodType(FoodType.CHINESE));
     }
 
     @Test
     public void shouldAddMovieGenre(){
-        Profile profile = new Profile();
-
-        profile.addMovieGenre(MovieGenre.ACTION);
-
+        Profile profile = newProfileWith(MovieGenre.ACTION);
         Assert.assertTrue(profile.likeMovieGenre(MovieGenre.ACTION));
     }
 
     @Test
     public void shouldRemoveAMovieGenre(){
-        Profile profile = new Profile();
-
-        profile.addMovieGenre(MovieGenre.ACTION);
-
+        Profile profile = newProfileWith(MovieGenre.ACTION);
         profile.removeMovieGenre(MovieGenre.ACTION);
-
         Assert.assertFalse(profile.likeMovieGenre(MovieGenre.ACTION));
     }
 

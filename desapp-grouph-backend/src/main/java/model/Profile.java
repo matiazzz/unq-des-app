@@ -9,6 +9,14 @@ public class Profile {
     private Set<FoodType> foodTypes = new HashSet<FoodType>();
     private int maxAmount = 0;
 
+    public Profile(Set<MusicalGenre> musicalGenres, Set<MovieGenre> movieGenres, Set<FoodType> foodTypes, int maxAmount){
+        this.musicalGenres = musicalGenres;
+        this.movieGenres = movieGenres;
+        this.foodTypes = foodTypes;
+        this.maxAmount = maxAmount;
+    }
+    public Profile(){}
+
 
     public void addMusicalGenre(MusicalGenre genre){ musicalGenres.add(genre); }
 

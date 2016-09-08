@@ -8,7 +8,7 @@ public class EventTest {
     @Test
     public void eventShouldBeActive(){
         Event event = EventBuilder.anyEvent()
-                .whithDateTomorrow()
+                .withDateTomorrow()
                 .build();
 
         Assert.assertTrue(event.isActive());
@@ -26,7 +26,7 @@ public class EventTest {
     @Test
     public  void eventShouldNotBeActive(){
         Event event = EventBuilder.anyEvent()
-                .whithDateYesterday()
+                .withDateYesterday()
                 .build();
 
         Assert.assertFalse(event.isActive());

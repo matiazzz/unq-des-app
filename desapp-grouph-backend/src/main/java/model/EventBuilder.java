@@ -41,12 +41,12 @@ public class EventBuilder {
         return this;
     }
 
-    public EventBuilder whithDateTomorrow(){
+    public EventBuilder withDateTomorrow(){
         this.date = LocalDate.now().plusDays(1);
         return this;
     }
 
-    public  EventBuilder whithDateYesterday(){
+    public  EventBuilder withDateYesterday(){
         this.date = LocalDate.now().minusDays(1);
         return this;
     }
