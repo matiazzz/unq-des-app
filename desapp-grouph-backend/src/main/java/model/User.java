@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,7 @@ public class User {
 
     private String name;
     private String lastname;
-    private Date birthday;
+    private LocalDate birthday;
     private String username;
     private String password;
     private List<User> friends = new ArrayList<User>();
@@ -16,6 +17,18 @@ public class User {
     private List<Event> events = new ArrayList<Event>();
     private List<Planning> plannings = new ArrayList<Planning>();
 
+
+    public User(String name, String lastname, LocalDate birthday, String username, String password,Profile profile, List<User> friends, List<Event> events, List<Planning> plannings){
+        this.name = name;
+        this.lastname = lastname;
+        this.birthday = birthday;
+        this.username = username;
+        this.password = password;
+        this.profile = profile;
+        this.friends = friends;
+        this.events = events;
+        this.plannings = plannings;
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -73,6 +86,8 @@ public class User {
         profile.removeMusicalGenre(genre);
     }
 
+    public boolean likeMusicalGenre(MusicalGenre genre) { return profile.likeMusicalGenre(genre); }
+
     public void addMovieGenre(MovieGenre genre){
         profile.addMovieGenre(genre);
     }
@@ -80,6 +95,8 @@ public class User {
     public  void removeMovieGenre(MovieGenre genre){
         profile.removeMovieGenre(genre);
     }
+
+    public boolean likeMovieGenre(MovieGenre genre) { return profile.likeMovieGenre(genre); }
 
     public void addFoodType(FoodType foodType){
         profile.addFoodType(foodType);
@@ -89,9 +106,15 @@ public class User {
         profile.removeFoodType(foodType);
     }
 
+    public boolean likeFoodType(FoodType type) { return profile.likeFoodType(type); }
+
     public void setAmount(int amount){
         profile.setAmount(amount);
     }
+
+    public int getMaxAmount(){ return profile.getMaxAmount(); }
+
+    public boolean isFriendWith(User friend){ return this.friends.contains(friend); }
 
 
 
@@ -103,7 +126,7 @@ public class User {
         return lastname;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
