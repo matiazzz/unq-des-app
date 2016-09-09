@@ -1,8 +1,12 @@
 package model;
 
+import model.events.EventData;
+import model.plannings.Couple;
+import model.plannings.Individual;
+import model.plannings.WithFriends;
 import org.junit.Assert;
 import org.junit.Test;
-import static model.UserBuilder.anyUser;
+import static model.builders.UserBuilder.anyUser;
 import static org.mockito.Mockito.*;
 
 public class UserTest {
@@ -80,6 +84,44 @@ public class UserTest {
         User user = anyUser().build();
         user.setAmount(500);
         Assert.assertEquals(user.getMaxAmount(), 500);
+    }
+
+    @Test
+    public void shouldCreateIndividualPlan(){
+        User user = anyUser().build();
+        Individual plan = user.createIndividualPlan();
+        Assert.assertTrue(user.hasPlanning(plan));
+    }
+
+    @Test
+    public void shouldCreateCouplePlan(){
+        User user = anyUser().build();
+        Couple plan = user.createCouplePlan();
+        Assert.assertTrue(user.hasPlanning(plan));
+    }
+
+    @Test
+    public void shouldCreateWithFriendsPlan(){
+        User user = anyUser().build();
+        WithFriends plan = user.createWithFriendsPlan();
+        Assert.assertTrue(user.hasPlanning(plan));
+    }
+
+    @Test
+    public void shouldInviteAFriendToAPlanning(){
+        User user = anyUser().build();
+        User friend = anyUser().build();
+        WithFriends plan = user.createWithFriendsPlan();
+        Invitation invitation = user.inviteFriendTo(plan, friend);
+        Assert.assertTrue(friend.hasInvitation(invitation));
+    }
+
+    @Test
+    public void shouldAceptTheInvitation(){
+        User user = anyUser().build();
+        Invitation mockedInvitation = mock(Invitation.class);
+        user.acceptInvitationTo(mockedInvitation);
+        verify(mockedInvitation).accept(user);
     }
 
 }

@@ -2,7 +2,7 @@ package model;
 
 import org.junit.Assert;
 import org.junit.Test;
-import static model.ProfileBuilder.anyProfile;
+import static model.builders.ProfileBuilder.anyProfile;
 
 public class ProfileTest {
 

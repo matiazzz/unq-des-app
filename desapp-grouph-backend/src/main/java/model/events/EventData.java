@@ -1,4 +1,4 @@
-package model;
+package model.events;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;

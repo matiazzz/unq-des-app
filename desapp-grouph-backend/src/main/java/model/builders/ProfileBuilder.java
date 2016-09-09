@@ -1,4 +1,9 @@
-package model;
+package model.builders;
+
+import model.FoodType;
+import model.MovieGenre;
+import model.MusicalGenre;
+import model.Profile;
 
 import java.util.HashSet;
 import java.util.Set;

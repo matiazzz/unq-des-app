@@ -1,5 +1,11 @@
 package model;
 
+import model.events.Event;
+import model.events.EventData;
+import model.plannings.Couple;
+import model.plannings.Individual;
+import model.plannings.Planning;
+import model.plannings.WithFriends;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
@@ -16,9 +22,9 @@ public class User {
     private Profile profile;
     private List<Event> events = new ArrayList<Event>();
     private List<Planning> plannings = new ArrayList<Planning>();
+    private List<Invitation> invitations = new ArrayList<Invitation>();
 
-
-    public User(String name, String lastname, LocalDate birthday, String username, String password,Profile profile, List<User> friends, List<Event> events, List<Planning> plannings){
+    public User(String name, String lastname, LocalDate birthday, String username, String password,Profile profile, List<User> friends, List<Event> events, List<Planning> plannings, List<Invitation> invitations){
         this.name = name;
         this.lastname = lastname;
         this.birthday = birthday;
@@ -28,6 +34,7 @@ public class User {
         this.friends = friends;
         this.events = events;
         this.plannings = plannings;
+        this.invitations = invitations;
     }
 
     public User(String username, String password) {
@@ -56,26 +63,43 @@ public class User {
     }
 
     public Individual createIndividualPlan(){
-        //TODO
-        return null;
+        Individual plan = new Individual(this, LocalDate.now());
+        this.plannings.add(plan);
+        return plan;
     }
 
     public Couple createCouplePlan(){
-        //TODO
-        return null;
+        Couple plan = new Couple(this, LocalDate.now());
+        this.plannings.add(plan);
+        return plan;
     }
 
     public WithFriends createWithFriendsPlan(){
-        //TODO
-        return null;
+        WithFriends plan = new WithFriends(this, LocalDate.now());
+        this.plannings.add(plan);
+        return plan;
     }
 
-    public void inviteFriendTo(Planning plan, User friend){
-        //TODO
+    public Invitation inviteFriendTo(Planning plan, User friend){
+        Invitation invitation = new Invitation(this, plan);
+        friend.invitations.add(invitation);
+        return invitation;
     }
 
-    public void aceptInvitationTo(Planning plan){
-        //TODO
+    public void addPlanning(Planning planning){
+        this.plannings.add(planning);
+    }
+
+    public boolean hasPlanning(Planning plan){
+        return plannings.contains(plan);
+    }
+
+    public boolean hasInvitation(Invitation invitation){
+        return invitations.contains(invitation);
+    }
+
+    public void acceptInvitationTo(Invitation invitation){
+        invitation.accept(this);
     }
 
     public void addMusicGenre(MusicalGenre genre){

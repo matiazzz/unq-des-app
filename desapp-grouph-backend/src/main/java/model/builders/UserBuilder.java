@@ -1,5 +1,11 @@
-package model;
+package model.builders;
 
+import model.Invitation;
+import model.events.Event;
+import model.MusicalGenre;
+import model.Profile;
+import model.User;
+import model.plannings.Planning;
 import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +21,7 @@ public class UserBuilder {
     private Profile profile;
     private List<Event> events;
     private List<Planning> plannings;
+    private List<Invitation> invitations;
 
     public UserBuilder(){
         this.name = "NAME";
@@ -26,6 +33,7 @@ public class UserBuilder {
         this.friends = new ArrayList<User>();
         this.events = new ArrayList<Event>();
         this.plannings = new ArrayList<Planning>();
+        this.invitations = new ArrayList<Invitation>();
     }
 
     public static UserBuilder anyUser() {
@@ -33,7 +41,7 @@ public class UserBuilder {
     }
 
     public User build(){
-        return new User(name, lastname, birthday, username, password, profile, friends, events, plannings);
+        return new User(name, lastname, birthday, username, password, profile, friends, events, plannings, invitations);
     }
 
     public UserBuilder with(User friend){

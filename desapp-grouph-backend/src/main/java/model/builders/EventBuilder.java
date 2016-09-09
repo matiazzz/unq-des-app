@@ -1,5 +1,8 @@
-package model;
+package model.builders;
 
+import model.events.Event;
+import model.events.EventData;
+import model.User;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import java.util.HashSet;

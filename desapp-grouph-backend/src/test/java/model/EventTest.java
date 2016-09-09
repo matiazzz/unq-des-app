@@ -1,8 +1,9 @@
 package model;
 
+import model.events.Event;
 import org.junit.Assert;
 import org.junit.Test;
-import static model.EventBuilder.anyEvent;
+import static model.builders.EventBuilder.anyEvent;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
