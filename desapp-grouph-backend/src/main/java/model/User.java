@@ -165,4 +165,12 @@ public class User {
     public void setInvitations(List<Invitation> invitations) {
         this.invitations = invitations;
     }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
 }

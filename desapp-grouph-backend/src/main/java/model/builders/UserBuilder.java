@@ -9,6 +9,8 @@ import model.plannings.Planning;
 import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import static model.builders.ProfileBuilder.anyProfile;
+
 
 public class UserBuilder {
 
@@ -55,6 +57,11 @@ public class UserBuilder {
 
     public UserBuilder with(User friend){
         this.friends.add(friend);
+        return this;
+    }
+
+    public UserBuilder with(int maxAmount){
+        this.profile = anyProfile().with(maxAmount).build();
         return this;
     }
 }

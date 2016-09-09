@@ -3,6 +3,7 @@ package model.builders;
 import model.events.Event;
 import model.events.EventData;
 import model.User;
+import model.events.EventType;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import java.util.HashSet;
@@ -18,7 +19,7 @@ public class EventBuilder {
     private LocalTime time;
     private int duration;
     private Set<User> attendees;
-    //private EventType type; TODO
+    private EventType eventType;
 
     public EventBuilder(){
         title = "TITLE";
@@ -34,7 +35,7 @@ public class EventBuilder {
     public static EventBuilder anyEvent(){return new EventBuilder();}
 
     public Event build(){
-        EventData eventData = new EventData(title, description, price, address, date, time, duration);
+        EventData eventData = new EventData(title, description, eventType, price, address, date, time, duration);
         return new Event(eventData);
     }
 

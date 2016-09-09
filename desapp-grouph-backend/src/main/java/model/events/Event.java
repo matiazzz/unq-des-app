@@ -1,5 +1,6 @@
 package model.events;
 
+import model.Profile;
 import model.User;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -17,7 +18,7 @@ public class Event {
     private int duration;
 
     private Set<User> attendees = new HashSet<User>();
-    //private EventType type; TODO
+    private EventType type;
 
     public Event(EventData eventData){
         title = eventData.title;
@@ -38,6 +39,10 @@ public class Event {
         return today.isBefore(date) || today.isEqual(date);
     }
 
+    public boolean compareTo(Profile profile){
+        return this.type.compareTo(profile);
+    }
+
     public Set<Event> suggestions(){
         //TODO
         return null;
@@ -47,5 +52,9 @@ public class Event {
 
     public boolean isGoing(User user) {
         return attendees.contains(user);
+    }
+
+    public int getPrice() {
+        return price;
     }
 }
