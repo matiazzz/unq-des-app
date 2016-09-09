@@ -16,7 +16,7 @@ public class UserBuilder {
     private String lastname;
     private LocalDate birthday;
     private String username;
-    private String password;
+    //private String password;
     private List<User> friends;
     private Profile profile;
     private List<Event> events;
@@ -28,7 +28,6 @@ public class UserBuilder {
         this.lastname = "LASTNAME";
         this.birthday = LocalDate.now();
         this.username = "USERNAME";
-        this.password = "PASSWORD";
         this.profile = ProfileBuilder.anyProfile().build();
         this.friends = new ArrayList<User>();
         this.events = new ArrayList<Event>();
@@ -41,17 +40,21 @@ public class UserBuilder {
     }
 
     public User build(){
-        return new User(name, lastname, birthday, username, password, profile, friends, events, plannings, invitations);
+        User user = new User();
+        user.setBirthday(this.birthday);
+        user.setEvents(this.events);
+        user.setFriends(this.friends);
+        user.setInvitations(this.invitations);
+        user.setName(this.name);
+        user.setUsername(this.username);
+        user.setLastname(this.lastname);
+        user.setProfile(this.profile);
+        user.setPlannings(plannings);
+        return user;
     }
 
     public UserBuilder with(User friend){
         this.friends.add(friend);
         return this;
     }
-
-    public UserBuilder with(MusicalGenre genre){
-        this.profile.addMusicalGenre(genre);
-        return this;
-    }
-
 }

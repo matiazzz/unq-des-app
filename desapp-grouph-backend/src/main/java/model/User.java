@@ -17,31 +17,12 @@ public class User {
     private String lastname;
     private LocalDate birthday;
     private String username;
-    private String password;
+    //private String password;
     private List<User> friends = new ArrayList<User>();
     private Profile profile;
     private List<Event> events = new ArrayList<Event>();
     private List<Planning> plannings = new ArrayList<Planning>();
     private List<Invitation> invitations = new ArrayList<Invitation>();
-
-    public User(String name, String lastname, LocalDate birthday, String username, String password,Profile profile, List<User> friends, List<Event> events, List<Planning> plannings, List<Invitation> invitations){
-        this.name = name;
-        this.lastname = lastname;
-        this.birthday = birthday;
-        this.username = username;
-        this.password = password;
-        this.profile = profile;
-        this.friends = friends;
-        this.events = events;
-        this.plannings = plannings;
-        this.invitations = invitations;
-    }
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        profile = new Profile();
-    }
 
     public User(){
         profile = new Profile();
@@ -149,30 +130,39 @@ public class User {
         return this.friends.contains(friend);
     }
 
-    public String getName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
-    public String getUsername() {
-        return username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    private String getPassword() {
-        return password;
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
     }
 
-    public List<User> getFriends() {
-        return friends;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
-    public Profile getProfile() { return profile; }
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 
+    public void setPlannings(List<Planning> plannings) {
+        this.plannings = plannings;
+    }
+
+    public void setInvitations(List<Invitation> invitations) {
+        this.invitations = invitations;
+    }
 }
