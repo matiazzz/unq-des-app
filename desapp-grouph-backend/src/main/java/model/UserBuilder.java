@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +28,9 @@ public class UserBuilder {
         this.plannings = new ArrayList<Planning>();
     }
 
-    public static UserBuilder anyUser(){return  new UserBuilder();}
+    public static UserBuilder anyUser() {
+        return new UserBuilder();
+    }
 
     public User build(){
         return new User(name, lastname, birthday, username, password, profile, friends, events, plannings);

@@ -1,10 +1,9 @@
 package model;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import java.util.HashSet;
-import java.time.LocalTime;
 import java.util.Set;
-//import java.util.HashSet;
 
 public class Event {
 
@@ -15,6 +14,7 @@ public class Event {
     private LocalDate date;
     private LocalTime time;
     private int duration;
+
     private Set<User> attendees = new HashSet<User>();
     //private EventType type; TODO
 
@@ -43,4 +43,8 @@ public class Event {
     }
 
     public String getTitle() {return title;}
+
+    public boolean isGoing(User user) {
+        return attendees.contains(user);
+    }
 }

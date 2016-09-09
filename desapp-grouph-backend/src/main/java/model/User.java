@@ -1,8 +1,8 @@
 package model;
 
-import java.time.LocalDate;
+import org.joda.time.LocalDate;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -86,7 +86,9 @@ public class User {
         profile.removeMusicalGenre(genre);
     }
 
-    public boolean likeMusicalGenre(MusicalGenre genre) { return profile.likeMusicalGenre(genre); }
+    public boolean likeMusicalGenre(MusicalGenre genre) {
+        return profile.likeMusicalGenre(genre);
+    }
 
     public void addMovieGenre(MovieGenre genre){
         profile.addMovieGenre(genre);
@@ -96,7 +98,8 @@ public class User {
         profile.removeMovieGenre(genre);
     }
 
-    public boolean likeMovieGenre(MovieGenre genre) { return profile.likeMovieGenre(genre); }
+    public boolean likeMovieGenre(MovieGenre genre) {
+        return profile.likeMovieGenre(genre); }
 
     public void addFoodType(FoodType foodType){
         profile.addFoodType(foodType);
@@ -106,17 +109,21 @@ public class User {
         profile.removeFoodType(foodType);
     }
 
-    public boolean likeFoodType(FoodType type) { return profile.likeFoodType(type); }
+    public boolean likeFoodType(FoodType type) {
+        return profile.likeFoodType(type);
+    }
 
     public void setAmount(int amount){
         profile.setAmount(amount);
     }
 
-    public int getMaxAmount(){ return profile.getMaxAmount(); }
+    public int getMaxAmount(){
+        return profile.getMaxAmount();
+    }
 
-    public boolean isFriendWith(User friend){ return this.friends.contains(friend); }
-
-
+    public boolean isFriendOf(User friend) {
+        return this.friends.contains(friend);
+    }
 
     public String getName() {
         return name;

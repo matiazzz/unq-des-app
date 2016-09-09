@@ -1,7 +1,7 @@
 package model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 
 public class EventData {
 
@@ -14,7 +14,6 @@ public class EventData {
     public int duration;
 
     public EventData(String title){this.title = title;}
-    public EventData(LocalDate date) {this.date = date;}
 
     public EventData(String title, String description, int price, String address, LocalDate date, LocalTime time, int duration){
         this.title = title;
