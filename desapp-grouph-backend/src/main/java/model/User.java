@@ -79,9 +79,7 @@ public class User {
         return invitations.contains(invitation);
     }
 
-    public void acceptInvitationTo(Invitation invitation){
-        invitation.accept(this);
-    }
+    public void acceptInvitationTo(Invitation invitation){ invitation.accept(this); }
 
     public void addMusicGenre(MusicalGenre genre){
         profile.addMusicalGenre(genre);
@@ -103,8 +101,7 @@ public class User {
         profile.removeMovieGenre(genre);
     }
 
-    public boolean likeMovieGenre(MovieGenre genre) {
-        return profile.likeMovieGenre(genre); }
+    public boolean likeMovieGenre(MovieGenre genre) { return profile.likeMovieGenre(genre); }
 
     public void addFoodType(FoodType foodType){
         profile.addFoodType(foodType);

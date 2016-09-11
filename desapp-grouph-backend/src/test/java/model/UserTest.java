@@ -121,7 +121,7 @@ public class UserTest {
     }
 
     @Test
-    public void shouldAceptTheInvitation(){
+    public void shouldAcceptTheInvitation(){
         User user = anyUser().build();
         Invitation mockedInvitation = mock(Invitation.class);
         user.acceptInvitationTo(mockedInvitation);
