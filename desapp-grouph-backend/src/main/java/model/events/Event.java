@@ -57,4 +57,6 @@ public class Event {
     public int getPrice() {
         return price;
     }
+
+    public LocalDate getDate() { return date; }
 }

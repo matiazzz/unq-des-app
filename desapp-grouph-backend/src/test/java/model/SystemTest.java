@@ -1,15 +1,12 @@
 package model;
 
 import model.events.*;
-import org.junit.Assert;
+import org.joda.time.LocalDate;
 import org.junit.Test;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-import static model.builders.ProfileBuilder.anyProfile;
-import static model.builders.UserBuilder.anyUser;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
@@ -69,6 +66,33 @@ public class SystemTest {
         users.add(user1);
         users.add(user2);
         assertTrue(system.likeEvent(users, event));
+    }
+
+    @Test
+    public void shouldReturnAllTheEventsOfaSpecificDay(){
+        User user = mock(User.class);
+        Profile profile = mock(Profile.class);
+
+        Event event1 = mock(Event.class);
+        Event event2 = mock(Event.class);
+        Event event3 = mock(Event.class);
+
+        System system = new System();
+        system.events.add(event1);
+        system.events.add(event2);
+        system.events.add(event3);
+
+        when(user.getProfile()).thenReturn(profile);
+
+        when(event1.compareTo(profile)).thenReturn(true);
+        when(event2.compareTo(profile)).thenReturn(true);
+        when(event3.compareTo(profile)).thenReturn(true);
+
+        when(event1.getDate()).thenReturn(LocalDate.now().plusDays(1));
+        when(event2.getDate()).thenReturn(LocalDate.now());
+        when(event3.getDate()).thenReturn(LocalDate.now().minusDays(1));
+
+        assertEquals(system.saturdayNightFever(user, LocalDate.now()).size(), 1);
     }
 
 }
