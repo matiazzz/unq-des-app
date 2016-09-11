@@ -10,6 +10,10 @@ public class Individual extends Planning {
         this.date = creationDate;
     }
 
+    /**
+     * Is empty because an individual planning has only a user, the owner.
+     * @param user
+     */
     @Override
     public void addUser(User user) {}
 }

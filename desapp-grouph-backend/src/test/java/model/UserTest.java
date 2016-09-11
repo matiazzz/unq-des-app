@@ -6,6 +6,10 @@ import model.plannings.Individual;
 import model.plannings.WithFriends;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static model.FoodType.*;
+import static model.MovieGenre.*;
+import static model.MusicalGenre.*;
 import static model.builders.UserBuilder.anyUser;
 import static org.mockito.Mockito.*;
 
@@ -37,46 +41,46 @@ public class UserTest {
     @Test
     public void shouldAddAMusicGenreToTheProfile(){
         User user = anyUser().build();
-        user.addMusicGenre(MusicalGenre.JAZZ);
-        Assert.assertTrue(user.likeMusicalGenre(MusicalGenre.JAZZ));
+        user.addMusicGenre(JAZZ);
+        Assert.assertTrue(user.likeMusicalGenre(JAZZ));
     }
 
     @Test
     public void shouldRemoveAMusicalGenreFromTheProfile(){
         User user = anyUser().build();
-        user.addMusicGenre(MusicalGenre.JAZZ);
-        user.removeMusicalGenre(MusicalGenre.JAZZ);
-        Assert.assertFalse(user.likeMusicalGenre(MusicalGenre.JAZZ));
+        user.addMusicGenre(JAZZ);
+        user.removeMusicalGenre(JAZZ);
+        Assert.assertFalse(user.likeMusicalGenre(JAZZ));
     }
 
     @Test
     public void shouldAddAMovieGenreToTheProfile(){
         User user = anyUser().build();
-        user.addMovieGenre(MovieGenre.ACTION);
-        Assert.assertTrue(user.likeMovieGenre(MovieGenre.ACTION));
+        user.addMovieGenre(ACTION);
+        Assert.assertTrue(user.likeMovieGenre(ACTION));
     }
 
     @Test
     public  void shouldRemoveAMovieGenreFromTheProfile(){
         User user = anyUser().build();
-        user.addMovieGenre(MovieGenre.ACTION);
-        user.removeMovieGenre(MovieGenre.ACTION);
-        Assert.assertFalse(user.likeMovieGenre(MovieGenre.ACTION));
+        user.addMovieGenre(ACTION);
+        user.removeMovieGenre(ACTION);
+        Assert.assertFalse(user.likeMovieGenre(ACTION));
     }
 
     @Test
     public void shouldAddAFoodTypeToTheProfile(){
         User user = anyUser().build();
-        user.addFoodType(FoodType.CHINESE);
-        Assert.assertTrue(user.likeFoodType(FoodType.CHINESE));
+        user.addFoodType(CHINESE);
+        Assert.assertTrue(user.likeFoodType(CHINESE));
     }
 
     @Test
     public void shouldRemoveAFoodTypeFromTheProfile(){
         User user = anyUser().build();
-        user.addFoodType(FoodType.CHINESE);
-        user.removeFoodType(FoodType.CHINESE);
-        Assert.assertFalse(user.likeFoodType(FoodType.CHINESE));
+        user.addFoodType(CHINESE);
+        user.removeFoodType(CHINESE);
+        Assert.assertFalse(user.likeFoodType(CHINESE));
     }
 
     @Test
