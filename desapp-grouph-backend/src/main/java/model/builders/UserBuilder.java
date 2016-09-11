@@ -2,7 +2,6 @@ package model.builders;
 
 import model.Invitation;
 import model.events.Event;
-import model.MusicalGenre;
 import model.Profile;
 import model.User;
 import model.plannings.Planning;
@@ -10,7 +9,6 @@ import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import static model.builders.ProfileBuilder.anyProfile;
-
 
 public class UserBuilder {
 
@@ -30,7 +28,7 @@ public class UserBuilder {
         this.lastname = "LASTNAME";
         this.birthday = LocalDate.now();
         this.username = "USERNAME";
-        this.profile = ProfileBuilder.anyProfile().build();
+        this.profile = anyProfile().build();
         this.friends = new ArrayList<User>();
         this.events = new ArrayList<Event>();
         this.plannings = new ArrayList<Planning>();
