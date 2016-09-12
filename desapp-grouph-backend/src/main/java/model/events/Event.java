@@ -1,7 +1,7 @@
 package model.events;
 
-import model.Profile;
-import model.User;
+import model.users.Profile;
+import model.users.User;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import java.util.HashSet;

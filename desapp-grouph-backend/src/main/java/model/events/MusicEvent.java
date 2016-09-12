@@ -1,7 +1,7 @@
 package model.events;
 
-import model.MusicalGenre;
-import model.Profile;
+import model.users.MusicalGenre;
+import model.users.Profile;
 import java.util.ArrayList;
 import java.util.List;
 

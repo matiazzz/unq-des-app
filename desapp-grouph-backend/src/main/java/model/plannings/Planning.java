@@ -1,7 +1,7 @@
 package model.plannings;
 
 import model.events.Event;
-import model.User;
+import model.users.User;
 import org.joda.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

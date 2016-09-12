@@ -1,6 +1,8 @@
 package model;
 
 import model.events.*;
+import model.users.Profile;
+import model.users.User;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import java.util.ArrayList;

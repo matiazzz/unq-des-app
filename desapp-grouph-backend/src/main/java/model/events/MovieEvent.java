@@ -1,7 +1,7 @@
 package model.events;
 
-import model.MovieGenre;
-import model.Profile;
+import model.users.MovieGenre;
+import model.users.Profile;
 
 import java.util.ArrayList;
 import java.util.List;

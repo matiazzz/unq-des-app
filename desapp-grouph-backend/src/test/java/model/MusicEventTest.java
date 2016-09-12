@@ -1,6 +1,8 @@
 package model;
 
 import model.events.MusicEvent;
+import model.users.MusicalGenre;
+import model.users.Profile;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;

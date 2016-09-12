@@ -1,4 +1,4 @@
-package model;
+package model.users;
 
 import model.events.Event;
 import model.events.EventData;

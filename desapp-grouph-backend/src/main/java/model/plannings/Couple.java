@@ -1,6 +1,6 @@
 package model.plannings;
 
-import model.User;
+import model.users.User;
 import org.joda.time.LocalDate;
 
 public class Couple extends Planning {

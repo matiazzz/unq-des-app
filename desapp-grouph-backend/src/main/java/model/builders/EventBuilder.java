@@ -2,7 +2,7 @@ package model.builders;
 
 import model.events.Event;
 import model.events.EventData;
-import model.User;
+import model.users.User;
 import model.events.EventType;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;

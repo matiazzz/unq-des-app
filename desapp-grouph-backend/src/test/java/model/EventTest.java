@@ -1,6 +1,7 @@
 package model;
 
 import model.events.Event;
+import model.users.User;
 import org.junit.Assert;
 import org.junit.Test;
 import static model.builders.EventBuilder.anyEvent;

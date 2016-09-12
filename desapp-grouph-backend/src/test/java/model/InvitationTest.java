@@ -1,6 +1,8 @@
 package model;
 
 import model.plannings.WithFriends;
+import model.users.Invitation;
+import model.users.User;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 

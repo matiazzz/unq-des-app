@@ -1,6 +1,6 @@
 package model.plannings;
 
-import model.User;
+import model.users.User;
 import org.joda.time.LocalDate;
 
 import java.util.ArrayList;

@@ -1,10 +1,11 @@
 package model;
 
+import model.users.Profile;
 import org.junit.Assert;
 import org.junit.Test;
-import static model.FoodType.*;
-import static model.MovieGenre.*;
-import static model.MusicalGenre.*;
+import static model.users.FoodType.*;
+import static model.users.MovieGenre.*;
+import static model.users.MusicalGenre.*;
 import static model.builders.ProfileBuilder.anyProfile;
 
 public class ProfileTest {

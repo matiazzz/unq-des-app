@@ -4,13 +4,15 @@ import model.events.EventData;
 import model.plannings.Couple;
 import model.plannings.Individual;
 import model.plannings.WithFriends;
+import model.users.Invitation;
+import model.users.User;
 import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static model.FoodType.*;
-import static model.MovieGenre.*;
-import static model.MusicalGenre.*;
+import static model.users.FoodType.*;
+import static model.users.MovieGenre.*;
+import static model.users.MusicalGenre.*;
 import static model.builders.UserBuilder.anyUser;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;

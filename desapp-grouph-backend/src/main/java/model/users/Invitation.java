@@ -1,4 +1,4 @@
-package model;
+package model.users;
 
 import model.plannings.Planning;
 import org.joda.time.LocalDate;

@@ -1,9 +1,9 @@
 package model.builders;
 
-import model.Invitation;
+import model.users.Invitation;
 import model.events.Event;
-import model.Profile;
-import model.User;
+import model.users.Profile;
+import model.users.User;
 import model.plannings.Planning;
 import org.joda.time.LocalDate;
 import java.util.ArrayList;

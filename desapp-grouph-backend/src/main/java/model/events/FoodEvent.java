@@ -1,7 +1,7 @@
 package model.events;
 
-import model.FoodType;
-import model.Profile;
+import model.users.FoodType;
+import model.users.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
