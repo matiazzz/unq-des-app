@@ -3,8 +3,8 @@ package model;
 import model.events.*;
 import org.joda.time.LocalDate;
 import org.junit.Test;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -93,6 +93,43 @@ public class SystemTest {
         when(event3.getDate()).thenReturn(LocalDate.now().minusDays(1));
 
         assertEquals(system.saturdayNightFever(user, LocalDate.now()).size(), 1);
+    }
+
+    @Test
+    public void shouldReturnEventsToGoWithFriends() {
+        User user = mock(User.class);
+        User friend1 = mock(User.class);
+        User friend2 = mock(User.class);
+        Profile profile = mock(Profile.class);
+        Profile profile1 = mock(Profile.class);
+        Profile profile2 = mock(Profile.class);
+        Event event1 = mock(Event.class);
+        Event event2 = mock(Event.class);
+        Event event3 = mock(Event.class);
+
+        when(user.getProfile()).thenReturn(profile);
+        when(friend1.getProfile()).thenReturn(profile1);
+        when(friend2.getProfile()).thenReturn(profile2);
+        when(user.getFriends()).thenReturn(Arrays.asList(friend1, friend2));
+
+        when(event1.compareTo(user.getProfile())).thenReturn(true);
+        when(event2.compareTo(user.getProfile())).thenReturn(true);
+        when(event3.compareTo(user.getProfile())).thenReturn(true);
+
+        when(event1.compareTo(friend1.getProfile())).thenReturn(false);
+        when(event2.compareTo(friend1.getProfile())).thenReturn(false);
+        when(event3.compareTo(friend1.getProfile())).thenReturn(false);
+
+        when(event1.compareTo(friend2.getProfile())).thenReturn(true);
+        when(event2.compareTo(friend2.getProfile())).thenReturn(false);
+        when(event3.compareTo(friend2.getProfile())).thenReturn(false);
+
+        System system = new System();
+        system.events.addAll(Arrays.asList(event1, event2, event3));
+
+        int expectedEvents = 1;
+        assertEquals(expectedEvents, system.eventsWithFriends(user).size());
+        assertTrue(system.eventsWithFriends(user).contains(event1));
     }
 
 }
