@@ -56,4 +56,17 @@ public class UserBuilder {
         this.friends.add(friend);
         return this;
     }
+
+    public UserBuilder withName(String name){
+        this.name = name;
+        return this;
+    }
+    public UserBuilder withLastName(String lastName){
+        this.lastName = lastName;
+        return this;
+    }
+    public UserBuilder with(LocalDate birthday){
+        this.birthday = birthday;
+        return this;
+    }
 }

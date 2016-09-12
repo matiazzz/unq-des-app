@@ -4,6 +4,7 @@ import model.events.EventData;
 import model.plannings.Couple;
 import model.plannings.Individual;
 import model.plannings.WithFriends;
+import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,14 +19,14 @@ public class UserTest {
 
     @Test
     public void shouldAddAFriend(){
-        User userX = anyUser().build();
+        User userX = anyUser().withName("name").build();
         User userY = anyUser().with(userX).build();
         assertTrue(userY.isFriendOf(userX));
     }
 
     @Test
     public void shouldAddAPlanning(){
-        User user = anyUser().build();
+        User user = anyUser().withLastName("lastname").build();
         Individual planIndividual = mock(Individual.class);
         user.addPlanning(planIndividual);
         assertTrue(user.getPlannings().contains(planIndividual));
@@ -33,7 +34,7 @@ public class UserTest {
 
     @Test
     public void shouldConnectFriend(){
-        User user1 = anyUser().build();
+        User user1 = anyUser().with(LocalDate.now()).build();
         User mockedUser = mock(User.class);
         user1.connectFriend(mockedUser);
         verify(mockedUser).addFriend(user1);
