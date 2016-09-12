@@ -132,4 +132,50 @@ public class SystemTest {
         assertTrue(system.eventsWithFriends(user).contains(event1));
     }
 
+    @Test
+    public void shouldReturnEventToGoInCouple(){
+        System system = new System();
+        User user1 = mock(User.class);
+        User user2 = mock(User.class);
+        Profile profile1 = mock(Profile.class);
+        Profile profile2 = mock(Profile.class);
+        Event event1 = mock(Event.class);
+        Event event2 = mock(Event.class);
+        Event event3 = mock(Event.class);
+        when(user1.getProfile()).thenReturn(profile1);
+        when(user2.getProfile()).thenReturn(profile2);
+        when(event1.compareTo(user1.getProfile())).thenReturn(true);
+        when(event2.compareTo(user1.getProfile())).thenReturn(true);
+        when(event3.compareTo(user1.getProfile())).thenReturn(true);
+        when(event1.compareTo(user2.getProfile())).thenReturn(true);
+        when(event2.compareTo(user2.getProfile())).thenReturn(false);
+        when(event3.compareTo(user2.getProfile())).thenReturn(true);
+        system.events.addAll(Arrays.asList(event1, event2, event3));
+        int expectedEventQuantity = 2;
+        assertEquals(expectedEventQuantity, system.eventsWithCouple(user1, user2).size());
+        assertTrue(system.eventsWithCouple(user1, user2).contains(event1));
+        assertTrue(system.eventsWithCouple(user1, user2).contains(event3));
+    }
+
+    @Test
+    public void shouldNotReturnEventToGoInCouple(){
+        System system = new System();
+        User user1 = mock(User.class);
+        User user2 = mock(User.class);
+        Profile profile1 = mock(Profile.class);
+        Profile profile2 = mock(Profile.class);
+        Event event1 = mock(Event.class);
+        Event event2 = mock(Event.class);
+        Event event3 = mock(Event.class);
+        when(user1.getProfile()).thenReturn(profile1);
+        when(user2.getProfile()).thenReturn(profile2);
+        when(event1.compareTo(user1.getProfile())).thenReturn(true);
+        when(event2.compareTo(user1.getProfile())).thenReturn(true);
+        when(event3.compareTo(user1.getProfile())).thenReturn(true);
+        when(event1.compareTo(user2.getProfile())).thenReturn(false);
+        when(event2.compareTo(user2.getProfile())).thenReturn(false);
+        when(event3.compareTo(user2.getProfile())).thenReturn(false);
+        system.events.addAll(Arrays.asList(event1, event2, event3));
+        assertTrue(system.eventsWithCouple(user1, user2).isEmpty());
+    }
 }
