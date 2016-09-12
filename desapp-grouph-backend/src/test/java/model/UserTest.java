@@ -11,6 +11,7 @@ import static model.FoodType.*;
 import static model.MovieGenre.*;
 import static model.MusicalGenre.*;
 import static model.builders.UserBuilder.anyUser;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class UserTest {
@@ -19,7 +20,15 @@ public class UserTest {
     public void shouldAddAFriend(){
         User userX = anyUser().build();
         User userY = anyUser().with(userX).build();
-        Assert.assertTrue(userY.isFriendOf(userX));
+        assertTrue(userY.isFriendOf(userX));
+    }
+
+    @Test
+    public void shouldAddAPlanning(){
+        User user = anyUser().build();
+        Individual planIndividual = mock(Individual.class);
+        user.addPlanning(planIndividual);
+        assertTrue(user.getPlannings().contains(planIndividual));
     }
 
     @Test
@@ -28,7 +37,7 @@ public class UserTest {
         User mockedUser = mock(User.class);
         user1.connectFriend(mockedUser);
         verify(mockedUser).addFriend(user1);
-        Assert.assertTrue(user1.isFriendOf(mockedUser));
+        assertTrue(user1.isFriendOf(mockedUser));
     }
 
     @Test
@@ -42,7 +51,7 @@ public class UserTest {
     public void shouldAddAMusicGenreToTheProfile(){
         User user = anyUser().build();
         user.addMusicGenre(JAZZ);
-        Assert.assertTrue(user.likeMusicalGenre(JAZZ));
+        assertTrue(user.likeMusicalGenre(JAZZ));
     }
 
     @Test
@@ -57,7 +66,7 @@ public class UserTest {
     public void shouldAddAMovieGenreToTheProfile(){
         User user = anyUser().build();
         user.addMovieGenre(ACTION);
-        Assert.assertTrue(user.likeMovieGenre(ACTION));
+        assertTrue(user.likeMovieGenre(ACTION));
     }
 
     @Test
@@ -72,7 +81,7 @@ public class UserTest {
     public void shouldAddAFoodTypeToTheProfile(){
         User user = anyUser().build();
         user.addFoodType(CHINESE);
-        Assert.assertTrue(user.likeFoodType(CHINESE));
+        assertTrue(user.likeFoodType(CHINESE));
     }
 
     @Test
@@ -94,21 +103,21 @@ public class UserTest {
     public void shouldCreateIndividualPlan(){
         User user = anyUser().build();
         Individual plan = user.createIndividualPlan();
-        Assert.assertTrue(user.hasPlanning(plan));
+        assertTrue(user.hasPlanning(plan));
     }
 
     @Test
     public void shouldCreateCouplePlan(){
         User user = anyUser().build();
         Couple plan = user.createCouplePlan();
-        Assert.assertTrue(user.hasPlanning(plan));
+        assertTrue(user.hasPlanning(plan));
     }
 
     @Test
     public void shouldCreateWithFriendsPlan(){
         User user = anyUser().build();
         WithFriends plan = user.createWithFriendsPlan();
-        Assert.assertTrue(user.hasPlanning(plan));
+        assertTrue(user.hasPlanning(plan));
     }
 
     @Test
@@ -117,7 +126,7 @@ public class UserTest {
         User friend = anyUser().build();
         WithFriends plan = user.createWithFriendsPlan();
         Invitation invitation = user.inviteFriendTo(plan, friend);
-        Assert.assertTrue(friend.hasInvitation(invitation));
+        assertTrue(friend.hasInvitation(invitation));
     }
 
     @Test

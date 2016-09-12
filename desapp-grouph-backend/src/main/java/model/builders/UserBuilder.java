@@ -16,7 +16,6 @@ public class UserBuilder {
     private String lastname;
     private LocalDate birthday;
     private String username;
-    //private String password;
     private List<User> friends;
     private Profile profile;
     private List<Event> events;
@@ -29,10 +28,10 @@ public class UserBuilder {
         this.birthday = LocalDate.now();
         this.username = "USERNAME";
         this.profile = anyProfile().build();
-        this.friends = new ArrayList<User>();
-        this.events = new ArrayList<Event>();
-        this.plannings = new ArrayList<Planning>();
-        this.invitations = new ArrayList<Invitation>();
+        this.friends = new ArrayList<>();
+        this.events = new ArrayList<>();
+        this.plannings = new ArrayList<>();
+        this.invitations = new ArrayList<>();
     }
 
     public static UserBuilder anyUser() {

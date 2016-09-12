@@ -43,11 +43,6 @@ public class Event {
         return this.type.compareTo(profile);
     }
 
-    public Set<Event> suggestions(){
-        //TODO
-        return null;
-    }
-
     public String getTitle() {return title;}
 
     public boolean isGoing(User user) {

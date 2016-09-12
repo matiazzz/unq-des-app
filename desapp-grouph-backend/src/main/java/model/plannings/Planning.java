@@ -12,16 +12,4 @@ public abstract class Planning {
     protected List<Event> events = new ArrayList<Event>();
 
     public abstract void addUser(User user);
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
 }

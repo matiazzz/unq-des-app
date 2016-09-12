@@ -170,4 +170,8 @@ public class User {
     public List<User> getFriends() {
         return friends;
     }
+
+    public List<Planning> getPlannings() {
+        return plannings;
+    }
 }

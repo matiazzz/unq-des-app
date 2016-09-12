@@ -4,7 +4,6 @@ import model.FoodType;
 import model.MovieGenre;
 import model.MusicalGenre;
 import model.Profile;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,9 +15,9 @@ public class ProfileBuilder {
     private int maxAmount = 0;
 
     public ProfileBuilder(){
-        this.musicalGenres = new HashSet<MusicalGenre>();
-        this.movieGenres = new HashSet<MovieGenre>();
-        this.foodTypes = new HashSet<FoodType>();
+        this.musicalGenres = new HashSet<>();
+        this.movieGenres = new HashSet<>();
+        this.foodTypes = new HashSet<>();
         this.maxAmount = 0;
     }
 
