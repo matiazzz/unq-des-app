@@ -132,8 +132,10 @@ public class UserTest {
     @Test
     public void shouldAcceptTheInvitation(){
         User user = anyUser().build();
-        Invitation mockedInvitation = mock(Invitation.class);
-        user.acceptInvitationTo(mockedInvitation);
-        verify(mockedInvitation).accept(user);
+        User mockUser = mock(User.class);
+        WithFriends mockPlan = mock(WithFriends.class);
+        Invitation invitation = new Invitation(mockUser, mockPlan);
+        user.acceptInvitationTo(invitation);
+        assertTrue(invitation.isAccepted());
     }
 }
