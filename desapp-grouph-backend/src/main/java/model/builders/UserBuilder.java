@@ -69,4 +69,8 @@ public class UserBuilder {
         this.birthday = birthday;
         return this;
     }
+    public UserBuilder withUserName(String userName){
+        this.userName = userName;
+        return this;
+    }
 }

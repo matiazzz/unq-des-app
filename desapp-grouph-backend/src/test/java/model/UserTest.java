@@ -43,7 +43,7 @@ public class UserTest {
 
     @Test
     public void shouldCreateAddAndReturnAnEvent(){
-        User user = anyUser().build();
+        User user = anyUser().withUserName("username").build();
         EventData eventData = new EventData("Test");
         Assert.assertEquals(user.createEvent(eventData).getTitle(), "Test");
     }
