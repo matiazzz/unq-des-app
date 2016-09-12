@@ -29,7 +29,7 @@ public class EventBuilder {
         date = LocalDate.now();
         time = LocalTime.now();
         duration = 0;
-        attendees = new HashSet<User>();
+        attendees = new HashSet<>();
     }
 
     public static EventBuilder anyEvent(){return new EventBuilder();}
@@ -53,5 +53,4 @@ public class EventBuilder {
         this.date = LocalDate.now().minusDays(1);
         return this;
     }
-
 }

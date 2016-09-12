@@ -41,11 +41,5 @@ public class ProfileBuilder {
         this.foodTypes.add(type);
         return this;
     }
-
-    public  ProfileBuilder with(int amount){
-        this.maxAmount = amount;
-        return this;
-    }
-
 }
 

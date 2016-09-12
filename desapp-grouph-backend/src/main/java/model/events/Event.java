@@ -16,8 +16,7 @@ public class Event {
     private LocalDate date;
     private LocalTime time;
     private int duration;
-
-    private Set<User> attendees = new HashSet<User>();
+    private Set<User> attendees = new HashSet<>();
     private EventType type;
 
     public Event(EventData eventData){

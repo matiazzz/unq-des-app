@@ -13,9 +13,9 @@ import static model.builders.ProfileBuilder.anyProfile;
 public class UserBuilder {
 
     private String name;
-    private String lastname;
+    private String lastName;
     private LocalDate birthday;
-    private String username;
+    private String userName;
     private List<User> friends;
     private Profile profile;
     private List<Event> events;
@@ -24,9 +24,9 @@ public class UserBuilder {
 
     public UserBuilder(){
         this.name = "NAME";
-        this.lastname = "LASTNAME";
+        this.lastName = "LASTNAME";
         this.birthday = LocalDate.now();
-        this.username = "USERNAME";
+        this.userName = "USERNAME";
         this.profile = anyProfile().build();
         this.friends = new ArrayList<>();
         this.events = new ArrayList<>();
@@ -45,8 +45,8 @@ public class UserBuilder {
         user.setFriends(this.friends);
         user.setInvitations(this.invitations);
         user.setName(this.name);
-        user.setUsername(this.username);
-        user.setLastname(this.lastname);
+        user.setUserName(this.userName);
+        user.setLastName(this.lastName);
         user.setProfile(this.profile);
         user.setPlannings(plannings);
         return user;
@@ -54,11 +54,6 @@ public class UserBuilder {
 
     public UserBuilder with(User friend){
         this.friends.add(friend);
-        return this;
-    }
-
-    public UserBuilder with(int maxAmount){
-        this.profile = anyProfile().with(maxAmount).build();
         return this;
     }
 }

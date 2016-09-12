@@ -14,15 +14,14 @@ import java.util.List;
 public class User {
 
     private String name;
-    private String lastname;
+    private String lastName;
     private LocalDate birthday;
-    private String username;
-    //private String password;
-    private List<User> friends = new ArrayList<User>();
+    private String userName;
+    private List<User> friends = new ArrayList<>();
     private Profile profile;
-    private List<Event> events = new ArrayList<Event>();
-    private List<Planning> plannings = new ArrayList<Planning>();
-    private List<Invitation> invitations = new ArrayList<Invitation>();
+    private List<Event> events = new ArrayList<>();
+    private List<Planning> plannings = new ArrayList<>();
+    private List<Invitation> invitations = new ArrayList<>();
 
     public User(){
         profile = new Profile();
@@ -131,16 +130,16 @@ public class User {
         this.name = name;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setFriends(List<User> friends) {

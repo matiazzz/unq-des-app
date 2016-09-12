@@ -136,5 +136,4 @@ public class UserTest {
         user.acceptInvitationTo(mockedInvitation);
         verify(mockedInvitation).accept(user);
     }
-
 }

@@ -22,9 +22,7 @@ public class Invitation {
         this.accepted = true;
     }
 
-    //public Planning getPlanning() {
-    //    return planning;
-    //}
-
-    public Boolean isAccepted() { return accepted;  }
+    public Boolean isAccepted() {
+        return accepted;
+    }
 }
