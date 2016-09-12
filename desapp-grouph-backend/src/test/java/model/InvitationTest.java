@@ -1,6 +1,7 @@
 package model;
 
 import model.plannings.WithFriends;
+import org.joda.time.LocalDate;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,6 +18,7 @@ public class InvitationTest {
         invitation.accept(mockedUser);
         assertTrue(invitation.isAccepted());
         assertEquals(invitation.getOwner(), mockedUser);
+        assertEquals(invitation.getDate(), LocalDate.now());
         verify(mockedPlan).addUser(mockedUser);
         verify(mockedUser).addPlanning(mockedPlan);
     }

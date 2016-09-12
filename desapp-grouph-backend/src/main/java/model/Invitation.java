@@ -30,4 +30,7 @@ public class Invitation {
         return owner;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
 }
