@@ -25,4 +25,9 @@ public class Invitation {
     public Boolean isAccepted() {
         return accepted;
     }
+
+    public User getOwner() {
+        return owner;
+    }
+
 }
