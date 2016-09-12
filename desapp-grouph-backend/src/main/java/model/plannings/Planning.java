@@ -3,6 +3,8 @@ package model.plannings;
 import model.events.Event;
 import model.users.User;
 import org.joda.time.LocalDate;
+
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
