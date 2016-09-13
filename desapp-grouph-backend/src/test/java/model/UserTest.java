@@ -7,7 +7,6 @@ import model.plannings.WithFriends;
 import model.users.Invitation;
 import model.users.User;
 import org.joda.time.LocalDate;
-import org.junit.Assert;
 import org.junit.Test;
 import static model.users.FoodType.*;
 import static model.users.MovieGenre.*;

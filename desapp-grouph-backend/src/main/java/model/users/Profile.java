@@ -1,7 +1,5 @@
 package model.users;
 
-import model.events.EventType;
-
 import java.util.Set;
 import java.util.HashSet;
 
