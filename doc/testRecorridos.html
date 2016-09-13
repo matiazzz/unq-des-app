@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  
+  <style type="text/css">
+    html, body{ height: 100%; margin: 0; padding: 0; }
+    #map { height: 90%;}
+  </style>
+
+  <title>Test google maps api</title>
+</head>
+
+<body>
+	
+	<br>
+	<input id="from" type="text" placeholder="From">
+	<br>
+	<input id="to" type="text" placeholder="To">
+  <button id="buscar" type="button">OK</button>
+  <br>
+
+	<div id="map"></div>
+
+  <script type="text/javascript">
+
+    var map;
+
+    var direcciones;
+
+    var latlng = {lat: -34.6123419, lng: -58.4384477};
+    var opciones = {center: latlng, zoom: 12};
+
+    var latlngFrom;
+    var latlngto;
+
+    $('#buscar').click(function(){
+   		latlngFrom = $('#from').val();
+   		latlngto = $('#to').val();
+   		
+   		var recorrido = {
+        destination: latlngto,
+        origin: latlngFrom,
+        travelMode: 'DRIVING'
+      };
+
+      var directionsService = new google.maps.DirectionsService();
+      directionsService.route(recorrido, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) { 
+        	direcciones.setMap(map);
+        	direcciones.setDirections(response);
+        }
+      });      
+
+    });
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), opciones);
+      direcciones = new google.maps.DirectionsRenderer();
+    }
+
+  </script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWHLumwCDj6ayHzi2yhw8OcwWXtClL-wI&callback=initMap">
+  </script>
+
+</body>
+
+</html>
