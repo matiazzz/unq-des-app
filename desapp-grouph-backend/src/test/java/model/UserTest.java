@@ -141,12 +141,14 @@ public class UserTest {
     }
 
     @Test
-    public void shouldNotExist(){
+    public void thisTestShouldNotExist(){
         User user = anyUser().build();
         user.setName("NAME");
         user.setLastName("LASTNAME");
         user.setUserName("USERNAME");
         user.setBirthday(LocalDate.now());
+        user.getLastName();
+        user.getBirthday();
         assertEquals(user.getName(), "NAME");
     }
 }

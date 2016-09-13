@@ -178,6 +178,18 @@ public class User {
         return name;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
     public boolean possiblyLikes(Event event) {
         return event.getType().possiblyLikes(getProfile());
     }
