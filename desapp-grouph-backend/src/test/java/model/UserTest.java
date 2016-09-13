@@ -9,12 +9,11 @@ import model.users.User;
 import org.joda.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Test;
-
 import static model.users.FoodType.*;
 import static model.users.MovieGenre.*;
 import static model.users.MusicalGenre.*;
 import static model.builders.UserBuilder.anyUser;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class UserTest {
@@ -47,7 +46,7 @@ public class UserTest {
     public void shouldCreateAddAndReturnAnEvent(){
         User user = anyUser().withUserName("username").build();
         EventData eventData = new EventData("Test");
-        Assert.assertEquals(user.createEvent(eventData).getTitle(), "Test");
+        assertEquals("Test", user.createEvent(eventData).getTitle());
     }
 
     @Test
@@ -62,7 +61,7 @@ public class UserTest {
         User user = anyUser().build();
         user.addMusicGenre(JAZZ);
         user.removeMusicalGenre(JAZZ);
-        Assert.assertFalse(user.likeMusicalGenre(JAZZ));
+        assertFalse(user.likeMusicalGenre(JAZZ));
     }
 
     @Test
@@ -99,7 +98,7 @@ public class UserTest {
     public void shouldSetAnAmountToTheProfile(){
         User user = anyUser().build();
         user.setAmount(500);
-        Assert.assertEquals(user.getMaxAmount(), 500);
+        assertEquals(500, user.getMaxAmount());
     }
 
     @Test

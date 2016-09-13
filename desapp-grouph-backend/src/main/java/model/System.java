@@ -48,7 +48,7 @@ public class System {
                 .collect(Collectors.toList());
     }
 
-    public List<Event> surpriceMe(User user){
+    public List<Event> surprisedMe(User user){
         return events.stream()
                 .filter(event -> user.possiblyLikes(event))
                 .collect(Collectors.toList());

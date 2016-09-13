@@ -5,10 +5,8 @@ import model.users.Invitation;
 import model.users.User;
 import org.joda.time.LocalDate;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.assertTrue;
 
 public class InvitationTest {
 
@@ -19,8 +17,8 @@ public class InvitationTest {
         Invitation invitation = new Invitation(mockedUser, mockedPlan);
         invitation.accept(mockedUser);
         assertTrue(invitation.isAccepted());
-        assertEquals(invitation.getOwner(), mockedUser);
-        assertEquals(invitation.getDate(), LocalDate.now());
+        assertEquals(mockedUser, invitation.getOwner());
+        assertEquals(LocalDate.now(), invitation.getDate());
         verify(mockedPlan).addUser(mockedUser);
         verify(mockedUser).addPlanning(mockedPlan);
     }

@@ -8,7 +8,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
@@ -29,7 +28,8 @@ public class SystemTest {
         system.events.add(event1);
         system.events.add(event2);
         system.events.add(event3);
-        assertEquals(system.cheapEvents(user).size(), 2);
+        int expectedEvents = 2;
+        assertEquals(expectedEvents, system.cheapEvents(user).size());
         verify(user, times(3)).getMaxAmount();
         verify(event1).getPrice();
         verify(event2).getPrice();
@@ -49,7 +49,8 @@ public class SystemTest {
         system.events.add(foodEvent);
         system.events.add(movieEvent);
         system.events.add(musicEvent);
-        assertEquals(system.filterEvents(profile).size(), 2);
+        int expectedEvents = 2;
+        assertEquals(expectedEvents, system.filterEvents(profile).size());
     }
 
     @Test
@@ -64,7 +65,7 @@ public class SystemTest {
         when(event.compareTo(profile1)).thenReturn(false);
         when(event.compareTo(profile2)).thenReturn(true);
         System system = new System();
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
         assertTrue(system.likeEvent(users, event));
@@ -93,8 +94,8 @@ public class SystemTest {
         when(event1.getDate()).thenReturn(LocalDate.now().plusDays(1));
         when(event2.getDate()).thenReturn(LocalDate.now());
         when(event3.getDate()).thenReturn(LocalDate.now().minusDays(1));
-
-        assertEquals(system.saturdayNightFever(user, LocalDate.now()).size(), 1);
+        int expectedEvents = 1;
+        assertEquals(expectedEvents, system.saturdayNightFever(user, LocalDate.now()).size());
     }
 
     @Test
@@ -153,8 +154,8 @@ public class SystemTest {
         when(event2.compareTo(user2.getProfile())).thenReturn(false);
         when(event3.compareTo(user2.getProfile())).thenReturn(true);
         system.events.addAll(Arrays.asList(event1, event2, event3));
-        int expectedEventQuantity = 2;
-        assertEquals(expectedEventQuantity, system.eventsWithCouple(user1, user2).size());
+        int expectedEvents = 2;
+        assertEquals(expectedEvents, system.eventsWithCouple(user1, user2).size());
         assertTrue(system.eventsWithCouple(user1, user2).contains(event1));
         assertTrue(system.eventsWithCouple(user1, user2).contains(event3));
     }
@@ -179,5 +180,24 @@ public class SystemTest {
         when(event3.compareTo(user2.getProfile())).thenReturn(false);
         system.events.addAll(Arrays.asList(event1, event2, event3));
         assertTrue(system.eventsWithCouple(user1, user2).isEmpty());
+    }
+
+    @Test
+    public void shouldReturnEventThatPossiblyLikeToAnUser(){
+        System system = new System();
+        User user = mock(User.class);
+        Event event1 = mock(Event.class);
+        Event event2 = mock(Event.class);
+        Event event3 = mock(Event.class);
+        Event event4 = mock(Event.class);
+        system.events.addAll(Arrays.asList(event1,event2,event3,event4));
+        when(user.possiblyLikes(event1)).thenReturn(true);
+        when(user.possiblyLikes(event2)).thenReturn(false);
+        when(user.possiblyLikes(event3)).thenReturn(false);
+        when(user.possiblyLikes(event4)).thenReturn(true);
+        int expectedEvents = 2;
+        assertEquals(expectedEvents, system.surprisedMe(user).size());
+        assertTrue(system.surprisedMe(user).contains(event1));
+        assertTrue(system.surprisedMe(user).contains(event4));
     }
 }

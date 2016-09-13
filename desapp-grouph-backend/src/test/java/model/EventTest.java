@@ -2,10 +2,9 @@ package model;
 
 import model.events.Event;
 import model.users.User;
-import org.junit.Assert;
 import org.junit.Test;
 import static model.builders.EventBuilder.anyEvent;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 public class EventTest {
@@ -31,7 +30,7 @@ public class EventTest {
         Event event = anyEvent()
                 .withDateYesterday()
                 .build();
-        Assert.assertFalse(event.isActive());
+        assertFalse(event.isActive());
     }
 
     @Test
