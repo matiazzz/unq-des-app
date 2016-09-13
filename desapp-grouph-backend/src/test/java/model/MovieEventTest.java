@@ -31,4 +31,14 @@ public class MovieEventTest {
         verify(mockedProfile).likeMovieGenre(HORROR);
     }
 
+    @Test
+    public void shouldLikeTheMovieEvent(){
+        MovieEvent event = new MovieEvent();
+        event.addMovieGenre(ACTION);
+        event.addMovieGenre(COMEDY);
+        Profile profile = mock(Profile.class);
+        when(profile.likeMovieGenre(COMEDY)).thenReturn(true);
+        assertTrue(event.possiblyLikes(profile));
+    }
+
 }
