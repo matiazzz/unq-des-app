@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class System {
 
-    public List<User> users = new ArrayList<User>();
-    public List<Event> events = new ArrayList<Event>();
+    public List<User> users = new ArrayList<>();
+    public List<Event> events = new ArrayList<>();
 
     public List<Event> cheapEvents(User user){
         return events.stream()
@@ -48,4 +48,9 @@ public class System {
                 .collect(Collectors.toList());
     }
 
+    public List<Event> surpriceMe(User user){
+        return events.stream()
+                .filter(event -> user.possiblyLikes(event))
+                .collect(Collectors.toList());
+    }
 }

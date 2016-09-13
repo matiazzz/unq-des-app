@@ -16,4 +16,12 @@ public class MusicEvent extends EventType {
     public void addMusicGenre(MusicalGenre genre){
         genres.add(genre);
     }
+
+    @Override
+    public boolean possiblyLikes(Profile profile) {
+        return (genres.stream()
+                .anyMatch(musicalGenre -> profile.likeMusicalGenre(musicalGenre)))
+                ||
+                profile.likeManyMusicalGenres();
+    }
 }

@@ -18,4 +18,12 @@ public class MovieEvent extends EventType{
     public void addMovieGenre(MovieGenre genre){
         genres.add(genre);
     }
+
+    @Override
+    public boolean possiblyLikes(Profile profile) {
+        return (genres.stream()
+                .anyMatch(movieGenre -> profile.likeMovieGenre(movieGenre)))
+                ||
+                profile.likeManyMovieGenres();
+    }
 }

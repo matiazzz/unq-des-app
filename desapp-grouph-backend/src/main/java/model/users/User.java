@@ -173,4 +173,8 @@ public class User {
     public List<Planning> getPlannings() {
         return plannings;
     }
+
+    public boolean possiblyLikes(Event event) {
+        return event.getType().possiblyLikes(getProfile());
+    }
 }

@@ -57,4 +57,8 @@ public class Event {
     public LocalTime getTime() {
         return time;
     }
+
+    public EventType getType(){
+        return type;
+    }
 }

@@ -1,12 +1,14 @@
 package model.users;
 
+import model.events.EventType;
+
 import java.util.Set;
 import java.util.HashSet;
 
 public class Profile {
-    private Set<MusicalGenre> musicalGenres = new HashSet<MusicalGenre>();
-    private Set<MovieGenre> movieGenres = new HashSet<MovieGenre>();
-    private Set<FoodType> foodTypes = new HashSet<FoodType>();
+    private Set<MusicalGenre> musicalGenres = new HashSet<>();
+    private Set<MovieGenre> movieGenres = new HashSet<>();
+    private Set<FoodType> foodTypes = new HashSet<>();
     private int maxAmount = 0;
 
     public Profile(Set<MusicalGenre> musicalGenres, Set<MovieGenre> movieGenres, Set<FoodType> foodTypes, int maxAmount){
@@ -43,4 +45,16 @@ public class Profile {
     }
 
     public int getMaxAmount() { return maxAmount; }
+
+    public boolean likeManyFoodTypes() {
+        return foodTypes.size() >= 5;
+    }
+
+    public boolean likeManyMusicalGenres() {
+        return musicalGenres.size() >= 5;
+    }
+
+    public boolean likeManyMovieGenres() {
+        return movieGenres.size() >= 5;
+    }
 }
