@@ -41,4 +41,12 @@ public class MovieEventTest {
         assertTrue(event.possiblyLikes(profile));
     }
 
+    @Test
+    public void shouldLikeTheMovieEventWhenLikeManyMovieEvents(){
+        MovieEvent event = new MovieEvent();
+        Profile profile = mock(Profile.class);
+        when(profile.likeManyMovieGenres()).thenReturn(true);
+        assertTrue(event.possiblyLikes(profile));
+    }
+
 }

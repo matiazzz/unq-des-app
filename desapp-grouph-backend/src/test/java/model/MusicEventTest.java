@@ -40,4 +40,12 @@ public class MusicEventTest {
         when(profile.likeMusicalGenre(JAZZ)).thenReturn(true);
         assertTrue(event.possiblyLikes(profile));
     }
+
+    @Test
+    public void shouldLikeTheMusicalEventWhenLikeManyMusicalGenres(){
+        MusicEvent event = new MusicEvent();
+        Profile profile = mock(Profile.class);
+        when(profile.likeManyMusicalGenres()).thenReturn(true);
+        assertTrue(event.possiblyLikes(profile));
+    }
 }
