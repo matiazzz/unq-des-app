@@ -1,7 +1,6 @@
 package model;
 
 import model.events.FoodEvent;
-import model.users.FoodType;
 import model.users.Profile;
 import org.junit.Test;
 import static model.users.FoodType.*;
@@ -16,18 +15,18 @@ public class FoodEventTest {
     public void shouldCompareAnEventWithAProfile(){
         Profile mockedProfile = mock(Profile.class);
         FoodEvent foodEvent = new FoodEvent();
-        foodEvent.addFoodType(FoodType.PASTA);
-        foodEvent.addFoodType(FoodType.PIZZA);
-        foodEvent.addFoodType(FoodType.VEGAN);
+        foodEvent.addFoodType(PASTA);
+        foodEvent.addFoodType(PIZZA);
+        foodEvent.addFoodType(VEGAN);
 
-        when(mockedProfile.likeFoodType(FoodType.VEGAN)).thenReturn(true);
-        when(mockedProfile.likeFoodType(FoodType.PIZZA)).thenReturn(false);
-        when(mockedProfile.likeFoodType(FoodType.PASTA)).thenReturn(false);
+        when(mockedProfile.likeFoodType(VEGAN)).thenReturn(true);
+        when(mockedProfile.likeFoodType(PIZZA)).thenReturn(false);
+        when(mockedProfile.likeFoodType(PASTA)).thenReturn(false);
 
         assertTrue(foodEvent.compareTo(mockedProfile));
-        verify(mockedProfile).likeFoodType(FoodType.PASTA);
-        verify(mockedProfile).likeFoodType(FoodType.VEGAN);
-        verify(mockedProfile).likeFoodType(FoodType.PIZZA);
+        verify(mockedProfile).likeFoodType(PASTA);
+        verify(mockedProfile).likeFoodType(VEGAN);
+        verify(mockedProfile).likeFoodType(PIZZA);
     }
 
     @Test

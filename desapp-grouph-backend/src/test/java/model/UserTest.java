@@ -76,7 +76,7 @@ public class UserTest {
         User user = anyUser().build();
         user.addMovieGenre(ACTION);
         user.removeMovieGenre(ACTION);
-        Assert.assertFalse(user.likeMovieGenre(ACTION));
+        assertFalse(user.likeMovieGenre(ACTION));
     }
 
     @Test
@@ -91,7 +91,7 @@ public class UserTest {
         User user = anyUser().build();
         user.addFoodType(CHINESE);
         user.removeFoodType(CHINESE);
-        Assert.assertFalse(user.likeFoodType(CHINESE));
+        assertFalse(user.likeFoodType(CHINESE));
     }
 
     @Test
