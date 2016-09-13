@@ -19,14 +19,14 @@ public class UserTest {
 
     @Test
     public void shouldAddAFriend(){
-        User userX = anyUser().withName("name").build();
+        User userX = anyUser().build();
         User userY = anyUser().with(userX).build();
         assertTrue(userY.isFriendOf(userX));
     }
 
     @Test
     public void shouldAddAPlanning(){
-        User user = anyUser().withLastName("lastname").build();
+        User user = anyUser().build();
         Individual planIndividual = mock(Individual.class);
         user.addPlanning(planIndividual);
         assertTrue(user.getPlannings().contains(planIndividual));
@@ -34,7 +34,7 @@ public class UserTest {
 
     @Test
     public void shouldConnectFriend(){
-        User user1 = anyUser().with(LocalDate.now()).build();
+        User user1 = anyUser().build();
         User mockedUser = mock(User.class);
         user1.connectFriend(mockedUser);
         verify(mockedUser).addFriend(user1);
@@ -43,7 +43,7 @@ public class UserTest {
 
     @Test
     public void shouldCreateAddAndReturnAnEvent(){
-        User user = anyUser().withUserName("username").build();
+        User user = anyUser().build();
         EventData eventData = new EventData("Test");
         assertEquals("Test", user.createEvent(eventData).getTitle());
     }
@@ -138,5 +138,15 @@ public class UserTest {
         Invitation invitation = new Invitation(mockUser, mockPlan);
         user.acceptInvitationTo(invitation);
         assertTrue(invitation.isAccepted());
+    }
+
+    @Test
+    public void shouldNotExist(){
+        User user = anyUser().build();
+        user.setName("NAME");
+        user.setLastName("LASTNAME");
+        user.setUserName("USERNAME");
+        user.setBirthday(LocalDate.now());
+        assertEquals(user.getName(), "NAME");
     }
 }

@@ -174,6 +174,10 @@ public class User {
         return plannings;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean possiblyLikes(Event event) {
         return event.getType().possiblyLikes(getProfile());
     }
