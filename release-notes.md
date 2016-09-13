@@ -7,6 +7,7 @@ NEW FEATURES:
 * Complete model
 * Tested model.
 * 2 mockups (home, event search)
+* Prototipo del uso de la api de google maps.
 
 NOTES:  
 KNOWN ISSUES:
