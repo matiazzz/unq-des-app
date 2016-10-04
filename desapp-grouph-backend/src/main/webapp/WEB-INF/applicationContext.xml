@@ -22,15 +22,20 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
 	<bean id='jacksonProvider' class='org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider' /> -->
 
-
 <!-- =========================== -->
 <!-- =========Servicios  ========= -->
 <!-- =========================== -->
 
 	<jaxrs:server id="event"  > 
 		<jaxrs:serviceBeans>
-			<ref bean="evenapplicationContexttRest" />
+			<ref bean="eventRest" />
 		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
 		<!--<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
 			<entry key="xml" value="application/xml" />
@@ -44,7 +49,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>-->
 	</jaxrs:server>
 	
-	<bean id="evenapplicationContexttRest" class="web.rest.EventRest">
+	<bean id="eventRest" class="web.rest.EventRest">
 	</bean>
 
 </beans>
