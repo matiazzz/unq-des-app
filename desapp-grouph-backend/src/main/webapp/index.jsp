@@ -1,7 +1,7 @@
 <html>
 <body>
-  <h2>Â¿A donde vamos?</h2>
+  <h2>¿A dónde vamos?</h2>
   <br>
-  <h3>En construccion</h3>
+  <h3>En construcción</h3>
 </body>
 </html>
