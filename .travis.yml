@@ -4,9 +4,3 @@ jdk:
   - oraclejdk8
 install:
   - cd desapp-grouph-backend && mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
-script:
-  - mvn jacoco:report
-  - curl http://www.jpm4j.org/install/script > jpmInstall.sh
-  - sudo sh jpmInstall.sh
-  - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
-  - codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml
