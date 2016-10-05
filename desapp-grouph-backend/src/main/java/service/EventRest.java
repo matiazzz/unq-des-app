@@ -1,4 +1,4 @@
-package web.rest;
+package service;
 
 import model.events.Event;
 import model.events.EventData;

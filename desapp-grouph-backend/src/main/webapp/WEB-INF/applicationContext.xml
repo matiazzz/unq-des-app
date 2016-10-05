@@ -49,7 +49,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>-->
 	</jaxrs:server>
 	
-	<bean id="eventRest" class="web.rest.EventRest">
+	<bean id="eventRest" class="service.EventRest">
 	</bean>
 
 </beans>
