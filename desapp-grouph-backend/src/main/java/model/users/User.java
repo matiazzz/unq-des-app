@@ -8,12 +8,15 @@ import model.plannings.Planning;
 import model.plannings.WithFriends;
 import org.joda.time.LocalDate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
 
-    public int id;
+    private static final long serialVersionUID = 6716714837006810519L;
+
+    private int id;
     private String name;
     private String lastName;
     private LocalDate birthday;

@@ -1,6 +1,6 @@
 package persistence;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.io.Serializable;
 import java.util.List;
