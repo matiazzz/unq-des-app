@@ -1,4 +1,4 @@
-package service;
+package webservice;
 
 import model.events.Event;
 import model.events.EventData;

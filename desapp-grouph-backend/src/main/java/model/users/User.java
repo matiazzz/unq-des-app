@@ -13,6 +13,7 @@ import java.util.List;
 
 public class User {
 
+    public int id;
     private String name;
     private String lastName;
     private LocalDate birthday;
@@ -192,5 +193,13 @@ public class User {
 
     public boolean possiblyLikes(Event event) {
         return event.getType().possiblyLikes(getProfile());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
