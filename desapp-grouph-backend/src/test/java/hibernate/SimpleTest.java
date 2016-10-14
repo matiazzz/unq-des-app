@@ -1,7 +1,6 @@
 package hibernate;
 
 import model.users.User;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class SimpleTest {
 
 
     @Test
-    public void SaveUserTest(){
+    public void saveUserTest(){
         userService.save(new User());
         assertEquals(1, userService.retriveAll().size());
     }

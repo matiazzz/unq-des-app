@@ -8,23 +8,33 @@ import model.plannings.Planning;
 import model.plannings.WithFriends;
 import org.joda.time.LocalDate;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="User")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 6716714837006810519L;
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String name;
     private String lastName;
     private LocalDate birthday;
     private String userName;
+    @ManyToMany
     private List<User> friends = new ArrayList<>();
+    @Transient
     private Profile profile;
+    @Transient
     private List<Event> events = new ArrayList<>();
+    @Transient
     private List<Planning> plannings = new ArrayList<>();
+    @Transient
     private List<Invitation> invitations = new ArrayList<>();
 
     public User(){
