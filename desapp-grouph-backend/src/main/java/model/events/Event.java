@@ -2,21 +2,28 @@ package model.events;
 
 import model.users.Profile;
 import model.users.User;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
+import org.joda.time.*;
+
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Event {
+@Entity
+@Table(name="Event")
+public class Event extends model.Entity {
 
     private String title;
     private String description;
     private int price = 0;
     private String address;
+    @Transient
     private LocalDate date;
+    @Transient
     private LocalTime time;
     private int duration;
+    @Transient
     private Set<User> attendees = new HashSet<>();
+    @Transient
     private EventType type;
 
     public Event(EventData eventData){

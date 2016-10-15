@@ -9,28 +9,24 @@ import model.plannings.WithFriends;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="User")
-public class User implements Serializable {
+public class User extends model.Entity {
 
     private static final long serialVersionUID = 6716714837006810519L;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
     private String name;
     private String lastName;
     private LocalDate birthday;
     private String userName;
+    private Profile profile;
     @ManyToMany
     private List<User> friends = new ArrayList<>();
-    @Transient
-    private Profile profile;
-    @Transient
+    @ManyToMany
     private List<Event> events = new ArrayList<>();
     @Transient
     private List<Planning> plannings = new ArrayList<>();
@@ -206,13 +202,5 @@ public class User implements Serializable {
 
     public boolean possiblyLikes(Event event) {
         return event.getType().possiblyLikes(getProfile());
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

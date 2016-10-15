@@ -1,13 +1,25 @@
 package model.users;
 
+import javax.persistence.*;
 import java.util.Set;
 import java.util.HashSet;
 
-public class Profile {
-    private Set<MusicalGenre> musicalGenres = new HashSet<>();
-    private Set<MovieGenre> movieGenres = new HashSet<>();
-    private Set<FoodType> foodTypes = new HashSet<>();
+@Entity
+@Table(name="Profile")
+public class Profile extends model.Entity {
+
+    private static final long serialVersionUID = 6716714837006810519L;
+
     private int maxAmount = 0;
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<MusicalGenre> musicalGenres = new HashSet<>();
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<MovieGenre> movieGenres = new HashSet<>();
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private Set<FoodType> foodTypes = new HashSet<>();
 
     public Profile(Set<MusicalGenre> musicalGenres, Set<MovieGenre> movieGenres, Set<FoodType> foodTypes, int maxAmount){
         this.musicalGenres = musicalGenres;

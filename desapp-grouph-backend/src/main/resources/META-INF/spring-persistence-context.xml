@@ -81,7 +81,10 @@
 		</property> -->
 		<property name="annotatedClasses">
 			<list>
+				<value>model.Entity</value>
 				<value>model.users.User</value>
+				<value>model.users.Profile</value>
+				<value>model.events.Event</value>
 			</list>
 		</property>
 
