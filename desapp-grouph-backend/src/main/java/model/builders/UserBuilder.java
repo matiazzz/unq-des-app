@@ -12,6 +12,7 @@ import static model.builders.ProfileBuilder.anyProfile;
 
 public class UserBuilder {
 
+    private int id;
     private String name;
     private String lastName;
     private LocalDate birthday;
@@ -23,6 +24,7 @@ public class UserBuilder {
     private List<Invitation> invitations;
 
     public UserBuilder(){
+        this.id = 0;
         this.name = "NAME";
         this.lastName = "LASTNAME";
         this.birthday = LocalDate.now();
@@ -54,6 +56,11 @@ public class UserBuilder {
 
     public UserBuilder with(User friend){
         this.friends.add(friend);
+        return this;
+    }
+
+    public UserBuilder with(int id){
+        this.id = id;
         return this;
     }
 

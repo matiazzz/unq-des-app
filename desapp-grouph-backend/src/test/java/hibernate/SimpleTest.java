@@ -1,12 +1,14 @@
 package hibernate;
 
 import model.users.User;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import service.UserService;
+import static model.builders.UserBuilder.anyUser;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,10 +19,9 @@ public class SimpleTest {
     @Autowired
     private UserService userService;
 
-
     @Test
     public void saveUserTest(){
-        userService.save(new User());
+        userService.save(anyUser().build());
         assertEquals(1, userService.retriveAll().size());
     }
 
