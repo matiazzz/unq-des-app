@@ -73,7 +73,7 @@ public class SimpleTest {
 
         userService.save(user);
 
-        assertTrue(userService.getProfileByUserName("UserWithProfile").likeFoodType(FoodType.PIZZA));
+        assertFalse(userService.getProfileByUserName("UserWithProfile").likeFoodType(FoodType.PIZZA));
     }
 
 }
