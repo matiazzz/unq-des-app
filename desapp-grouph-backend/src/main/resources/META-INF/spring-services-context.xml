@@ -13,6 +13,7 @@
 
 	<bean id="service.user" class="service.UserService">
 		<property name="repository" ref="persistence.userDAO" />
+		<property name="userDAO" ref="persistence.userDAO" />
 	</bean>
 
 

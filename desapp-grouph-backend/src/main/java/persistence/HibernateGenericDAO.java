@@ -46,7 +46,6 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
     public List<T> findAll() {
         List<T> find = (List<T>) this.getHibernateTemplate().find("from " + this.persistentClass.getName() + " o");
         return find;
-
     }
 
     public List<T> findByExample(final T exampleObject) {

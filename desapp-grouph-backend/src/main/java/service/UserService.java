@@ -2,15 +2,26 @@ package service;
 
 import model.users.User;
 import persistence.UserDAO;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 public class UserService extends GenericService<User> {
 
 	private static final long serialVersionUID = -2932116622242535843L;
 
-	public UserService(){}
+	private UserDAO userDAO;
 
-	public UserService(UserDAO dao){
-		this.setRepository(dao);
+	@Transactional
+	public List<User> findByName(String name) {
+		return this.userDAO.findByName(name);
 	}
 
+	@Transactional
+	public List<User> findByUserName(String userName) {
+		return this.userDAO.findByUserName(userName);
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 }
