@@ -51,4 +51,17 @@ public class SimpleTest {
         assertEquals(1, userService.findByName("User2").size());
     }
 
+    @Test
+    public void shouldFindAnUserByItsUserName(){
+        User user1 = anyUser().withUserName("UserName1").build();
+        User user2 = anyUser().withUserName("UserName2").build();
+        User user3 = anyUser().withUserName("UserName3").build();
+
+        userService.save(user1);
+        userService.save(user2);
+        userService.save(user3);
+
+        assertEquals(1, userService.findByUserName("UserName1").size());
+    }
+
 }
