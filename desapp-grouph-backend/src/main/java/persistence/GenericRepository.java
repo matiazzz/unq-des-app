@@ -1,5 +1,8 @@
 package persistence;
 
+import model.users.Profile;
+import model.users.User;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,14 +19,14 @@ public interface GenericRepository<T> {
 
 	void update(T entity);
 
-	T findById(Serializable id);
-
-	List<T> findAll();
-
 	void deleteById(Serializable id);
 
 	int count();
 
+	List<T> findAll();
+
 	List<T> findByExample(T exampleObject);
+
+	T findById(Serializable id);
 
 }

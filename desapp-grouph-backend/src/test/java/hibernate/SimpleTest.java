@@ -67,7 +67,7 @@ public class SimpleTest {
     }
 
     //@Test
-    public void shouldFindAnUseByUserNameAnrReturnTheProfile(){
+    public void shouldFindAnUserByUserNameAndReturnTheProfile(){
         User user = anyUser().withUserName("UserWithProfile").build();
         user.setProfile(anyProfile().with(FoodType.PIZZA).build());
 
