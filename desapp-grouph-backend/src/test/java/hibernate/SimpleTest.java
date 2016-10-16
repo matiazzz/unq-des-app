@@ -1,5 +1,6 @@
 package hibernate;
 
+import model.users.FoodType;
 import model.users.User;
 import org.junit.Test;
 import org.junit.FixMethodOrder;
@@ -11,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import service.UserService;
 import static model.builders.UserBuilder.anyUser;
+import static model.builders.ProfileBuilder.anyProfile;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -62,6 +64,16 @@ public class SimpleTest {
         userService.save(user3);
 
         assertEquals(1, userService.findByUserName("UserName1").size());
+    }
+
+    //@Test
+    public void shouldFindAnUseByUserNameAnrReturnTheProfile(){
+        User user = anyUser().withUserName("UserWithProfile").build();
+        user.setProfile(anyProfile().with(FoodType.PIZZA).build());
+
+        userService.save(user);
+
+        assertTrue(userService.getProfileByUserName("UserWithProfile").likeFoodType(FoodType.PIZZA));
     }
 
 }

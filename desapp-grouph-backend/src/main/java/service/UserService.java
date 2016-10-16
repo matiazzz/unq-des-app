@@ -1,5 +1,6 @@
 package service;
 
+import model.users.Profile;
 import model.users.User;
 import persistence.UserDAO;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ public class UserService extends GenericService<User> {
 		return this.userDAO.findByUserName(userName);
 	}
 
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
+	public void setUserDAO(UserDAO userDAO) {this.userDAO = userDAO;}
+
+	public Profile getProfileByUserName(String userName){ return this.userDAO.getProfileByUserUserName(userName); }
 }

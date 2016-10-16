@@ -1,7 +1,7 @@
 package persistence;
 
+import model.users.Profile;
 import model.users.User;
-
 import java.util.List;
 
 public class UserDAO extends HibernateGenericDAO<User> implements GenericRepository<User> {
@@ -21,5 +21,10 @@ public class UserDAO extends HibernateGenericDAO<User> implements GenericReposit
     public List<User> findByUserName(String userName) {
         return (List<User>) this.getHibernateTemplate()
                 .find("from User where userName = ?", userName);
+    }
+
+    public Profile getProfileByUserUserName(String userName){
+        User usr = this.findByUserName(userName).get(0);
+        return usr.getProfile();
     }
 }
