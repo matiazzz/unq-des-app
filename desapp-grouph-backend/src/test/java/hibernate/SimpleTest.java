@@ -23,8 +23,9 @@ public class SimpleTest {
 
     @Test
     public void shouldSaveUserTest(){
-        //userService.save(new User());
-        assertEquals(1, userService.retriveAll().size());
+        User user = anyUser().withName("User").build();
+        userService.save(user);
+        assertEquals(1, userService.findByName("User").size());
     }
 
     @Test
