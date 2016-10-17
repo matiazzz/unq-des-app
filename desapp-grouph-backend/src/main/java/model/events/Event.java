@@ -16,12 +16,10 @@ public class Event extends model.Entity {
     private String description;
     private int price = 0;
     private String address;
-    @Transient
     private LocalDate date;
-    @Transient
     private LocalTime time;
     private int duration;
-    @Transient
+    @ManyToMany
     private Set<User> attendees = new HashSet<>();
     @Transient
     private EventType type;

@@ -80,4 +80,9 @@ public class UserBuilder {
         this.userName = userName;
         return this;
     }
+
+    public UserBuilder with(Profile profile) {
+        this.profile = profile;
+        return this;
+    }
 }

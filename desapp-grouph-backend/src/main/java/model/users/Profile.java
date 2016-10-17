@@ -8,16 +8,16 @@ import java.util.HashSet;
 @Table(name="Profile")
 public class Profile extends model.Entity {
 
-    private static final long serialVersionUID = 6716714837006810519L;
+    private static final long serialVersionUID = 6718914837006810519L;
 
     private int maxAmount = 0;
-    @ElementCollection
+    @ElementCollection(targetClass = MusicalGenre.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<MusicalGenre> musicalGenres = new HashSet<>();
-    @ElementCollection
+    @ElementCollection(targetClass = MovieGenre.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<MovieGenre> movieGenres = new HashSet<>();
-    @ElementCollection
+    @ElementCollection(targetClass = FoodType.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<FoodType> foodTypes = new HashSet<>();
 
@@ -27,8 +27,8 @@ public class Profile extends model.Entity {
         this.foodTypes = foodTypes;
         this.maxAmount = maxAmount;
     }
-    public Profile(){}
 
+    public Profile(){}
 
     public void addMusicalGenre(MusicalGenre genre){ musicalGenres.add(genre); }
 
@@ -54,8 +54,6 @@ public class Profile extends model.Entity {
         maxAmount = amount;
     }
 
-    public int getMaxAmount() { return maxAmount; }
-
     public boolean likeManyFoodTypes() {
         return foodTypes.size() >= 5;
     }
@@ -67,4 +65,21 @@ public class Profile extends model.Entity {
     public boolean likeManyMovieGenres() {
         return movieGenres.size() >= 5;
     }
+
+    public int getMaxAmount() {
+        return maxAmount;
+    }
+
+    public Set<MusicalGenre> getMusicalGenres() {
+        return musicalGenres;
+    }
+
+    public Set<MovieGenre> getMovieGenres() {
+        return movieGenres;
+    }
+
+    public Set<FoodType> getFoodTypes() {
+        return foodTypes;
+    }
+
 }

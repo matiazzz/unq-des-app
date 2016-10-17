@@ -9,6 +9,7 @@
 	<!-- beans de spring -->
 	<bean id="service.GeneralService" class="service.GeneralService">
 		<property name="userService" ref="service.user" />
+		<property name="profileService" ref="service.profile" />
 	</bean>
 
 	<bean id="service.user" class="service.UserService">
@@ -16,5 +17,8 @@
 		<property name="userDAO" ref="persistence.userDAO" />
 	</bean>
 
+	<bean id="service.profile" class="service.ProfileService">
+		<property name="repository" ref="persistence.profileDAO" />
+	</bean>
 
 </beans>

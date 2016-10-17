@@ -22,8 +22,12 @@ public class UserService extends GenericService<User> {
 		return this.userDAO.findByUserName(userName);
 	}
 
-	public void setUserDAO(UserDAO userDAO) {this.userDAO = userDAO;}
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
 
 	@Transactional
-	public Profile getProfileByUserName(String userName){ return this.userDAO.getProfileByUserUserName(userName); }
+	public Profile getProfileByUserName(String userName){
+		return this.userDAO.getProfileByUserUserName(userName);
+	}
 }

@@ -115,6 +115,10 @@
 	<bean id="persistence.userDAO" class="persistence.UserDAO" >
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+
+	<bean id="persistence.profileDAO" class="persistence.ProfileDAO" >
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 	
 
 </beans>
