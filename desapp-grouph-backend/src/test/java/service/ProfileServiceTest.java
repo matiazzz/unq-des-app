@@ -1,6 +1,6 @@
-package hibernate;
+package service;
 
-import model.users.*;
+import model.users.Profile;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,13 +8,13 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import service.ProfileService;
 
 import static model.builders.ProfileBuilder.anyProfile;
-import static model.users.FoodType.*;
-import static model.users.MovieGenre.*;
-import static model.users.MusicalGenre.*;
-import static org.junit.Assert.*;
+import static model.users.FoodType.CHINESE;
+import static model.users.MovieGenre.ACTION;
+import static model.users.MusicalGenre.POP;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SpringJUnit4ClassRunner.class)

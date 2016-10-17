@@ -1,18 +1,19 @@
-package hibernate;
+package service;
 
 import model.users.Profile;
 import model.users.User;
-import org.junit.*;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import service.UserService;
-import static model.builders.UserBuilder.anyUser;
+
 import static model.builders.ProfileBuilder.anyProfile;
-import static model.users.FoodType.*;
-import static model.users.MovieGenre.*;
+import static model.builders.UserBuilder.anyUser;
+import static model.users.FoodType.PASTA;
+import static model.users.MovieGenre.ACTION;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
