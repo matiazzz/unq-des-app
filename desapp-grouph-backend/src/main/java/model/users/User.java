@@ -6,6 +6,8 @@ import model.plannings.Couple;
 import model.plannings.Individual;
 import model.plannings.Planning;
 import model.plannings.WithFriends;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
@@ -30,9 +32,11 @@ public class User extends model.Entity {
     private List<User> friends = new ArrayList<>();
     @ManyToMany
     private List<Event> events = new ArrayList<>();
-    @Transient
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private List<Planning> plannings = new ArrayList<>();
-    @Transient
+    @OneToMany(fetch = FetchType.EAGER)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private List<Invitation> invitations = new ArrayList<>();
 
     public User(){
@@ -172,6 +176,10 @@ public class User extends model.Entity {
 
     public void setInvitations(List<Invitation> invitations) {
         this.invitations = invitations;
+    }
+
+    public List<Invitation> getInvitations() {
+        return invitations;
     }
 
     public Profile getProfile() {

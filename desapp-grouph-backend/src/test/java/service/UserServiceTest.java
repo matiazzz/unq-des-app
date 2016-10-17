@@ -1,7 +1,11 @@
 package service;
 
+import model.plannings.Couple;
+import model.plannings.Individual;
+import model.plannings.WithFriends;
 import model.users.Profile;
 import model.users.User;
+import org.joda.time.LocalDate;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static model.builders.InvitationBuilder.anyInvitation;
 import static model.builders.ProfileBuilder.anyProfile;
 import static model.builders.UserBuilder.anyUser;
 import static model.users.FoodType.PASTA;
@@ -80,4 +85,31 @@ public class UserServiceTest {
         assertFalse(userService.getProfileByUserName("UserWithProfile").likeFoodType(PASTA));
     }
 
+    @Test
+    public void shouldSaveAnUserWithInvitations() {
+        String userName = "userWithTwoInvitations";
+        User user = anyUser()
+                .withUserName(userName)
+                .with(anyInvitation().build())
+                .with(anyInvitation().with(anyUser().build()).build())
+                .build();
+        userService.save(user);
+        assertEquals(2, userService.findByUserName(userName).get(0).getInvitations().size());
+    }
+
+    @Test
+    public void shouldSaveAnUserWithPlannings() {
+        String userName = "userWithTwoPlannings";
+        Individual planningIndividual = new Individual(anyUser().build(), LocalDate.now());
+        WithFriends planningWithFriends = new WithFriends();
+        Couple planningWithCouple = new Couple();
+        User user = anyUser()
+                .withUserName(userName)
+                .with(planningIndividual)
+                .with(planningWithCouple)
+                .with(planningWithFriends)
+                .build();
+        userService.save(user);
+        assertEquals(3, userService.findByUserName(userName).get(0).getPlannings().size());
+    }
 }

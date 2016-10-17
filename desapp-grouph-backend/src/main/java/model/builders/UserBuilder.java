@@ -85,4 +85,14 @@ public class UserBuilder {
         this.profile = profile;
         return this;
     }
+
+    public UserBuilder with(Invitation invitation) {
+        this.invitations.add(invitation);
+        return this;
+    }
+
+    public UserBuilder with(Planning planning) {
+        this.plannings.add(planning);
+        return this;
+    }
 }

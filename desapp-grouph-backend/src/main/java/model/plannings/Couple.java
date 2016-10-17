@@ -1,14 +1,23 @@
 package model.plannings;
 
 import model.users.User;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.joda.time.LocalDate;
 
+import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Couple")
 public class Couple extends Planning {
+
+    @Column(length = 10000)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private User couple;
 
-    public void setCouple(User couple) {
-        this.couple = couple;
-    }
+    public Couple() {}
 
     public Couple(User owner, LocalDate creationDate) {
         this.owner = owner;
@@ -20,6 +29,10 @@ public class Couple extends Planning {
         if(! hasCouple()){
             this.setCouple(user);
         }
+    }
+
+    public void setCouple(User couple) {
+        this.couple = couple;
     }
 
     public boolean hasCouple(){

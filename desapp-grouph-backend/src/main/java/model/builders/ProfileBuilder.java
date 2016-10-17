@@ -21,7 +21,9 @@ public class ProfileBuilder {
         this.maxAmount = 0;
     }
 
-    public static ProfileBuilder anyProfile(){return new ProfileBuilder();}
+    public static ProfileBuilder anyProfile(){
+        return new ProfileBuilder();
+    }
 
     public Profile build(){
        return new Profile(this.musicalGenres, this.movieGenres, this.foodTypes, this.maxAmount);
