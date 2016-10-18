@@ -3,7 +3,13 @@ package model.plannings;
 import model.users.User;
 import org.joda.time.LocalDate;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Individual")
 public class Individual extends Planning {
+
+    public Individual() {}
 
     public Individual(User owner, LocalDate creationDate) {
         this.owner = owner;

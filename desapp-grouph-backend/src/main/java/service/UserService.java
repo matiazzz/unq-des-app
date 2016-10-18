@@ -16,7 +16,9 @@ public class UserService extends GenericService<User> {
 	public List<User> findByName(String name) { return this.userDAO.findByName(name); }
 
 	@Transactional
-	public List<User> findByUserName(String userName) { return this.userDAO.findByUserName(userName); }
+	public User findByUserName(String userName) {
+		return this.userDAO.findByUserName(userName);
+	}
 
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;

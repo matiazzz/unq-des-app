@@ -85,6 +85,15 @@
 				<value>model.users.User</value>
 				<value>model.users.Profile</value>
 				<value>model.events.Event</value>
+				<value>model.users.Invitation</value>
+				<value>model.plannings.Planning</value>
+				<value>model.plannings.Couple</value>
+				<value>model.plannings.Individual</value>
+				<value>model.plannings.WithFriends</value>
+				<value>model.events.EventType</value>
+				<value>model.events.FoodEvent</value>
+				<value>model.events.MovieEvent</value>
+				<value>model.events.MusicEvent</value>
 			</list>
 		</property>
 

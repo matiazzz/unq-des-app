@@ -18,13 +18,13 @@ public class UserDAO extends HibernateGenericDAO<User> implements GenericReposit
     }
 
     @SuppressWarnings("unchecked")
-    public List<User> findByUserName(String userName) {
-        return (List<User>) this.getHibernateTemplate()
-                .find("from User where userName = ?", userName);
+    public User findByUserName(String userName) {
+        return ((List<User>) this.getHibernateTemplate()
+                .find("from User where userName = ?", userName)).get(0);
     }
 
     public Profile getProfileByUserUserName(String userName){
-        User usr = this.findByUserName(userName).get(0);
+        User usr = this.findByUserName(userName);
         return usr.getProfile();
     }
 }
