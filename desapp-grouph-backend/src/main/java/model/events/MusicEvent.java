@@ -2,11 +2,18 @@ package model.events;
 
 import model.users.MusicalGenre;
 import model.users.Profile;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="MusicEvent")
 public class MusicEvent extends EventType {
-    private List<MusicalGenre> genres = new ArrayList<MusicalGenre>();
+
+    @ElementCollection(targetClass = MusicalGenre.class, fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private List<MusicalGenre> genres = new ArrayList<>();
 
     @Override
     public boolean compareTo(Profile profile) {

@@ -1,5 +1,9 @@
 package service;
 
+import model.events.Event;
+import model.events.FoodEvent;
+import model.events.MovieEvent;
+import model.events.MusicEvent;
 import model.plannings.Couple;
 import model.plannings.Individual;
 import model.plannings.WithFriends;
@@ -14,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static model.builders.EventBuilder.anyEvent;
 import static model.builders.InvitationBuilder.anyInvitation;
 import static model.builders.ProfileBuilder.anyProfile;
 import static model.builders.UserBuilder.anyUser;
@@ -67,8 +72,7 @@ public class UserServiceTest {
         userService.save(user1);
         userService.save(user2);
         userService.save(user3);
-        assertEquals(1, userService.findByUserName("UserName1").size());
-        assertEquals("UserName1", userService.findByUserName("UserName1").get(0).getUserName());
+        assertEquals("UserName1", userService.findByUserName("UserName1").getUserName());
     }
 
     @Test
@@ -94,12 +98,12 @@ public class UserServiceTest {
                 .with(anyInvitation().with(anyUser().build()).build())
                 .build();
         userService.save(user);
-        assertEquals(2, userService.findByUserName(userName).get(0).getInvitations().size());
+        assertEquals(2, userService.findByUserName(userName).getInvitations().size());
     }
 
     @Test
     public void shouldSaveAnUserWithPlannings() {
-        String userName = "userWithTwoPlannings";
+        String userName = "userWithThreePlannings";
         Individual planningIndividual = new Individual(anyUser().build(), LocalDate.now());
         WithFriends planningWithFriends = new WithFriends();
         Couple planningWithCouple = new Couple();
@@ -110,6 +114,22 @@ public class UserServiceTest {
                 .with(planningWithFriends)
                 .build();
         userService.save(user);
-        assertEquals(3, userService.findByUserName(userName).get(0).getPlannings().size());
+        assertEquals(3, userService.findByUserName(userName).getPlannings().size());
+    }
+
+    @Test
+    public void shouldSaveAnUserWithEvents() {
+        String userName = "userWithThreeEvents";
+        Event foodEvent = anyEvent().with(new FoodEvent()).build();
+        Event musicEvent = anyEvent().with(new MusicEvent()).build();
+        Event movieEvent = anyEvent().with(new MovieEvent()).build();
+        User user = anyUser()
+                .withUserName(userName)
+                .with(foodEvent)
+                .with(musicEvent)
+                .with(movieEvent)
+                .build();
+        userService.save(user);
+        assertEquals(3, userService.findByUserName(userName).getEvents().size());
     }
 }

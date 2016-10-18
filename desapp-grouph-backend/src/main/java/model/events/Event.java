@@ -21,8 +21,10 @@ public class Event extends model.Entity {
     private int duration;
     @ManyToMany
     private Set<User> attendees = new HashSet<>();
-    @Transient
+    @Column(length = 10000)
     private EventType type;
+
+    public Event() {}
 
     public Event(EventData eventData){
         title = eventData.title;

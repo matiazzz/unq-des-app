@@ -3,11 +3,16 @@ package model.events;
 import model.users.MovieGenre;
 import model.users.Profile;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieEvent extends EventType{
+@Entity
+@Table(name="MovieEvent")
+public class MovieEvent extends EventType {
 
+    @ElementCollection(targetClass = MovieGenre.class, fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
     private List<MovieGenre> genres = new ArrayList<MovieGenre>();
 
     @Override

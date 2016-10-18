@@ -28,9 +28,11 @@ public class User extends model.Entity {
     private String userName;
     @Column(length = 10000)
     private Profile profile;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private List<User> friends = new ArrayList<>();
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private List<Event> events = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
@@ -208,6 +210,10 @@ public class User extends model.Entity {
 
     public String getUserName() {
         return userName;
+    }
+
+    public List<Event> getEvents() {
+        return events;
     }
 
     public boolean possiblyLikes(Event event) {

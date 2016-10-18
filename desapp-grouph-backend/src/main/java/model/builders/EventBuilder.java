@@ -53,4 +53,9 @@ public class EventBuilder {
         this.date = LocalDate.now().minusDays(1);
         return this;
     }
+
+    public EventBuilder with(EventType eventType) {
+        this.eventType = eventType;
+        return this;
+    }
 }

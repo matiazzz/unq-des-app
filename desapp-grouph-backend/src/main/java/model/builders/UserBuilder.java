@@ -95,4 +95,9 @@ public class UserBuilder {
         this.plannings.add(planning);
         return this;
     }
+
+    public UserBuilder with(Event event) {
+        this.events.add(event);
+        return this;
+    }
 }
