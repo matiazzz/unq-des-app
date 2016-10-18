@@ -41,9 +41,9 @@ public class UserRest {
     public List<User> getAllUsers() { return service.retriveAll(); }
 
     @POST
-    @Path("/newUser/{userName}")
+    @Path("/newUser")
     @Produces("application/json")
-    public User createUser(@PathParam("userName") String userName) {
+    public User createUser(@FormParam("userName") String userName) {
         User user = anyUser().withUserName(userName).build();
         service.save(user);
         return user;
