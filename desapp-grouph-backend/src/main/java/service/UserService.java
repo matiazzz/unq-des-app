@@ -29,4 +29,7 @@ public class UserService extends GenericService<User> {
 		return this.userDAO.getProfileByUserUserName(userName);
 	}
 
+	@Transactional
+	public User findByID(int id) { return this.userDAO.findById(id); }
+
 }

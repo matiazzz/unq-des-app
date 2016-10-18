@@ -31,5 +31,8 @@ public class UserRest {
     @Produces("application/json")
     public Profile getProfileByUserName(String userName) {return service.getProfileByUserName(userName); }
 
-
+    @GET
+    @Path("/user/{ID}")
+    @Produces("application/json")
+    public User findUserByID(int id) {return service.findByID(id); }
 }
