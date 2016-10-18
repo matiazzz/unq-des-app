@@ -1,5 +1,6 @@
 package webservice;
 
+import model.users.Profile;
 import model.users.User;
 import service.UserService;
 import java.util.List;
@@ -14,10 +15,21 @@ public class UserRest {
     private UserService service;
 
     @GET
-    @Path("/users")
+    @Path("/users/{name}")
     @Produces("application/json")
     public List<User> findUsersByName(String name){
         return service.findByName(name);
     }
+
+    @GET
+    @Path("/user/{userName}")
+    @Produces("application/json")
+    public User findUserByUserName(String userName) { return service.findByUserName(userName); }
+
+    @GET
+    @Path("/userProfile/{userName}")
+    @Produces("application/json")
+    public Profile getProfileByUserName(String userName) {return service.getProfileByUserName(userName); }
+
 
 }
