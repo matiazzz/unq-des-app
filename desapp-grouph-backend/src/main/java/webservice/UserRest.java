@@ -7,6 +7,7 @@ import service.UserService;
 import java.util.List;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 @Path("/user")
 public class UserRest {
@@ -44,9 +45,12 @@ public class UserRest {
     @GET
     @Path("/getAll")
     @Produces("application/json")
-    public List<User> getAllUsers() {
-
-        return userService.retriveAll();
+    public Response getAllUsers() {
+        List<User> users = userService.retriveAll();
+        if (users.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(users).build();
     }
 
     @POST
