@@ -10,6 +10,7 @@ import org.joda.time.LocalDate;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class User extends model.Entity {
     private String lastName;
     private LocalDate birthday;
     private String userName;
+    @Column(length = 10000)
     private Profile profile;
     @ManyToMany
     private List<User> friends = new ArrayList<>();

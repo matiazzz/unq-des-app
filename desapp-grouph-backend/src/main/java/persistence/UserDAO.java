@@ -23,7 +23,7 @@ public class UserDAO extends HibernateGenericDAO<User> implements GenericReposit
                 .find("from User where userName = ?", userName);
     }
 
-    public Profile getProfileByUserName(String userName){
+    public Profile getProfileByUserUserName(String userName){
         User usr = this.findByUserName(userName).get(0);
         return usr.getProfile();
     }

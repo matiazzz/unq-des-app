@@ -1,24 +1,25 @@
-package hibernate;
+package service;
 
-import model.users.FoodType;
+import model.users.Profile;
 import model.users.User;
-import org.junit.Test;
 import org.junit.FixMethodOrder;
-import org.junit.*;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import service.UserService;
-import static model.builders.UserBuilder.anyUser;
+
 import static model.builders.ProfileBuilder.anyProfile;
+import static model.builders.UserBuilder.anyUser;
+import static model.users.FoodType.PASTA;
+import static model.users.MovieGenre.ACTION;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "/META-INF/spring-persistence-context.xml", "/META-INF/spring-services-context.xml" })
-public class SimpleTest {
+public class UserServiceTest {
 
     @Autowired
     private UserService userService;
@@ -58,22 +59,25 @@ public class SimpleTest {
         User user1 = anyUser().withUserName("UserName1").build();
         User user2 = anyUser().withUserName("UserName2").build();
         User user3 = anyUser().withUserName("UserName3").build();
-
         userService.save(user1);
         userService.save(user2);
         userService.save(user3);
-
         assertEquals(1, userService.findByUserName("UserName1").size());
+        assertEquals("UserName1", userService.findByUserName("UserName1").get(0).getUserName());
     }
 
-    //@Test
-    public void shouldFindAnUserByUserNameAndReturnTheProfile(){
-        User user = anyUser().withUserName("UserWithProfile").build();
-        user.setProfile(anyProfile().with(FoodType.PIZZA).build());
-
+    @Test
+    public void shouldFindAnUseByUserNameAnReturnTheProfile(){
+        Profile profile = anyProfile()
+                .with(ACTION)
+                .build();
+        User user = anyUser()
+                .withUserName("UserWithProfile")
+                .with(profile)
+                .build();
         userService.save(user);
-
-        assertFalse(userService.getProfileByUserName("UserWithProfile").likeFoodType(FoodType.PIZZA));
+        assertTrue(userService.getProfileByUserName("UserWithProfile").likeMovieGenre(ACTION));
+        assertFalse(userService.getProfileByUserName("UserWithProfile").likeFoodType(PASTA));
     }
 
 }
