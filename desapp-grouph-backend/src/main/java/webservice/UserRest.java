@@ -2,13 +2,11 @@ package webservice;
 
 import model.users.Profile;
 import model.users.User;
+import static model.builders.UserBuilder.*;
 import service.UserService;
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 
 @Path("/user")
 public class UserRest {
@@ -42,5 +40,12 @@ public class UserRest {
     @Produces("application/json")
     public List<User> getAllUsers() { return service.retriveAll(); }
 
-    
+    @POST
+    @Path("/newUser/{userName}")
+    @Produces("application/json")
+    public User createUser(@PathParam("userName") String userName) {
+        User user = anyUser().withUserName(userName).build();
+        service.save(user);
+        return user;
+    }
 }
