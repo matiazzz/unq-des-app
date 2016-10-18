@@ -36,4 +36,11 @@ public class UserRest {
     @Path("/user/{id}")
     @Produces("application/json")
     public User findUserByID(@PathParam("id") int id) {return service.findByID(id); }
+
+    @GET
+    @Path("/users")
+    @Produces("application/json")
+    public List<User> getAllUsers() { return service.retriveAll(); }
+
+    
 }
