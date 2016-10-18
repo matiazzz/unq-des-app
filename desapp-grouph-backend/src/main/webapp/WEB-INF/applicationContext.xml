@@ -26,9 +26,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 <!-- =========Servicios  ========= -->
 <!-- =========================== -->
 
-	<jaxrs:server id="event"  > 
+	<jaxrs:server id="restServices"  >
 		<jaxrs:serviceBeans>
 			<ref bean="eventRest" />
+			<ref bean="userRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -49,20 +50,11 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>-->
 	</jaxrs:server>
 
-	<jaxrs:server id="user"  >
-		<jaxrs:serviceBeans>
-			<ref bean="userRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:extensionMappings>
-			<entry key="json" value="application/json" />
-		</jaxrs:extensionMappings>
-		<jaxrs:providers>
-			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
-		</jaxrs:providers>
-	</jaxrs:server>
 	
 	<bean id="eventRest" class="webservice.EventRest"></bean>
 
-	<bean id="userRest" class="webservice.UserRest"></bean>
+	<bean id="userRest" class="webservice.UserRest">
+		<property name="service" ref="service.UserService"></property>
+	</bean>
 
 </beans>
