@@ -15,6 +15,8 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
  
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="classpath:META-INF/spring-persistence-context.xml" />
+	<import resource="classpath:META-INF/spring-services-context.xml" />
 
 	<!-- <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" /> 
 
@@ -54,7 +56,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<bean id="eventRest" class="webservice.EventRest"></bean>
 
 	<bean id="userRest" class="webservice.UserRest">
-		<property name="service" ref="service.UserService"></property>
+		<property name="userService" ref="service.user"></property>
 	</bean>
 
 </beans>

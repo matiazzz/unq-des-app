@@ -11,41 +11,54 @@ import javax.ws.rs.*;
 @Path("/user")
 public class UserRest {
 
-    private UserService service;
+    private UserService userService;
 
     @GET
-    @Path("/users/{name}")
+    @Path("/getByName/{name}")
     @Produces("application/json")
     public List<User> findUsersByName(@PathParam("name") String name){
-        return service.findByName(name);
+        return userService.findByName(name);
     }
 
     @GET
-    @Path("/user/{userName}")
+    @Path("/getByUsername/{userName}")
     @Produces("application/json")
-    public User findUserByUserName(@PathParam("userName") String userName) { return service.findByUserName(userName); }
+    public User findUserByUserName(@PathParam("userName") String userName) {
+        return userService.findByUserName(userName);
+    }
 
     @GET
-    @Path("/userProfile/{userName}")
+    @Path("/getProfile/{userName}")
     @Produces("application/json")
-    public Profile getProfileByUserName(@PathParam("userName") String userName) {return service.getProfileByUserName(userName); }
+    public Profile getProfileByUserName(@PathParam("userName") String userName) {
+        return userService.getProfileByUserName(userName);
+    }
 
     @GET
-    @Path("/user/{id}")
+    @Path("/getById/{id}")
     @Produces("application/json")
-    public User findUserByID(@PathParam("id") int id) {return service.findByID(id); }
+    public User findUserByID(@PathParam("id") int id) {
+        return userService.findByID(id);
+    }
 
     @GET
-    @Path("/users")
+    @Path("/getAll")
     @Produces("application/json")
-    public List<User> getAllUsers() { return service.retriveAll(); }
+    public List<User> getAllUsers() {
+
+        return userService.retriveAll();
+    }
 
     @POST
     @Path("/newUser")
     @Produces("application/json")
     public User createUser(@FormParam("userName") String userName) {
         User user = anyUser().withUserName(userName).build();
-        service.save(user);
+        userService.save(user);
         return user;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }
