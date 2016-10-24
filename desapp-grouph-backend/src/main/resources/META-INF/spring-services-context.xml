@@ -10,11 +10,17 @@
 	<bean id="service.GeneralService" class="service.GeneralService">
 		<property name="userService" ref="service.user" />
 		<property name="profileService" ref="service.profile" />
+		<property name="eventService" ref="service.event" />
 	</bean>
 
 	<bean id="service.user" class="service.UserService">
 		<property name="repository" ref="persistence.userDAO" />
 		<property name="userDAO" ref="persistence.userDAO" />
+	</bean>
+
+	<bean id="service.event" class="service.EventService">
+		<property name="repository" ref="persistence.eventDAO" />
+		<property name="eventDAO" ref="persistence.eventDAO" />
 	</bean>
 
 	<bean id="service.profile" class="service.ProfileService">

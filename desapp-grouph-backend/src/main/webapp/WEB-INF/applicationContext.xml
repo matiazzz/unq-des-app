@@ -53,10 +53,16 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	</jaxrs:server>
 
 	
-	<bean id="eventRest" class="webservice.EventRest"></bean>
+	<bean id="eventRest" class="webservice.EventRest">
+		<property name="eventService" ref="service.event" />
+	</bean>
 
 	<bean id="userRest" class="webservice.UserRest">
-		<property name="userService" ref="service.user"></property>
+		<property name="userService" ref="service.user" />
+	</bean>
+
+	<bean id="initData" class="appdata.AppData" init-method="initData">
+		<property name="generalService"	ref="service.GeneralService" />
 	</bean>
 
 </beans>

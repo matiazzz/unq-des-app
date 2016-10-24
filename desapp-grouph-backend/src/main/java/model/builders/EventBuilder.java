@@ -20,6 +20,7 @@ public class EventBuilder {
     private int duration;
     private Set<User> attendees;
     private EventType eventType;
+    private String imgUrl;
 
     public EventBuilder(){
         title = "TITLE";
@@ -30,12 +31,13 @@ public class EventBuilder {
         time = LocalTime.now();
         duration = 0;
         attendees = new HashSet<>();
+        imgUrl = "imgURl";
     }
 
     public static EventBuilder anyEvent(){return new EventBuilder();}
 
     public Event build(){
-        EventData eventData = new EventData(title, description, eventType, price, address, date, time, duration);
+        EventData eventData = new EventData(title, description, eventType, price, address, date, time, duration, imgUrl);
         return new Event(eventData);
     }
 

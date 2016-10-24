@@ -13,10 +13,13 @@ public class EventData {
     public LocalTime time;
     public int duration;
     public EventType eventType;
+    public String urlImg;
 
     public EventData(String title){this.title = title;}
 
-    public EventData(String title, String description, EventType eventType, int price, String address, LocalDate date, LocalTime time, int duration){
+    public EventData(String title, String description, EventType eventType,
+                     int price, String address, LocalDate date, LocalTime time,
+                     int duration, String urlImg) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -25,5 +28,6 @@ public class EventData {
         this.time = time;
         this.duration = duration;
         this.eventType = eventType;
+        this.urlImg = urlImg;
     }
 }

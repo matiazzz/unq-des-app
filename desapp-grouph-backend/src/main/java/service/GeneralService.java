@@ -5,6 +5,7 @@ public class GeneralService {
 
 	private UserService userService;
 	private ProfileService profileService;
+	private EventService eventService;
 
 
 	public UserService getUserService() {
@@ -19,4 +20,15 @@ public class GeneralService {
 		this.profileService = profileService;
 	}
 
+	public ProfileService getProfileService() {
+		return profileService;
+	}
+
+	public EventService getEventService() {
+		return eventService;
+	}
+
+	public void setEventService(EventService eventService) {
+		this.eventService = eventService;
+	}
 }

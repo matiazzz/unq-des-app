@@ -1,33 +1,29 @@
 package webservice;
 
 import model.events.Event;
-import model.events.EventData;
-import model.events.FoodEvent;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
+import service.EventService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+import java.util.List;
 
-@Path("/events")
+@Path("/event")
 public class EventRest {
 
-	@GET
-	@Path("/example")
-	@Produces("text/plain")
-	public String example(){
-		return "Works!";
-	}
+	private EventService eventService;
 
 	@GET
-	@Path("/example2")
+	@Path("/mostPopular")
 	@Produces("application/json")
-	public Event example2(){
-		FoodEvent foodEvent = new FoodEvent();
-		EventData ed = new EventData("Salida", "Con amigos", foodEvent, 100,
-				"Calle 25, La Plata", new LocalDate(), new LocalTime(), 2);
-		Event event = new Event(ed);
-		return event;
+	public Response getMostPopular() {
+		List<Event> events = eventService.mostPopular();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	public void setEventService(EventService eventService) {
+		this.eventService = eventService;
 	}
 }

@@ -13,12 +13,14 @@ import java.util.Set;
 public class Event extends model.Entity {
 
     private String title;
+    @Column(length = 10000)
     private String description;
     private int price = 0;
     private String address;
     private LocalDate date;
     private LocalTime time;
     private int duration;
+    private String urlImg;
     @ManyToMany
     private Set<User> attendees = new HashSet<>();
     @Column(length = 10000)
@@ -34,6 +36,8 @@ public class Event extends model.Entity {
         date = eventData.date;
         duration = eventData.duration;
         time = eventData.time;
+        urlImg = eventData.urlImg;
+        type = eventData.eventType;
     }
 
     public void addAttendee(User user){
@@ -67,5 +71,9 @@ public class Event extends model.Entity {
 
     public EventType getType(){
         return type;
+    }
+
+    public String getUrlImg() {
+        return this.urlImg;
     }
 }
