@@ -17,7 +17,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'pascalprecht.translate'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -39,4 +40,22 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+
+.config(function ($translateProvider) {
+    $translateProvider.translations('en', {
+      'APPNAME': 'Where we go?',
+      'HOME': 'Home',
+      'EVENTS': 'Events',
+      'SEARCH': "Search"
+    });
+
+    $translateProvider.translations('es', {
+      'APPNAME': '¿A dónde vamos?',
+      'HOME': 'Inicio',
+      'EVENTS': 'Eventos',
+      'SEARCH': "Buscar"
+      });
+
+    $translateProvider.preferredLanguage('es');
   });
