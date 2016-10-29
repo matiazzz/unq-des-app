@@ -3,7 +3,7 @@
   "clean_urls": true,
   "proxies": {
     "/api/": {
-      "origin": "https://unq-des-app.herokuapp.com/"
+      "origin": "https://unq-des-app.herokuapp.com/rest"
     }
   },
     "headers": {

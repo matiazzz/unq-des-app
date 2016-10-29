@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>{{'APPNAME' | translate}}</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
@@ -7,17 +7,25 @@
   <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+<div class="container">
+  	<div class="container">
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-2 text-center"><h3>{{'EVENTS' | translate}}</h3><p>Enterate de todos los eventos disponibles y compartelos con tus amigos.</p></div>
+            </div>
+          </div>
+          <div class="col-sm-4 text-center">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1 text-center"><h3>Salidas</h3><p>Organiza salidas para ir con tus amigos, pareja o incluso salidas para ir solo.</p></div>
+            </div>
+          </div>
+          <div class="col-sm-4 text-center">
+            <div class="row">
+              <div class="col-sm-10 text-center"><h3>Perfil</h3><p>Creá tu perfil con todos tus gustos y amigos asi podemos recomendarte los mejores eventos para vos.</p></div>
+            </div>
+          </div>
+      </div><!--/row-->
+    <div class="row"><br></div>
+  </div><!--/container-->
 </div>
