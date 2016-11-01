@@ -18,4 +18,9 @@ public class EventService extends GenericService<Event> {
     public void setEventDAO(EventDAO eventDAO) {
         this.eventDAO = eventDAO;
     }
+
+    @Transactional
+    public List<Event> getAll() {
+        return eventDAO.findAll();
+    }
 }

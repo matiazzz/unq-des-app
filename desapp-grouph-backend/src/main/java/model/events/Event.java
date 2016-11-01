@@ -25,6 +25,7 @@ public class Event extends model.Entity {
     private Set<User> attendees = new HashSet<>();
     @Column(length = 10000)
     private EventType type;
+    private boolean isImportant;
 
     public Event() {}
 
@@ -38,6 +39,7 @@ public class Event extends model.Entity {
         time = eventData.time;
         urlImg = eventData.urlImg;
         type = eventData.eventType;
+        isImportant = eventData.isImportant;
     }
 
     public void addAttendee(User user){
@@ -75,5 +77,13 @@ public class Event extends model.Entity {
 
     public String getUrlImg() {
         return this.urlImg;
+    }
+
+    public boolean isImportant() {
+        return isImportant;
+    }
+
+    public void setImportant(boolean important) {
+        this.isImportant = important;
     }
 }

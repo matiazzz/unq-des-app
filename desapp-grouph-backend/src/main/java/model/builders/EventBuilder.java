@@ -21,6 +21,7 @@ public class EventBuilder {
     private Set<User> attendees;
     private EventType eventType;
     private String imgUrl;
+    private boolean isImportant;
 
     public EventBuilder(){
         title = "TITLE";
@@ -32,12 +33,13 @@ public class EventBuilder {
         duration = 0;
         attendees = new HashSet<>();
         imgUrl = "imgURl";
+        isImportant = false;
     }
 
     public static EventBuilder anyEvent(){return new EventBuilder();}
 
     public Event build(){
-        EventData eventData = new EventData(title, description, eventType, price, address, date, time, duration, imgUrl);
+        EventData eventData = new EventData(title, description, eventType, price, address, date, time, duration, imgUrl, isImportant);
         return new Event(eventData);
     }
 
@@ -58,6 +60,11 @@ public class EventBuilder {
 
     public EventBuilder with(EventType eventType) {
         this.eventType = eventType;
+        return this;
+    }
+
+    public EventBuilder with(boolean isImportant) {
+        this.isImportant = isImportant;
         return this;
     }
 }

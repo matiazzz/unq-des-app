@@ -64,9 +64,49 @@
 }
 
 @media screen and (min-width: 992px) {
-
+D8DEDD
   .container {
     max-width: 930px;
   }
 
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.img-event {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+.thumbnail {
+    background: #D8DEDD;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+}
+
+.col-md-4 {
+    padding: 5px;
+}
+
+.label {
+  display: block;
+}
+
+.margin-label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.pagination-centered {
+    text-align: center;
+}
+
+.custom-search-input {
+  padding-bottom: 50px;
 }

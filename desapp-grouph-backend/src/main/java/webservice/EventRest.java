@@ -23,6 +23,15 @@ public class EventRest {
 		return Response.ok(events).build();
 	}
 
+	@GET
+	@Path("/getAll")
+	@Produces("application/json")
+	public Response getAll() {
+		List<Event> events = eventService.getAll();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}

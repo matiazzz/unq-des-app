@@ -35,7 +35,12 @@ angular
       .when('/events', {
         templateUrl: 'views/events.html',
         controller: 'EventService',
-        controllerAs: 'event'
+        controllerAs: 'events'
+      })
+      .when('/search-events', {
+        templateUrl: 'views/search-events.html',
+        controller: 'EventService',
+        controllerAs: 'search-events'
       })
       .otherwise({
         redirectTo: '/'
@@ -47,14 +52,14 @@ angular
       'APPNAME': 'Where we go?',
       'HOME': 'Home',
       'EVENTS': 'Events',
-      'SEARCH': "Search"
+      'SEARCH': 'Search'
     });
 
     $translateProvider.translations('es', {
       'APPNAME': '¿A dónde vamos?',
       'HOME': 'Inicio',
       'EVENTS': 'Eventos',
-      'SEARCH': "Buscar"
+      'SEARCH': 'Buscar'
       });
 
     $translateProvider.preferredLanguage('es');
