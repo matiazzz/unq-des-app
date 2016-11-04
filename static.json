@@ -10,12 +10,7 @@
     "/**": {
       "Access-Control-Allow-Origin": "*"
     },
-  "**.js": {
-    "Cache-Control": "public, max-age=31536000",
-    "Access-Control-Allow-Origin": "*"
-  },
-  "**.css": {
-    "Cache-Control": "public, max-age=31536000",
+  "/#/events": {
     "Access-Control-Allow-Origin": "*"
   }
   }
