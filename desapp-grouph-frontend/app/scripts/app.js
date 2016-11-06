@@ -39,7 +39,7 @@ angular
       })
       .when('/search-events', {
         templateUrl: 'views/search-events.html',
-        controller: 'EventService',
+        controller: 'SearchEventCtrl',
         controllerAs: 'search-events'
       })
       .otherwise({

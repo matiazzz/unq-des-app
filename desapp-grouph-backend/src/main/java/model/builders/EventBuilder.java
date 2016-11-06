@@ -67,4 +67,9 @@ public class EventBuilder {
         this.isImportant = isImportant;
         return this;
     }
+
+    public EventBuilder withTitle(String title) {
+        this.title = title;
+        return this;
+    }
 }

@@ -7,6 +7,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import service.GeneralService;
 
+import static model.builders.EventBuilder.anyEvent;
 import static model.users.MusicalGenre.*;
 
 public class AppData {
@@ -38,7 +39,13 @@ public class AppData {
         generalService.getEventService().save(event1);
         generalService.getEventService().save(event2);
         generalService.getEventService().save(event3);
+
+        for(int i=0; i<20; i++){
+            Event event = anyEvent().withTitle("Event" + i).build();
+            generalService.getEventService().save(event);
+        }
     }
+
 
     public void setGeneralService(GeneralService generalService) {
         this.generalService = generalService;

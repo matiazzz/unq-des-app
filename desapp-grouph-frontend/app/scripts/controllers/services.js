@@ -20,4 +20,32 @@ angular.module('desappGrouphFrontendApp')
         then(function(response) {
             $scope.events = response.data;
         });
+    $http.get(url + 'event/size').
+        then(function(response) {
+            $scope.events = response.data;
+        });
+});
+
+angular.module('desappGrouphFrontendApp')
+    .service('eventServices', function ($http) {
+        return {
+            getAll: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/getAll'
+                });
+            },
+            getSize: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/size'
+                });
+            },
+            getPage: function (page, sizePage) {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/get/' + page + '/' + sizePage
+                });
+            }
+        };
 });

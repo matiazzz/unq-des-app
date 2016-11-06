@@ -23,4 +23,14 @@ public class EventService extends GenericService<Event> {
     public List<Event> getAll() {
         return eventDAO.findAll();
     }
+
+    @Transactional
+    public int size() {
+        return eventDAO.count();
+    }
+
+    @Transactional
+    public List<Event> getMusicEvents() {
+        return eventDAO.getMusicEvents();
+    }
 }
