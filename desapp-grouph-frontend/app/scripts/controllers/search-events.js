@@ -3,16 +3,6 @@
 angular.module('desappGrouphFrontendApp')
   .controller('SearchEventCtrl', function ($scope, eventServices) {
 
-    eventServices.getAll().then(
-      function (response) {
-        $scope.events = response.data;
-      },
-      function (error) {
-        console.log(error);
-      }
-    );
-    
-
     eventServices.getSize().then(
       function (response) {
         $scope.eventsSize = response.data.size;
@@ -44,4 +34,6 @@ angular.module('desappGrouphFrontendApp')
     $scope.getPages = function(num) {
         return new Array(num);
     };
+
+    $scope.loadPage(1);
 });
