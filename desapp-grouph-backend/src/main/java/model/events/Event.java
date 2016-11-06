@@ -86,4 +86,12 @@ public class Event extends model.Entity {
     public void setImportant(boolean important) {
         this.isImportant = important;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

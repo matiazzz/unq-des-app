@@ -40,5 +40,4 @@ public class EventDAO extends HibernateGenericDAO<Event> implements GenericRepos
             }
         });
     }
-
 }

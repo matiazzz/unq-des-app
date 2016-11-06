@@ -61,6 +61,15 @@ public class EventRest {
 		return Response.ok(events).build();
 	}
 
+	@GET
+	@Path("/{idEvent}")
+	@Produces("application/json")
+	public Response getById(@PathParam("idEvent") final int idEvent) {
+		Event event = eventService.getById(idEvent);
+		if (event == null) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(event).build();
+	}
+
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
 	}

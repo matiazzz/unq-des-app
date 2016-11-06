@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

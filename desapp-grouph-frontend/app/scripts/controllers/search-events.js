@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('desappGrouphFrontendApp')
-  .controller('SearchEventCtrl', function ($scope, eventServices) {
+  .controller('SearchEventCtrl', function ($scope, $uibModal, eventServices) {
 
     eventServices.getSize().then(
       function (response) {
@@ -29,6 +29,19 @@ angular.module('desappGrouphFrontendApp')
           console.log(error);
         }
       );
+    };
+
+    $scope.showEventDetail = function(idEvent) {
+      $uibModal.open({
+        templateUrl: 'views/event-detail.html',
+        controller: 'eventDetailCtrl',
+        size: 'lg',
+        resolve: {
+          idEvent: function () {
+              return idEvent;
+            }
+        }
+      });
     };
 
     $scope.getPages = function(num) {
