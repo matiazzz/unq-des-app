@@ -19,7 +19,9 @@ angular
     'ngSanitize',
     'ngTouch',
     'pascalprecht.translate',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'auth0.lock',
+    'angular-jwt'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -53,15 +55,24 @@ angular
       'APPNAME': 'Where we go?',
       'HOME': 'Home',
       'EVENTS': 'Events',
-      'SEARCH': 'Search'
+      'SEARCH': 'Search',
+      'login': 'Login'
     });
 
     $translateProvider.translations('es', {
       'APPNAME': '¿A dónde vamos?',
       'HOME': 'Inicio',
       'EVENTS': 'Eventos',
-      'SEARCH': 'Buscar'
+      'SEARCH': 'Buscar',
+      'login': 'Entrar'
       });
 
     $translateProvider.preferredLanguage('es');
-  });
+  })
+
+  .config(function (lockProvider) {
+    lockProvider.init({
+      clientID: 'HpQcbV9OE6ImZNpqW8LDhBlppJnOaWRM',
+      domain: 'matiazzz.auth0.com'
+    });
+});
