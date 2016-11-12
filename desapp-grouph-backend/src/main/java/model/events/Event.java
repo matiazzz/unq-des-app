@@ -94,4 +94,12 @@ public class Event extends model.Entity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
 }

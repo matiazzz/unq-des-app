@@ -1,12 +1,43 @@
 <div class="modal-header">
-  <h3 class="modal-title" id="modal-title">{{event.title}}</h3>
+  <h3 class="modal-title" id="modal-title">{{event.title}}
+      <span ng-click="close()" class="glyphicon glyphicon-remove pull-right"></span>
+  </h3>
 </div>
 <div class="modal-body" id="modal-body">
   <img class="img-detail" ng-src="{{event.urlImg}}" alt="...">
 </div>
 <div class="modal-body" id="modal-body">
-  <p>{{event.description}}</p>
+
+  <md-content>
+    <md-tabs md-dynamic-height="" md-border-bottom="">
+      <md-tab label="{{'description' | translate}}">
+        <md-content class="md-padding">
+          <p> {{event.description}} </p>
+        </md-content>
+      </md-tab>
+      <md-tab label="{{'price' | translate}}">
+        <md-content class="md-padding">
+          <p> {{event.price}} </p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Día y horario">
+        <md-content class="md-padding">
+          <p> {{event.date}} </p>
+          <p> {{event.time}} </p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Ubicación">
+        <md-content class="md-padding">
+          <h3 >{{event.address}}</h3>
+          <map center='{{event.address}}'/>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+
 </div>
+
+
+
 <div class="modal-footer">
-  <button class="btn btn-danger" type="button" ng-click="close()">Cerrar</button>
 </div>

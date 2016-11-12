@@ -30,10 +30,9 @@
     <h2 class="margin-label"><span class="label label-default col-sm-12 margin-label">Música</span></h2>
     <div class="col-sm-12 col-md-4" ng-repeat="event in mostPopularEvents">
       <div class="thumbnail eventPreview">
-        <img class="img-event" ng-src="{{event.urlImg}}" alt="...">
+        <img ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)" class="img-event" ng-src="{{event.urlImg}}" alt="...">
         <div class="caption">
-          <h4>{{event.title}}</h4>
-          <p><a class="btn btn-primary" role="button">Más info</a> <a class="btn btn-default" role="button">Asistiré</a></p>
+          <h4 ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)">{{event.title}}</h4>
         </div>
       </div>
     </div>
@@ -43,10 +42,9 @@
     <h2 class="margin-label"><span class="label label-default col-sm-12 margin-label">Cine</span></h2>
     <div class="col-sm-12 col-md-4" ng-repeat="event in mostPopularEvents">
       <div class="thumbnail eventPreview">
-        <img class="img-event" ng-src="{{event.urlImg}}" alt="...">
+        <img ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)" class="img-event" ng-src="{{event.urlImg}}" alt="...">
         <div class="caption">
-          <h4>{{event.title}}</h4>
-          <p><a class="btn btn-primary" role="button">Más info</a> <a class="btn btn-default" role="button">Asistiré</a></p>
+          <h4ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)">{{event.title}}</h4>
         </div>
       </div>
     </div>
@@ -56,10 +54,9 @@
     <h2 class="margin-label"><span class="label label-default col-sm-12 margin-label">Gastronomía</span></h2>
     <div class="col-sm-12 col-md-4" ng-repeat="event in mostPopularEvents">
       <div class="thumbnail eventPreview">
-        <img class="img-event" ng-src="{{event.urlImg}}" alt="...">
+        <img ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)" class="img-event" ng-src="{{event.urlImg}}" alt="...">
         <div class="caption">
-          <h4>{{event.title}}</h4>
-          <p><a class="btn btn-primary" role="button">Más info</a> <a class="btn btn-default" role="button">Asistiré</a></p>
+          <h4 ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)">{{event.title}}</h4>
         </div>
       </div>
     </div>

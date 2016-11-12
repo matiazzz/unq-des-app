@@ -14,13 +14,12 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row" style="display:flex; flex-wrap: wrap;">
     <div class="col-sm-12 col-md-4" ng-repeat="event in events">
       <div class="thumbnail eventPreview">
-        <img class="img-event" ng-src="{{event.urlImg}}" alt="...">
+        <img ng-click="showEventDetail(event.id)" class="img-event" ng-src="{{event.urlImg}}" alt="...">
         <div class="caption">
-          <h4>{{event.title}}</h4>
-          <p><a ng-click="showEventDetail(event.id)" class="btn btn-primary" role="button">Más info</a> <a class="btn btn-default" role="button">Asistiré</a></p>
+          <h4 ng-click="showEventDetail(event.id)">{{event.title}}</h4>
         </div>
       </div>
     </div>

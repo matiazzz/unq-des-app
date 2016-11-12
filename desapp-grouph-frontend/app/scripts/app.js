@@ -21,7 +21,10 @@ angular
     'pascalprecht.translate',
     'ui.bootstrap',
     'auth0.lock',
-    'angular-jwt'
+    'angular-jwt',
+    'ngMaterial',
+    'ngMessages',
+    'ngMap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -56,7 +59,9 @@ angular
       'HOME': 'Home',
       'EVENTS': 'Events',
       'SEARCH': 'Search',
-      'login': 'Login'
+      'login': 'Login',
+      'description': 'Description',
+      'price': 'Price'
     });
 
     $translateProvider.translations('es', {
@@ -64,7 +69,9 @@ angular
       'HOME': 'Inicio',
       'EVENTS': 'Eventos',
       'SEARCH': 'Buscar',
-      'login': 'Entrar'
+      'login': 'Iniciar sesión',
+      'description': 'Descripción',
+      'price': 'Precio'
       });
 
     $translateProvider.preferredLanguage('es');
