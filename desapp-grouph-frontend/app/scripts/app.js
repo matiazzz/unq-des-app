@@ -24,7 +24,8 @@ angular
     'angular-jwt',
     'ngMaterial',
     'ngMessages',
-    'ngMap'
+    'ngMap',
+    'tmh.dynamicLocale'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -53,7 +54,7 @@ angular
       });
   })
 
-.config(function ($translateProvider) {
+.config(function ($translateProvider, tmhDynamicLocaleProvider) {
     $translateProvider.translations('en', {
       'APPNAME': 'Where we go?',
       'HOME': 'Home',
@@ -75,6 +76,8 @@ angular
       });
 
     $translateProvider.preferredLanguage('es');
+
+    tmhDynamicLocaleProvider.localeLocationPattern('/scripts/angular-i18n/angular-locale_{{locale}}.js');
   })
 
   .config(function (lockProvider) {

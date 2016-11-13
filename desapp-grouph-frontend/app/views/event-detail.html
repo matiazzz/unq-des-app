@@ -17,18 +17,18 @@
       </md-tab>
       <md-tab label="{{'price' | translate}}">
         <md-content class="md-padding">
-          <p> {{event.price}} </p>
+          <h3> {{ event.price | currency }} </h3>
         </md-content>
       </md-tab>
       <md-tab label="Día y horario">
         <md-content class="md-padding">
-          <p> {{event.date}} </p>
-          <p> {{event.time}} </p>
+          <h3> {{eventDate | date:'fullDate'}} </h3>
+          <h3> {{eventDate | date:'shortTime'}} </h3>
         </md-content>
       </md-tab>
       <md-tab label="Ubicación">
         <md-content class="md-padding">
-          <h3 >{{event.address}}</h3>
+          <h3> {{event.address}} </h3>
           <map center='{{event.address}}'/>
         </md-content>
       </md-tab>
