@@ -61,8 +61,13 @@ angular
       'EVENTS': 'Events',
       'SEARCH': 'Search',
       'login': 'Login',
+      'logout': 'Logout',
       'description': 'Description',
-      'price': 'Price'
+      'price': 'Price',
+      'plannings': 'Plannings',
+      'preferences': 'Preferences',
+      'profile': 'Profile',
+      'settings': 'Setting'
     });
 
     $translateProvider.translations('es', {
@@ -71,8 +76,13 @@ angular
       'EVENTS': 'Eventos',
       'SEARCH': 'Buscar',
       'login': 'Iniciar sesión',
+      'logout': 'Salir',
       'description': 'Descripción',
-      'price': 'Precio'
+      'price': 'Precio',
+      'plannings': 'Salidas',
+      'preferences': 'Preferencias',
+      'profile': 'Perfil',
+      'settings': 'Configuración'
       });
 
     $translateProvider.preferredLanguage('es');
@@ -80,9 +90,15 @@ angular
     tmhDynamicLocaleProvider.localeLocationPattern('/scripts/angular-i18n/angular-locale_{{locale}}.js');
   })
 
-  .config(function (lockProvider) {
+  .config(function (lockProvider, jwtOptionsProvider) {
     lockProvider.init({
       clientID: 'HpQcbV9OE6ImZNpqW8LDhBlppJnOaWRM',
       domain: 'matiazzz.auth0.com'
+    });
+    // Configuration for angular-jwt
+    jwtOptionsProvider.config({
+      tokenGetter: function () {
+        return localStorage.getItem('id_token');
+      }
     });
 });

@@ -5,4 +5,8 @@ angular.module('desappGrouphFrontendApp')
 
   $scope.authService = authService;
 
+  authService.getProfileDeferred().then(function (profile) {
+    $scope.profile = profile;
+  });
+
 });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('desappGrouphFrontendApp')
-.run(function ($rootScope, authService, lock, tmhDynamicLocale) {
+.run(function ($rootScope, authService, lock, tmhDynamicLocale, authManager) {
 
   // Put the authService on $rootScope so its methods
   // can be accessed from the nav bar
@@ -13,6 +13,11 @@ angular.module('desappGrouphFrontendApp')
 
   // Register the synchronous hash parser
   lock.interceptHash();
+
+  // Use the authManager from angular-jwt to check for
+  // the user's authentication state when the page is
+  // refreshed and maintain authentication
+  authManager.checkAuthOnRefresh();
 
   //Set default locale
   tmhDynamicLocale.set('es-ar');
