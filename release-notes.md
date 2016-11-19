@@ -26,3 +26,16 @@ NOTES:
 * No se hizo las paginas home y profile.
 * Falta servicios rest para perfiles y eventos.
 * No se deployo el frontend en heroku.
+
+---------------------------------------------------------------------
+TAG entrega3
+---------------------------------------------------------------------
+NEW FEATURES:
+* Formatters de fecha y moneda según LOCALE
+* Paginación Server Side
+* Autenticación de la aplicación con Google
+* Ver detalle de un evento.
+
+
+NOTES:
+* No se hizo test de arquitectura, auditoria de servicios, CRUD de Perfiles, propuestas según perfil, busqueda por cantidad de personas o sugerencias, funcionalidad "Asistiré", círculo de amistades.
