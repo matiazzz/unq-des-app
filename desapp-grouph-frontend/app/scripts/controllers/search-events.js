@@ -20,15 +20,19 @@ angular.module('desappGrouphFrontendApp')
     );
 
     $scope.loadPage = function(page){
-      console.log(page, $scope.eventsSize);
       eventServices.getPage(page, 9).then(
         function (response) {
           $scope.events = response.data;
+          $scope.actualPage = page;
         },
         function (error) {
           console.log(error);
         }
       );
+    };
+
+    $scope.activePage = function(page) {
+      return $scope.actualPage == page;
     };
 
     $scope.showEventDetail = function(idEvent) {

@@ -49,6 +49,21 @@ angular
         controller: 'SearchEventCtrl',
         controllerAs: 'search-events'
       })
+      .when('/select-event-type', {
+        templateUrl: 'views/select-event-type.html',
+        controller: 'CreateEventCtrl',
+        controllerAs: 'createEvent'
+      })
+      .when('/create-event', {
+        templateUrl: 'views/create-event.html',
+        controller: 'CreateEventCtrl',
+        controllerAs: 'createEvent'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'loginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

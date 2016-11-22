@@ -1,0 +1,42 @@
+<form ng-if="isAuthenticated">
+  <h3 class="text-center"> Crear evento </h3>
+  <div class="form-group">
+    <label>Nombre del evento</label>
+    <input class="form-control" aria-describedby="emailHelp" placeholder="Nombre del evento">
+  </div>
+  <hr />
+  <div class="form-group">
+    <label for="exampleTextarea">Descripción</label>
+    <textarea class="form-control" rows="3" placeholder="Escriba una descripción del evento."></textarea>
+  </div>
+  <hr />
+  <div class="form-group">
+    <label for="exampleInputFile">Imágen</label>
+    <input class="form-control" placeholder="Url de una imágen (opcional)">
+  </div>
+  <hr />
+  <div class="row" ng-controller="DatepickerCtrl">
+    <div class="col-md-6">
+
+      <div style="display:inline-block; min-height:290px;">
+        <label>Fecha del evento</label>
+        <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Horario del evento</label>
+      <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+    </div>
+    <pre class="alert alert-info">Seleccionaste la siguiente fecha: <em>{{dt | date:'fullDate' }}</em></pre>
+    <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+  </div>
+  <hr />
+  <div class="form-group">
+    <label>Precio del evento</label>
+    <input class="form-control" aria-describedby="emailHelp" placeholder="Precio del evento">
+  </div>
+  <hr />
+  <button type="submit" class="btn btn-primary">Crear evento</button>
+
+</form>
+<br>
