@@ -28,8 +28,9 @@
       </md-tab>
       <md-tab label="Ubicación">
         <md-content class="md-padding">
-          <h3> {{event.address}} </h3>
-          <map center='{{event.address}}'/>
+          <h3> {{event.place.name}} </h3>
+          <h4> {{event.place.address}} </h4>
+          <map center='{{event.place.address}}'/>
         </md-content>
       </md-tab>
     </md-tabs>

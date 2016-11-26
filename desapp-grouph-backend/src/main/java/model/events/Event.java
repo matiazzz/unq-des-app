@@ -2,9 +2,13 @@ package model.events;
 
 import model.users.Profile;
 import model.users.User;
+import org.hibernate.annotations.*;
 import org.joda.time.*;
 
 import javax.persistence.*;
+import org.hibernate.annotations.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +20,8 @@ public class Event extends model.Entity {
     @Column(length = 10000)
     private String description;
     private int price = 0;
-    private String address;
+    @Column(length = 10000)
+    private Place place;
     private LocalDate date;
     private LocalTime time;
     private int duration;
@@ -24,6 +29,7 @@ public class Event extends model.Entity {
     @ManyToMany
     private Set<User> attendees = new HashSet<>();
     @Column(length = 10000)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private EventType type;
     private boolean isImportant;
 
@@ -33,7 +39,7 @@ public class Event extends model.Entity {
         title = eventData.title;
         description = eventData.description;
         price = eventData.price;
-        address = eventData.address;
+        place = eventData.place;
         date = eventData.date;
         duration = eventData.duration;
         time = eventData.time;
@@ -95,8 +101,8 @@ public class Event extends model.Entity {
         this.description = description;
     }
 
-    public String getAddress() {
-        return address;
+    public Place getPlace() {
+        return place;
     }
 
     public int getDuration() {

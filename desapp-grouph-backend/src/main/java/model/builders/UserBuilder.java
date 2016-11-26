@@ -100,4 +100,9 @@ public class UserBuilder {
         this.events.add(event);
         return this;
     }
+
+    public UserBuilder withProfile(Profile profile) {
+        this.profile = profile;
+        return this;
+    }
 }

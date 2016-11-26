@@ -1,9 +1,7 @@
 package model.builders;
 
-import model.events.Event;
-import model.events.EventData;
+import model.events.*;
 import model.users.User;
-import model.events.EventType;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import java.util.HashSet;
@@ -14,7 +12,7 @@ public class EventBuilder {
     private String title;
     private String description;
     private int price = 0;
-    private String address;
+    private Place place;
     private LocalDate date;
     private LocalTime time;
     private int duration;
@@ -27,7 +25,7 @@ public class EventBuilder {
         title = "TITLE";
         description = "DESCRIPTION";
         price = 0;
-        address = "ADDRESS";
+        place = new Place("PLACENAME", "PLACEADDRESS");
         date = LocalDate.now();
         time = LocalTime.now();
         duration = 0;
@@ -39,7 +37,7 @@ public class EventBuilder {
     public static EventBuilder anyEvent(){return new EventBuilder();}
 
     public Event build(){
-        EventData eventData = new EventData(title, description, eventType, price, address, date, time, duration, imgUrl, isImportant);
+        EventData eventData = new EventData(title, description, eventType, price, place, date, time, duration, imgUrl, isImportant);
         return new Event(eventData);
     }
 
@@ -70,6 +68,41 @@ public class EventBuilder {
 
     public EventBuilder withTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public EventBuilder withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public EventBuilder withImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+        return this;
+    }
+
+    public EventBuilder withDate(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public EventBuilder withTime(LocalTime time) {
+        this.time = time;
+        return this;
+    }
+
+    public EventBuilder withPrice(int price) {
+        this.price = price;
+        return this;
+    }
+
+    public EventBuilder withPlace(Place place) {
+        this.place = place;
+        return this;
+    }
+
+    public EventBuilder withEventType(MusicEvent musicEvent) {
+        this.eventType = musicEvent;
         return this;
     }
 }

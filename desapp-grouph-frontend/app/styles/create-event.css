@@ -33,3 +33,15 @@
   border-radius: 32px;
   color: black;
 }
+
+.messagealert {
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.messagealert {
+    position:fixed;
+    top: 0px;
+    right: 25%;
+    left: 25%
+}
