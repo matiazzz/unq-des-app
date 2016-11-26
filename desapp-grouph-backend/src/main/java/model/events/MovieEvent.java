@@ -8,8 +8,8 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="MovieEvent")
@@ -19,9 +19,9 @@ public class MovieEvent extends EventType {
     @ElementCollection(targetClass = MovieGenre.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-    private Set<MovieGenre> genres = new HashSet<>();
+    private List<MovieGenre> genres = new ArrayList<>();
 
-    public MovieEvent(Set<MovieGenre> movieGenres) {
+    public MovieEvent(List<MovieGenre> movieGenres) {
         this.genres = movieGenres;
     }
 

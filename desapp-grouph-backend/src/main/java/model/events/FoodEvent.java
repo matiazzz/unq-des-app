@@ -8,8 +8,8 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="FoodEvent")
@@ -19,9 +19,9 @@ public class FoodEvent extends EventType {
     @ElementCollection(targetClass = FoodType.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-    private Set<FoodType> foodTypes = new HashSet<>();
+    private List<FoodType> foodTypes = new ArrayList<>();
 
-    public FoodEvent(Set<FoodType> foodTypes) {
+    public FoodEvent(List<FoodType> foodTypes) {
         this.foodTypes = foodTypes;
     }
 

@@ -8,7 +8,8 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,9 +20,9 @@ public class MusicEvent extends EventType {
     @ElementCollection(targetClass = MusicalGenre.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-    private Set<MusicalGenre> genres = new HashSet<>();
+    private List<MusicalGenre> genres = new ArrayList<>();
 
-    public MusicEvent(Set<MusicalGenre> musicalGenres) {
+    public MusicEvent(List<MusicalGenre> musicalGenres) {
         this.genres = musicalGenres;
     }
 
