@@ -17,29 +17,21 @@ public class UserRest {
     @GET
     @Path("/getByName/{name}")
     @Produces("application/json")
-    public List<User> findUsersByName(@PathParam("name") String name){
-        return userService.findByName(name);
-    }
-
-    @GET
-    @Path("/getByUsername/{userName}")
-    @Produces("application/json")
-    public User findUserByUserName(@PathParam("userName") String userName) {
-        return userService.findByUserName(userName);
+    public Response findUsersByName(@PathParam("name") String name){
+        List<User> users = userService.findByName(name);
+        if (users.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(users).build();
     }
 
     @GET
     @Path("/getProfile/{userName}")
     @Produces("application/json")
-    public Profile getProfileByUserName(@PathParam("userName") String userName) {
-        return userService.getProfileByUserName(userName);
-    }
-
-    @GET
-    @Path("/getById/{id}")
-    @Produces("application/json")
-    public User findUserByID(@PathParam("id") int id) {
-        return userService.findByID(id);
+    public Response getProfileByUserName(@PathParam("userName") String userName) {
+        Profile profile = userService.getProfileByUserName(userName);
+        if (profile == null) return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(profile).build();
     }
 
     @GET
@@ -53,13 +45,37 @@ public class UserRest {
         return Response.ok(users).build();
     }
 
+    @GET
+    @Path("/{idUser}")
+    @Produces("application/json")
+    public Response getUserById(@PathParam("idUser") final int idUser) {
+        User user = userService.findByID(idUser);
+        if (user == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(user).build();
+    }
+
+    @GET
+    @Path("/getByUsername/{username}")
+    @Produces("application/json")
+    public Response getUserByUsername(@PathParam("username") final String username) {
+        try {
+            User user = userService.findByUserName(username);
+            return Response.ok(user).build();
+        }
+        catch (Exception e){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
     @POST
     @Path("/newUser")
     @Produces("application/json")
-    public User createUser(@FormParam("userName") String userName) {
+    public Response createUser(@FormParam("userName") String userName) {
         User user = anyUser().withUserName(userName).build();
         userService.save(user);
-        return user;
+        return Response.ok().build();
     }
 
     public void setUserService(UserService userService) {

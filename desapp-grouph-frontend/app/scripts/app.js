@@ -51,13 +51,11 @@ angular
       })
       .when('/select-event-type', {
         templateUrl: 'views/select-event-type.html',
-        controller: 'CreateEventCtrl',
-        controllerAs: 'createEvent'
+        controller: 'CreateEventCtrl'
       })
       .when('/create-event', {
         templateUrl: 'views/create-event.html',
-        controller: 'CreateEventCtrl',
-        controllerAs: 'createEvent'
+        controller: 'CreateEventCtrl'
       })
       .when('/login', {
         templateUrl: 'views/login.html',

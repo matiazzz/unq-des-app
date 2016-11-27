@@ -53,6 +53,50 @@ angular.module('desappGrouphFrontendApp')
                     method: 'get',
                     url: url + 'event/get/' + page + '/' + sizePage
                 });
+            },
+            newEvent: function (title, description, imgUrl, date, time, price, place) {
+                return $http({
+                    method: 'post',
+                    url: url + 'event/newEvent/',
+                    data: $.param({title: title,
+                      description: description,
+                      imgUrl: imgUrl,
+                      day: date.getUTCDate(),
+                      month: date.getMonth()+1,
+                      year: date.getFullYear(),
+                      hour: time.getHours(),
+                      minutes: time.getMinutes(),
+                      price: price,
+                      placeName: place.name,
+                      placeAddress: place.address
+                    }),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
+            }
+        };
+});
+
+
+angular.module('desappGrouphFrontendApp')
+    .service('userServices', function ($http) {
+        return {
+            getAll: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'user/getAll'
+                });
+            },
+            getById: function (idUser) {
+                return $http({
+                    method: 'get',
+                    url: url + 'user/' + idUser
+                });
+            },
+            getByUsername: function (username) {
+                return $http({
+                    method: 'get',
+                    url: url + 'user/getByUsername/' + username
+                });
             }
         };
 });
