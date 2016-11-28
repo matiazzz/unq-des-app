@@ -40,9 +40,9 @@ public class MappingTest {
     public void testHibernateMappings() {
         boolean allOk = true;
         Map metadata = sessionFactory.getAllClassMetadata();
-        for (Iterator i = metadata.values().iterator(); i.hasNext();) {
-            EntityPersister persister = (EntityPersister) i.next();
-            String entityName = persister.getEntityName();
+        for (Object ep : metadata.values()) {
+            EntityPersister entityPersister = (EntityPersister) ep;
+            String entityName = entityPersister.getEntityName();
             try {
                 Query q = session.createQuery("from " + entityName);
                 q.setMaxResults(1);
