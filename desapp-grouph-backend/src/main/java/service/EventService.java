@@ -38,4 +38,11 @@ public class EventService extends GenericService<Event> {
     public Event getById(int idEvent) {
         return eventDAO.findById(idEvent);
     }
+
+    @Transactional
+    public List<Event> search(String word) {
+        return eventDAO.search(word);
+    }
+
+
 }

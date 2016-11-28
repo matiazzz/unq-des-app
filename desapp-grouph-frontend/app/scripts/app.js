@@ -30,16 +30,6 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/events', {
         templateUrl: 'views/events.html',
         controller: 'EventService',
         controllerAs: 'events'
@@ -80,7 +70,12 @@ angular
       'plannings': 'Plannings',
       'preferences': 'Preferences',
       'profile': 'Profile',
-      'settings': 'Setting'
+      'settings': 'Setting',
+      'myevents': 'My events',
+      'newevent': 'New event',
+      'language' : 'Language',
+      'spanish': 'Spanish',
+      'english': 'English'
     });
 
     $translateProvider.translations('es', {
@@ -95,7 +90,12 @@ angular
       'plannings': 'Salidas',
       'preferences': 'Preferencias',
       'profile': 'Perfil',
-      'settings': 'Configuración'
+      'settings': 'Configuración',
+      'myevents': 'Mis eventos',
+      'newevent': 'Nuevo evento',
+      'language' : 'Idioma',
+      'spanish': 'Español',
+      'english': 'Inglés'
       });
 
     $translateProvider.preferredLanguage('es');

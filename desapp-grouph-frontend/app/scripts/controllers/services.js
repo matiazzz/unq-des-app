@@ -54,6 +54,18 @@ angular.module('desappGrouphFrontendApp')
                     url: url + 'event/get/' + page + '/' + sizePage
                 });
             },
+            searchSize: function (word) {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/searchSize/' + word
+                });
+            },
+            search: function (word, page, sizePage) {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/search/' + word + '/' + page + '/' + sizePage
+                });
+            },
             newEvent: function (title, description, imgUrl, date, time, price, place) {
                 return $http({
                     method: 'post',

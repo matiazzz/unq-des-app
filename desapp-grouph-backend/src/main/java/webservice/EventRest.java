@@ -54,9 +54,8 @@ public class EventRest {
 	@Path("/get/{page}/{sizePage}")
 	@Produces("application/json")
 	public Response get(@PathParam("page") final int page, @PathParam("sizePage") final int sizePage) {
-		List<Event> events = eventService.getAll()
-				.stream().skip((page-1) * sizePage).limit(sizePage).collect(Collectors.toList());
-		return Response.ok(events).build();
+		Paginator paginator = new Paginator(eventService.getAll());
+		return Response.ok(paginator.getPage(page, sizePage)).build();
 	}
 
 	@GET
@@ -74,6 +73,32 @@ public class EventRest {
 		Event event = eventService.getById(idEvent);
 		if (event == null) return Response.status(Response.Status.NOT_FOUND).build();
 		return Response.ok(event).build();
+	}
+
+	@GET
+	@Path("/search/{word}/{page}/{sizePage}")
+	@Produces("application/json")
+	public Response searchPage(@PathParam("word") final String word, @PathParam("page") final int page, @PathParam("sizePage") final int sizePage) {
+		Paginator paginator = new Paginator(eventService.search(word));
+		if (paginator.getPage(page, sizePage).isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(paginator.getPage(page, sizePage)).build();
+	}
+
+	@GET
+	@Path("/search/{word}")
+	@Produces("application/json")
+	public Response search(@PathParam("word") final String word) {
+		List<Event> events = eventService.search(word);
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	@GET
+	@Path("/searchSize/{word}")
+	@Produces("application/json")
+	public Response searchSize(@PathParam("word") final String word) {
+		SizeClass size = new SizeClass(eventService.search(word).size());
+		return Response.ok(size).build();
 	}
 
 	@POST
