@@ -2,9 +2,9 @@
   <div class="row">
     <div class="custom-search-input">
       <div class="input-group col-md-12">
-      <input type="text" class="  search-query form-control" placeholder="{{'SEARCH' | translate}}" />
+      <input type="text" class="search-query form-control" ng-model="word" placeholder="{{'SEARCH' | translate}}" />
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
+          <button ng-click="searchEvents(word, 1)" class="btn btn-default" type="button">
             <span class=" glyphicon glyphicon-search"></span>
           </button>
         </span>
@@ -13,7 +13,11 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container" ng-if="showMsg">
+  <h4> No hay resultados para esta busqueda! </h4>
+</div>
+
+<div class="container" ng-if="!showMsg">
   <div class="row" style="display:flex; flex-wrap: wrap;">
     <div class="col-sm-12 col-md-4" ng-repeat="event in events">
       <div class="thumbnail eventPreview">
@@ -24,24 +28,49 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="pagination-centered">
-  <nav aria-label="Page navigation">
-    <ul class="pagination">
-      <li>
-        <a href aria-label="Previous" ng-if="actualPage > 1" ng-click="loadPage(actualPage - 1)">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li ng-class="{'active': activePage($index+1)}" ng-repeat="i in getPages(pages) track by $index">
-        <a  href ng-click="loadPage($index+1)">{{$index+1}}</a>
-      </li>
-      <li>
-        <a href aria-label="Next" ng-if="actualPage < pages" ng-click="loadPage(actualPage + 1)">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <div id="paginationAllEvents" ng-if="!searching">
+    <div class="pagination-centered" >
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li>
+            <a href aria-label="Previous" ng-if="actualPage > 1" ng-click="loadPage(actualPage - 1)">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li ng-class="{'active': activePage($index+1)}" ng-repeat="i in getPages(pages) track by $index">
+            <a  href ng-click="loadPage($index+1)">{{$index+1}}</a>
+          </li>
+          <li>
+            <a href aria-label="Next" ng-if="actualPage < pages" ng-click="loadPage(actualPage + 1)">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div id="paginationSearch" ng-if="searching">
+    <div class="pagination-centered">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li>
+            <a href aria-label="Previous" ng-if="actualPage > 1" ng-click="searchEvents(word, actualPage - 1)">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li ng-class="{'active': activePage($index+1)}" ng-repeat="i in getPages(pagesForSearch) track by $index">
+            <a  href ng-click="searchEvents(word, $index+1)">{{$index+1}}</a>
+          </li>
+          <li>
+            <a href aria-label="Next" ng-if="actualPage < pagesForSearch" ng-click="searchEvents(word, actualPage + 1)">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
 </div>

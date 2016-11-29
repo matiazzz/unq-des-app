@@ -5,9 +5,12 @@ import model.events.MusicEvent;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.HibernateCallback;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class EventDAO extends HibernateGenericDAO<Event> implements GenericRepository<Event> {
@@ -36,6 +39,20 @@ public class EventDAO extends HibernateGenericDAO<Event> implements GenericRepos
             public List<Event> doInHibernate(final Session session) throws HibernateException {
                 Criteria criteria = session.createCriteria(Event.class);
                 //TODO
+                return criteria.list();
+            }
+        });
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public List<Event> search(String word) {
+        return (List<Event>) this.getHibernateTemplate().execute(new HibernateCallback() {
+            @Override
+            public List<Event> doInHibernate(final Session session) throws HibernateException {
+                Criteria criteria = session.createCriteria(Event.class);
+                Criterion title = Restrictions.ilike("title", word, MatchMode.ANYWHERE);
+                Criterion description = Restrictions.ilike("description", word, MatchMode.ANYWHERE);
+                criteria.add(Restrictions.or(title, description));
                 return criteria.list();
             }
         });
