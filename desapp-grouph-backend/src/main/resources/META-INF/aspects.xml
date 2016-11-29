@@ -6,9 +6,7 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
 
-    <aop:aspectj-autoproxy/>
-
-    <bean id="EventRest" class="webservice.EventRest"/>
+    <aop:aspectj-autoproxy />
 
     <!--ASPECT-->
     <bean id="loggerSystem" class="webservice.logger.LoggerService"/>

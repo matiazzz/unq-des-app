@@ -1,7 +1,8 @@
 package webservice.logger;
 
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.BasicConfigurator;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -11,13 +12,13 @@ import org.aspectj.lang.annotation.Before;
 @Aspect
 public class LoggerService {
 
-    //private static Logger log = Logger.getLogger(LoggerService.class);
-    private static final Logger logger = LogManager.getLogger("HelloWorld");
+    public final static Logger log = Logger.getLogger(LoggerService.class);
 
-    //@Before("within(webservice.*Rest) && execution(public * *(..))")
-    @Before("execution(* webservice.EventRest.getMostPopular(..))")
-    public void before(JoinPoint jp){
-        logger.info("Hola");
+    @Before("execution(* service.*.*(..))")
+    public void before(){
+        log.info("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     }
+
+    public LoggerService(){PropertyConfigurator.configure("src/main/resources/log4j.properties");}
 
 }
