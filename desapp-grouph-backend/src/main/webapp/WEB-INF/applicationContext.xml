@@ -17,6 +17,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 	<import resource="classpath:META-INF/spring-persistence-context.xml" />
 	<import resource="classpath:META-INF/spring-services-context.xml" />
+	<import resource="classpath:META-INF/aspects.xml" />
 
 	<!-- <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" /> 
 

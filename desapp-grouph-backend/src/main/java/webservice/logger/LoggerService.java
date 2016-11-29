@@ -18,9 +18,13 @@ public class LoggerService {
 
     @Before("execution(* webservice.*.*(..))")
     public void before(JoinPoint jp){
-        log.info("Service: " + jp.getSignature().getName() + " Argsuments: " + jp.getArgs());
+        log.info("Service: " + jp.getSignature().getName() + " Arguments: ");
+        Object[] args = jp.getArgs();
+        for(Object arg: args){
+            log.info(arg);
+        }
     }
 
-    public LoggerService(){PropertyConfigurator.configure("src/main/resources/log4j.properties");}
+    //public LoggerService(){PropertyConfigurator.configure("src/main/resources/log4j.properties");}
 
 }
