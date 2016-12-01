@@ -2,6 +2,7 @@ package model.users;
 
 import model.events.Event;
 import model.events.EventData;
+import model.events.Events;
 import model.plannings.Couple;
 import model.plannings.Individual;
 import model.plannings.Planning;
@@ -31,11 +32,10 @@ public class User extends model.Entity {
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private List<User> friends = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-    private List<Event> events = new ArrayList<>();
-    //@ManyToMany(fetch = FetchType.EAGER)
-    //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    @Column(length = 10000)
+    private Events myEvents = new Events();
+    @Transient
+    private Events going = new Events();
     @Transient
     private List<Planning> plannings = new ArrayList<>();
     @OneToMany(fetch = FetchType.EAGER)
@@ -57,7 +57,7 @@ public class User extends model.Entity {
 
     public Event createEvent(EventData eventData){
         Event event = new Event(eventData);
-        events.add(event);
+        myEvents.add(event);
         return event;
     }
 
@@ -169,10 +169,6 @@ public class User extends model.Entity {
         this.profile = profile;
     }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
     public void setPlannings(List<Planning> plannings) {
         this.plannings = plannings;
     }
@@ -213,11 +209,35 @@ public class User extends model.Entity {
         return userName;
     }
 
-    public List<Event> getEvents() {
-        return events;
+    public Events getEvents() {
+        return myEvents;
     }
 
     public boolean possiblyLikes(Event event) {
         return event.getType().possiblyLikes(getProfile());
+    }
+
+    public void addEvent(Event event){
+        this.myEvents.add(event);
+    }
+
+    public void addGoingEvent(Event event) {
+        this.going.add(event);
+    }
+
+    public Events getMyEvents() {
+        return myEvents;
+    }
+
+    public void setMyEvents(Events myEvents) {
+        this.myEvents = myEvents;
+    }
+
+    public Events getGoing() {
+        return going;
+    }
+
+    public void setGoing(Events going) {
+        this.going = going;
     }
 }

@@ -13,7 +13,9 @@ import service.GeneralService;
 
 import static model.builders.EventBuilder.anyEvent;
 import static model.builders.UserBuilder.anyUser;
+import static model.users.FoodType.ITALIAN;
 import static model.users.FoodType.PIZZA;
+import static model.users.MovieGenre.ACTION;
 import static model.users.MovieGenre.HORROR;
 import static model.users.MusicalGenre.*;
 
@@ -45,11 +47,22 @@ public class AppData {
 
         Profile profile = new Profile();
         profile.addFoodType(PIZZA);
+        profile.addFoodType(ITALIAN);
         profile.addMusicalGenre(ROCK);
+        profile.addMusicalGenre(JAZZ);
         profile.addMovieGenre(HORROR);
-        User user = anyUser().withProfile(profile).build();
+        profile.addMovieGenre(ACTION);
+        User user1 = anyUser().withProfile(profile).build();
+        User user2 = anyUser()
+                .withUserName("mz.matiazzz")
+                .withName("Matias")
+                .withLastName("Z")
+                .with(new LocalDate(1986, 12, 3))
+                .with(user1)
+                .withProfile(profile).build();
 
-        generalService.getUserService().save(user);
+        generalService.getUserService().save(user1);
+        generalService.getUserService().save(user2);
         generalService.getEventService().save(event1);
         generalService.getEventService().save(event2);
         generalService.getEventService().save(event3);

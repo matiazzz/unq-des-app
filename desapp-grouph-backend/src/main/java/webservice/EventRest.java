@@ -4,9 +4,11 @@ import model.events.Event;
 import model.events.MusicEvent;
 import model.events.Place;
 import model.users.MusicalGenre;
+import model.users.User;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import service.EventService;
+import service.UserService;
 import webservice.dtos.SizeClass;
 
 import javax.ws.rs.*;
@@ -22,6 +24,7 @@ import static model.builders.EventBuilder.anyEvent;
 public class EventRest {
 
 	private EventService eventService;
+	private UserService userService;
 
 	@GET
 	@Path("/mostPopular")
@@ -104,7 +107,8 @@ public class EventRest {
 	@POST
 	@Path("/newEvent")
 	@Produces("application/json")
-	public Response createEvent(@FormParam("title") String title,
+	public Response createEvent(@FormParam("username") String username,
+								@FormParam("title") String title,
 								@FormParam("description") String description,
 								@FormParam("imgUrl") String imgUrl,
 								@FormParam("day") int day,
@@ -127,11 +131,38 @@ public class EventRest {
 				.withPrice(price)
 				.withPlace(new Place(placeName, placeAddress))
 				.build();
-		eventService.save(event);
+
+		try {
+			User user = userService.findByUserName(username);
+			user.addEvent(event);
+			eventService.save(event);
+			userService.update(user);
+		}
+		catch (Exception e){
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+		return Response.ok().build();
+	}
+
+	@POST
+	@Path("/attend")
+	@Produces("application/json")
+	public Response attendToEvent(@FormParam("username") String username, @FormParam("idEvent") int idEvent) {
+
+			User user = userService.findByUserName(username);
+			Event event = eventService.getById(idEvent);
+			event.addAttendee(user);
+			eventService.update(event);
+			userService.update(user);
+
+
 		return Response.ok().build();
 	}
 
 	public void setEventService(EventService eventService) {
 		this.eventService = eventService;
+	}
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 }

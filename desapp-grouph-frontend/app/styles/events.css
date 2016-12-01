@@ -79,6 +79,16 @@ D8DEDD
   width: 100%;
   height: 200px;
 }
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.img-event-min {
+  display: block;
+  width: 100%;
+  height: 130px;
+}
+
 .img-responsive,
 .img-detail {
   display: block;

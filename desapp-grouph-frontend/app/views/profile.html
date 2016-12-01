@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row clearfix well">
+		<div class="col-md-2 column">
+			<img class="img-thumbnail" alt="140x140" src="http://lorempixel.com/140/140/" />
+		</div>
+		<div class="col-md-8 column">
+			<blockquote>
+				<p> {{user.name}} {{user.lastName}} </p>
+        <small>{{user.userName}}</small>
+			</blockquote>
+		</div>
+		<div class="col-md-2 column">
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="tabbable" id="tabs-444468">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a class="pointer" data-target="#about-tab" data-toggle="tab">Sobre mi</a>
+					</li>
+					<li>
+						<a class="pointer" data-target="#events-tab" data-toggle="tab">Eventos</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="about-tab">
+					  <div class="row clearfix">
+              <div class="col-md-6 column">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                      	Sobre mi
+                      </th>
+                      <th>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> Nombre </td>
+                      <td>{{user.name}} {{user.lastName}}</td>
+                    </tr>
+                    <tr>
+                      <td> Username </td>
+                      <td>{{user.userName}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-6 column">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                      	Mis gustos
+                      </th>
+                      <th>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+
+                <h4 class="text-center">Música</4>
+                <div class="row">
+                  <div ng-repeat="tag in user.profile.musicalGenres" class="col-md-2">
+                      <h5><span class="label label-default myLabel">{{tag}}</span></h5>
+                  </div>
+                </div>
+                <hr/>
+                <h4 class="text-center">Cine</4>
+                <div class="row">
+                  <div ng-repeat="tag in user.profile.movieGenres" class="col-md-2">
+                      <h5><span class="label label-default myLabel">{{tag}}</span></h5>
+                  </div>
+                </div>
+                <hr/>
+                <h4 class="text-center">Comida</4>
+                <div class="row">
+                  <div ng-repeat="tag in user.profile.musicalGenres" class="col-md-2">
+                      <h5><span class="label label-default myLabel">{{tag}}</span></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+					</div>
+
+					<div class="tab-pane" id="events-tab">
+
+					<div class="col-md-12 column">
+					  <h3 class="margin-label"><span class="label label-default col-sm-12 margin-label">Mis eventos</span></h3>
+
+            <div ng-if="! hasEvents">
+              <h4 class="text-center">No tienes eventos. </h4>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-4" ng-repeat="event in user.myEvents.events">
+                <div class="thumbnail eventPreview">
+                  <img ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)" class="img-event-min" ng-src="{{event.urlImg}}" alt="...">
+                  <div class="caption">
+                    <h4 ng-controller="SearchEventCtrl" ng-click="showEventDetail(event.id)">{{event.title}}</h4>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+					</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

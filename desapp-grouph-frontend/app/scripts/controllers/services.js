@@ -1,7 +1,7 @@
 'use strict';
 
-var url = 'https://unq-des-app.herokuapp.com/rest/';
-//var url = 'http://localhost:8080/rest/';
+//var url = 'https://unq-des-app.herokuapp.com/rest/';
+var url = 'http://localhost:8080/rest/';
 
 angular.module('desappGrouphFrontendApp')
 .controller('UserService', function($scope, $http) {
@@ -66,11 +66,13 @@ angular.module('desappGrouphFrontendApp')
                     url: url + 'event/search/' + word + '/' + page + '/' + sizePage
                 });
             },
-            newEvent: function (title, description, imgUrl, date, time, price, place) {
+            newEvent: function (username, title, description, imgUrl, date, time, price, place) {
                 return $http({
                     method: 'post',
                     url: url + 'event/newEvent/',
-                    data: $.param({title: title,
+                    data: $.param({
+                      username: username,
+                      title: title,
                       description: description,
                       imgUrl: imgUrl,
                       day: date.getUTCDate(),
@@ -81,6 +83,18 @@ angular.module('desappGrouphFrontendApp')
                       price: price,
                       placeName: place.name,
                       placeAddress: place.address
+                    }),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
+            }
+            ,
+            attend: function (username, idEvent) {
+                return $http({
+                    method: 'post',
+                    url: url + 'event/attend',
+                    data: $.param({
+                      username: username,
+                      idEvent: idEvent
                     }),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });

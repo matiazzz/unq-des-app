@@ -56,10 +56,12 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	
 	<bean id="eventRest" class="webservice.EventRest">
 		<property name="eventService" ref="service.event" />
+		<property name="userService" ref="service.user" />
 	</bean>
 
 	<bean id="userRest" class="webservice.UserRest">
 		<property name="userService" ref="service.user" />
+		<property name="eventService" ref="service.event" />
 	</bean>
 
 	<bean id="initData" class="appdata.AppData" init-method="initData">

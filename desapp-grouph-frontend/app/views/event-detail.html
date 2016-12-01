@@ -6,6 +6,15 @@
 <div class="modal-body" id="modal-body">
   <img class="img-detail" ng-src="{{event.urlImg}}" alt="...">
 </div>
+
+<div class="modal-body">
+  <div >
+    <button type="button" class="btn btn-default pull-right" ng-click="attend()">Asistiré</button>
+  </div>
+</div>
+
+<hr/>
+
 <div class="modal-body" id="modal-body">
 
   <md-content>
@@ -31,6 +40,28 @@
           <h3> {{event.place.name}} </h3>
           <h4> {{event.place.address}} </h4>
           <map center='{{event.place.address}}'/>
+        </md-content>
+      </md-tab>
+      <md-tab label="{{attendees}} asistires">
+        <md-content class="md-padding">
+
+
+          <div class="container" style="margin-top:20px;">
+
+            <div class="row">
+              <div class="col-sm-12 col-md-4" ng-repeat="user in event.attendees">
+                <div class="media">
+                  <a href="#/profile/{{user.userName}}" ng-click="close()" class="pull-left">
+                    <img alt="64x64" data-src="holder.js/64x64" class="media-object img-thumbnail" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">
+                  </a>
+                  <div class="media-body">
+                    <h4 class="media-heading"><a ng-click="close()" href="#/profile/{{user.userName}}">{{user.userName}}</a></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </md-content>
       </md-tab>
     </md-tabs>

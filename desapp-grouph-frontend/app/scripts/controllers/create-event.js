@@ -1,20 +1,19 @@
 'use strict';
 
 angular.module('desappGrouphFrontendApp')
-.controller('CreateEventCtrl', function ($scope, $location, eventServices) {
+.controller('CreateEventCtrl', function ($scope, $location, eventServices, loggedUser) {
 
   $scope.alerts = {success:[], errors: []};
   $scope.event = {title:'', description:'', imgUrl:'', price: 0, place: { name: '', address: ''} };
 
   $scope.selectEventType = function(eventType) {
-    console.log(eventType);
     $location.path('/create-event');
   };
 
   $scope.createEvent = function() {
     //console.log($scope.dt.getUTCDate(), $scope.dt.getMonth()+1, $scope.dt.getFullYear(), $scope.mytime.getHours(), $scope.mytime.getMinutes());
 
-    eventServices.newEvent($scope.event.title, $scope.event.description, $scope.event.imgUrl, $scope.dt, $scope.mytime, $scope.event.price, $scope.event.place)
+    eventServices.newEvent(loggedUser.getUsername(), $scope.event.title, $scope.event.description, $scope.event.imgUrl, $scope.dt, $scope.mytime, $scope.event.price, $scope.event.place)
     .then(
       function (response) {
         $scope.alerts.success = [1];

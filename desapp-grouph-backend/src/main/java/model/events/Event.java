@@ -27,6 +27,8 @@ public class Event extends model.Entity {
     private int duration;
     private String urlImg;
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private Set<User> attendees = new HashSet<>();
     @Column(length = 10000)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
@@ -50,6 +52,7 @@ public class Event extends model.Entity {
 
     public void addAttendee(User user){
         attendees.add(user);
+        user.addGoingEvent(this);
     }
 
     public boolean isActive(){
@@ -107,5 +110,9 @@ public class Event extends model.Entity {
 
     public int getDuration() {
         return duration;
+    }
+
+    public Set<User> getAttendees() {
+        return attendees;
     }
 }

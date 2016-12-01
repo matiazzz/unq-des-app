@@ -1,8 +1,11 @@
 package webservice;
 
+import model.events.Event;
 import model.users.Profile;
 import model.users.User;
 import static model.builders.UserBuilder.*;
+
+import service.EventService;
 import service.UserService;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import javax.ws.rs.core.Response;
 public class UserRest {
 
     private UserService userService;
+    private EventService eventService;
 
     @GET
     @Path("/getByName/{name}")
@@ -80,5 +84,9 @@ public class UserRest {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public void setEventService(EventService eventService) {
+        this.eventService = eventService;
     }
 }

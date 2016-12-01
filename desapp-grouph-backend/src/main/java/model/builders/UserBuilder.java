@@ -1,5 +1,6 @@
 package model.builders;
 
+import model.events.Events;
 import model.users.Invitation;
 import model.events.Event;
 import model.users.Profile;
@@ -19,19 +20,20 @@ public class UserBuilder {
     private String userName;
     private List<User> friends;
     private Profile profile;
-    private List<Event> events;
+    private Events events;
+    private Events going;
     private List<Planning> plannings;
     private List<Invitation> invitations;
 
     public UserBuilder(){
-        this.id = 0;
         this.name = "NAME";
         this.lastName = "LASTNAME";
         this.birthday = LocalDate.now();
         this.userName = "USERNAME";
         this.profile = anyProfile().build();
         this.friends = new ArrayList<>();
-        this.events = new ArrayList<>();
+        this.events = new Events();
+        this.going = new Events();
         this.plannings = new ArrayList<>();
         this.invitations = new ArrayList<>();
     }
@@ -43,7 +45,7 @@ public class UserBuilder {
     public User build(){
         User user = new User();
         user.setBirthday(this.birthday);
-        user.setEvents(this.events);
+        user.setMyEvents(this.events);
         user.setFriends(this.friends);
         user.setInvitations(this.invitations);
         user.setName(this.name);
@@ -51,6 +53,7 @@ public class UserBuilder {
         user.setLastName(this.lastName);
         user.setProfile(this.profile);
         user.setPlannings(plannings);
+        user.setGoing(this.going);
         return user;
     }
 

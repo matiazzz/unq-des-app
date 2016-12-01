@@ -52,6 +52,14 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'loginCtrl'
       })
+      .when('/profile/:username', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profileCtrl'
+      })
+      .when('/pagenotfound', {
+        templateUrl: '404.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
