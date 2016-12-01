@@ -8,14 +8,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.reflections.ReflectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Map;
+import java.util.Set;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -48,15 +52,27 @@ public class MappingTest {
             Class classObject = Class.forName(entityName);
             Method build = classBuilder.getMethod("build");
             Object objectToPersist = build.invoke(classBuilder.newInstance());
-
+            Method getId = classObject.getMethod("getId");
+            
             try {
                 session.save(classObject.cast(objectToPersist));
+                int id = (int) getId.invoke(objectToPersist);
+                Object persisted = session.get(classObject, id);
+
+                for (Method getter : getAllGetters(classObject)) {
+                    assertEquals(getter.invoke(persisted), getter.invoke(objectToPersist));
+                }
 
             } catch (HibernateException e) {
                 allOk = false;
             }
         }
         assertTrue(allOk);
+    }
+
+    private Set<Method> getAllGetters(Class aClass){
+        return ReflectionUtils.getAllMethods(aClass,
+                ReflectionUtils.withModifier(Modifier.PUBLIC), ReflectionUtils.withPrefix("get"));
     }
 
     private String getClassName(String entity){

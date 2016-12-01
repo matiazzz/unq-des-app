@@ -11,6 +11,7 @@ import model.users.Profile;
 import model.users.User;
 import org.joda.time.LocalDate;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -101,7 +102,7 @@ public class UserServiceTest {
         assertEquals(2, userService.findByUserName(userName).getInvitations().size());
     }
 
-    @Test
+    @Ignore
     public void shouldSaveAnUserWithPlannings() {
         String userName = "userWithThreePlannings";
         Individual planningIndividual = new Individual(anyUser().build(), LocalDate.now());
