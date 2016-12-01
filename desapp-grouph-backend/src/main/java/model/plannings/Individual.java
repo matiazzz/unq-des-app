@@ -5,8 +5,6 @@ import org.joda.time.LocalDate;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="Individual")
 public class Individual extends Planning {
 
     public Individual() {}
@@ -20,4 +18,6 @@ public class Individual extends Planning {
     public void addUser(User user) {
         // Is empty because an individual planning has only a user, the owner.
     }
+
+
 }

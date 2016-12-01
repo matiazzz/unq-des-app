@@ -1,7 +1,5 @@
 package model.events;
 
-import model.Entity;
-
 import javax.persistence.Table;
 
 @javax.persistence.Entity

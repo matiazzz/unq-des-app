@@ -43,4 +43,12 @@ public class FoodEvent extends EventType {
                 ||
                 profile.likeManyFoodTypes();
     }
+
+    public List<FoodType> getFoodTypes() {
+        return foodTypes;
+    }
+
+    public void setFoodTypes(List<FoodType> foodTypes) {
+        this.foodTypes = foodTypes;
+    }
 }

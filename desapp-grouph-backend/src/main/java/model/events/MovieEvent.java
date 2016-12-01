@@ -43,4 +43,8 @@ public class MovieEvent extends EventType {
                 ||
                 profile.likeManyMovieGenres();
     }
+
+    public void setGenres(List<MovieGenre> genres) {
+        this.genres = genres;
+    }
 }

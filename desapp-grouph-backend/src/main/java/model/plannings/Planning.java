@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 public abstract class Planning extends model.Entity {
     @Column(length = 10000)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
@@ -21,4 +20,17 @@ public abstract class Planning extends model.Entity {
     protected List<Event> events = new ArrayList<>();
 
     public abstract void addUser(User user);
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
 }

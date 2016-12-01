@@ -7,8 +7,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="WithFriends")
 public class WithFriends extends Planning {
 
     @OneToMany(fetch = FetchType.EAGER)
@@ -24,5 +22,9 @@ public class WithFriends extends Planning {
     @Override
     public void addUser(User user) {
         this.friends.add(user);
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
     }
 }

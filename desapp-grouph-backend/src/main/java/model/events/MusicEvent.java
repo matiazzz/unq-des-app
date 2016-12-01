@@ -44,4 +44,8 @@ public class MusicEvent extends EventType {
                 ||
                 profile.likeManyMusicalGenres();
     }
+
+    public void setGenres(List<MusicalGenre> genres) {
+        this.genres = genres;
+    }
 }

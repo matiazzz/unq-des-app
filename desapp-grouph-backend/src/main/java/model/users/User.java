@@ -34,8 +34,9 @@ public class User extends model.Entity {
     @ManyToMany(fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private List<Event> events = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    //@ManyToMany(fetch = FetchType.EAGER)
+    //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    @Transient
     private List<Planning> plannings = new ArrayList<>();
     @OneToMany(fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})

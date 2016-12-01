@@ -9,8 +9,6 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Couple")
 public class Couple extends Planning {
 
     @Column(length = 10000)
