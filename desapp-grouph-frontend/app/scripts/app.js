@@ -57,6 +57,11 @@ angular
         controller: 'ProfileCtrl',
         controllerAs: 'profileCtrl'
       })
+      .when('/create-user', {
+        templateUrl: 'views/create-user.html',
+        controller: 'CreateUserCtrl',
+        controllerAs: 'createUserCtrl'
+      })
       .when('/pagenotfound', {
         templateUrl: '404.html'
       })

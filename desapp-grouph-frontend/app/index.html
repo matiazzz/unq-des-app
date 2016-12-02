@@ -51,11 +51,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-center">
               <li>
-                <form class="navbar-form" role="search">
+                <form ng-controller="SearchEventCtrl" class="navbar-form" role="search">
                   <div class="form-group">
-                    <input type="text" class="form-control" translate translate-attr-placeholder="SEARCH">
+                    <input type="text" class="form-control" ng-model="word" translate translate-attr-placeholder="SEARCH">
                   </div>
-                  <button type="submit" class="btn btn-default" translate="SEARCH"></button>
+                  <button ng-class="{'disabled' : !enableSearch()}" ng-click="searchEvents(1)" type="submit" class="btn btn-default" translate="SEARCH"></button>
                 </form>
               </li>
             </ul>
@@ -152,6 +152,7 @@
         <script src="scripts/controllers/create-event.js"></script>
         <script src="scripts/controllers/header.js"></script>
         <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/create-user.js"></script>
         <script src="scripts/apprun.js"></script>
         <!-- endbuild -->
 </body>

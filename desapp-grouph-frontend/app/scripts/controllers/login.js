@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('desappGrouphFrontendApp')
-.controller( 'LoginCtrl', function ($scope, authService, loggedUser) {
+.controller( 'LoginCtrl', function ($scope, $rootScope, authService, loggedUser) {
 
   $scope.authService = authService;
+  $scope.existsUser = false;
 
   authService.getProfileDeferred().then(function (profile) {
     $scope.profile = profile;
     loggedUser.setUsername(profile.nickname);
   });
-
 });
 
 

@@ -6,6 +6,7 @@ angular.module('desappGrouphFrontendApp')
     $scope.eventsPerPage = 9;
     $scope.showMsg = false;
     $scope.searching = false;
+    $scope.word = "";
 
     eventServices.getSize().then(
       function (response) {
@@ -15,6 +16,10 @@ angular.module('desappGrouphFrontendApp')
         console.log(error);
       }
     );
+
+    $scope.enableSearch = function() {
+      return $scope.word != "";
+    };
 
     function calculatePages(items, itemsPerPage) {
       if ((items / itemsPerPage) > 0) {
@@ -38,8 +43,8 @@ angular.module('desappGrouphFrontendApp')
       );
     };
 
-    $scope.searchEvents = function(word, page) {
-      eventServices.searchSize(word).then(
+    $scope.searchEvents = function(page) {
+      eventServices.searchSize($scope.word).then(
         function (response) {
           $scope.pagesForSearch = calculatePages(response.data.size, $scope.eventsPerPage);
         },
@@ -47,14 +52,14 @@ angular.module('desappGrouphFrontendApp')
           console.log(error);
         }
       );
-      eventServices.search(word, page, $scope.eventsPerPage).then(
+      eventServices.search($scope.word, page, $scope.eventsPerPage).then(
         function (response) {
           $scope.events = response.data;
           $scope.actualPage = page;
           $scope.searching = true;
           $scope.showMsg = false;
         },
-        function (error) {  
+        function (error) {
           $scope.showMsg = true;
         }
       );

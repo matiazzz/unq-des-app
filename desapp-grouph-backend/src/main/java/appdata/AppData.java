@@ -11,6 +11,8 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import service.GeneralService;
 
+import javax.xml.transform.stream.StreamResult;
+
 import static model.builders.EventBuilder.anyEvent;
 import static model.builders.UserBuilder.anyUser;
 import static model.users.FoodType.ITALIAN;
@@ -67,11 +69,12 @@ public class AppData {
         generalService.getEventService().save(event2);
         generalService.getEventService().save(event3);
 
-        for(int i=0; i<20; i++){
-            Event event = anyEvent().withTitle("Event" + i).build();
+        XMLParser xmlparser = new XMLParser();
+        xmlparser.parseEvents("/desapp-grouph-backend/src/main/resources/events.xml");
+
+        for (Event event: xmlparser.events) {
             generalService.getEventService().save(event);
         }
-
 
     }
 

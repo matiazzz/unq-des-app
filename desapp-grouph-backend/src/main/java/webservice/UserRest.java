@@ -7,6 +7,8 @@ import static model.builders.UserBuilder.*;
 
 import service.EventService;
 import service.UserService;
+import webservice.dtos.SimpleBool;
+
 import java.util.List;
 
 import javax.ws.rs.*;
@@ -70,6 +72,19 @@ public class UserRest {
         }
         catch (Exception e){
             return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
+    @GET
+    @Path("/exists/{username}")
+    @Produces("application/json")
+    public Response existsUser(@PathParam("username") final String username) {
+        try {
+            User user = userService.findByUserName(username);
+            return Response.ok(new SimpleBool(true)).build();
+        }
+        catch (Exception e){
+            return Response.ok(new SimpleBool(false)).build();
         }
     }
 

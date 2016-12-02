@@ -1,7 +1,7 @@
 'use strict';
 
-//var url = 'https://unq-des-app.herokuapp.com/rest/';
-var url = 'http://localhost:8080/rest/';
+var url = 'https://unq-des-app.herokuapp.com/rest/';
+//var url = 'http://localhost:8080/rest/';
 
 angular.module('desappGrouphFrontendApp')
 .controller('UserService', function($scope, $http) {
@@ -122,6 +122,12 @@ angular.module('desappGrouphFrontendApp')
                 return $http({
                     method: 'get',
                     url: url + 'user/getByUsername/' + username
+                });
+            },
+            exists: function (username) {
+                return $http({
+                    method: 'get',
+                    url: url + 'user/exists/' + username
                 });
             }
         };

@@ -7,8 +7,8 @@
   <img class="img-detail" ng-src="{{event.urlImg}}" alt="...">
 </div>
 
-<div class="modal-body">
-  <div >
+<div class="modal-body" ng-if="isAuthenticated">
+  <div>
     <button type="button" class="btn btn-default pull-right" ng-click="attend()">Asistiré</button>
   </div>
 </div>
@@ -21,7 +21,7 @@
     <md-tabs md-dynamic-height="" md-border-bottom="">
       <md-tab label="{{'description' | translate}}">
         <md-content class="md-padding">
-          <p> {{event.description}} </p>
+          <div ng-bind-html="event.description"></div>
         </md-content>
       </md-tab>
       <md-tab label="{{'price' | translate}}">

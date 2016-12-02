@@ -4,7 +4,7 @@
       <div class="input-group col-md-12">
       <input type="text" class="search-query form-control" ng-model="word" placeholder="{{'SEARCH' | translate}}" />
         <span class="input-group-btn">
-          <button ng-click="searchEvents(word, 1)" class="btn btn-default" type="button">
+          <button ng-class="{'disabled' : !enableSearch()}" ng-click="searchEvents(1)" class="btn btn-default" type="button">
             <span class=" glyphicon glyphicon-search"></span>
           </button>
         </span>
