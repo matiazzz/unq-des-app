@@ -2,7 +2,6 @@ package model.events;
 
 import model.users.Profile;
 
-import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 

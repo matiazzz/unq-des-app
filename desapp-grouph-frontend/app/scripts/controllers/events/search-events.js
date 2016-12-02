@@ -1,12 +1,21 @@
 'use strict';
 
 angular.module('desappGrouphFrontendApp')
-  .controller('SearchEventCtrl', function ($scope, $uibModal, eventServices) {
+  .controller('SearchEventCtrl', function ($scope, eventServices) {
 
     $scope.eventsPerPage = 9;
     $scope.showMsg = false;
     $scope.searching = false;
-    $scope.word = "";
+    $scope.word = '';
+
+    function calculatePages(items, itemsPerPage) {
+      if ((items / itemsPerPage) > 0) {
+        return parseInt(items / itemsPerPage + 1);
+      }
+      else {
+        return parseInt(items / itemsPerPage);
+      }
+    }
 
     eventServices.getSize().then(
       function (response) {
@@ -18,17 +27,8 @@ angular.module('desappGrouphFrontendApp')
     );
 
     $scope.enableSearch = function() {
-      return $scope.word != "";
+      return $scope.word != '';
     };
-
-    function calculatePages(items, itemsPerPage) {
-      if ((items / itemsPerPage) > 0) {
-        return parseInt(items / itemsPerPage + 1);
-      }
-      else {
-        return parseInt(items / itemsPerPage);
-      }
-    }
 
     $scope.loadPage = function(page){
       eventServices.getPage(page, $scope.eventsPerPage).then(
@@ -67,19 +67,6 @@ angular.module('desappGrouphFrontendApp')
 
     $scope.activePage = function(page) {
       return $scope.actualPage === page;
-    };
-
-    $scope.showEventDetail = function(idEvent) {
-      $uibModal.open({
-        templateUrl: 'views/event-detail.html',
-        controller: 'eventDetailCtrl',
-        size: 'lg',
-        resolve: {
-          idEvent: function () {
-              return idEvent;
-            }
-        }
-      });
     };
 
     $scope.getPages = function(pages) {

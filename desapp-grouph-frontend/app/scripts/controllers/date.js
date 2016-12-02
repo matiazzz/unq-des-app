@@ -43,8 +43,4 @@ angular.module('desappGrouphFrontendApp').controller('DateTimeCtrl', function ($
     $scope.mytime = d;
   };
 
-  $scope.changed = function () {
-    $log.log('Time changed to: ' + $scope.mytime);
-  };
-
 });

@@ -1,9 +1,7 @@
 package webservice;
 
 import model.events.Event;
-import model.events.MusicEvent;
 import model.events.Place;
-import model.users.MusicalGenre;
 import model.users.User;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
@@ -13,10 +11,7 @@ import webservice.dtos.SizeClass;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import static model.builders.EventBuilder.anyEvent;
 

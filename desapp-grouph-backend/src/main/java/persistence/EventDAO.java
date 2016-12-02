@@ -1,7 +1,6 @@
 package persistence;
 
 import model.events.Event;
-import model.events.MusicEvent;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -9,8 +8,6 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.HibernateCallback;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class EventDAO extends HibernateGenericDAO<Event> implements GenericRepository<Event> {

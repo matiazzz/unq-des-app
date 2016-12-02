@@ -6,8 +6,6 @@ import org.hibernate.annotations.CascadeType;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 public class Couple extends Planning {
 

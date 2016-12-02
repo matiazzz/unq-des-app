@@ -1,8 +1,5 @@
 package persistence;
 
-import model.users.Profile;
-import model.users.User;
-
 import java.io.Serializable;
 import java.util.List;
 

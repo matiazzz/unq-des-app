@@ -3,8 +3,6 @@ package model.plannings;
 import model.users.User;
 import org.joda.time.LocalDate;
 
-import javax.persistence.*;
-
 public class Individual extends Planning {
 
     public Individual() {}

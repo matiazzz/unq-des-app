@@ -4,16 +4,12 @@ import model.events.Event;
 import model.events.EventData;
 import model.events.MusicEvent;
 import model.events.Place;
-import model.users.MovieGenre;
 import model.users.Profile;
 import model.users.User;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import service.GeneralService;
 
-import javax.xml.transform.stream.StreamResult;
-
-import static model.builders.EventBuilder.anyEvent;
 import static model.builders.UserBuilder.anyUser;
 import static model.users.FoodType.ITALIAN;
 import static model.users.FoodType.PIZZA;
@@ -72,7 +68,7 @@ public class AppData {
         XMLParser xmlparser = new XMLParser();
         xmlparser.parseEvents("/desapp-grouph-backend/src/main/resources/events.xml");
 
-        for (Event event: xmlparser.events) {
+        for (Event event : xmlparser.events) {
             generalService.getEventService().save(event);
         }
 

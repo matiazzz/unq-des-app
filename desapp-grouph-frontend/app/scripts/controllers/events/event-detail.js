@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('desappGrouphFrontendApp')
-.controller('eventDetailCtrl', function ($scope, $uibModalInstance, eventServices, idEvent, loggedUser) {
+.controller('EventDetailCtrl', function ($scope, $uibModalInstance, eventServices, idEvent, loggedUser) {
 
   function getEvent(idEvent) {
     eventServices.get(idEvent).then(

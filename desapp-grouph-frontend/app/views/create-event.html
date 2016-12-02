@@ -1,7 +1,18 @@
 <div class="messagealert" ng-repeat="alert in alerts.success">
-  <div class="alert alert-success alert-dismissible">
+  <div class="alert alert-success alert-dismissible superposition">
     <a href class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Se creó un nuevo evento.</strong> Ver <a href="#" class="alert-link">mis eventos</a>.
+    <div class="text-center">
+      <strong>Se creó un nuevo evento.</strong></a>.
+    </div>
+  </div>
+</div>
+
+<div class="messagealert" ng-repeat="alert in alerts.errors">
+  <div class="alert alert-danger alert-dismissible superposition">
+    <a href class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div class="text-center">
+      <strong>Ocurrió un error al intentar crear el evento.</strong></a>.
+    </div>
   </div>
 </div>
 

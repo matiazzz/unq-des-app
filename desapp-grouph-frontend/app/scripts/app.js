@@ -31,8 +31,8 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/events.html',
-        controller: 'EventService',
-        controllerAs: 'events'
+        controller: 'EventsMainCtrl',
+        controllerAs: 'eventsMain'
       })
       .when('/search-events', {
         templateUrl: 'views/search-events.html',

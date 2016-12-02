@@ -1,12 +1,7 @@
 package model.events;
 
-import model.users.FoodType;
-import model.users.MovieGenre;
-import model.users.MusicalGenre;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
-
-import java.util.List;
 
 public class EventData {
 

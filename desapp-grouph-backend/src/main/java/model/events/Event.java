@@ -115,4 +115,5 @@ public class Event extends model.Entity {
     public Set<User> getAttendees() {
         return attendees;
     }
+
 }

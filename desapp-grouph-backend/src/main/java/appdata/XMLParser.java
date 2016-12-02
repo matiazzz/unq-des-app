@@ -5,14 +5,12 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import model.events.Event;
-import org.aspectj.weaver.ast.Test;
 import org.joda.time.LocalDate;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
@@ -24,12 +22,16 @@ import static model.builders.EventBuilder.anyEvent;
 public class XMLParser {
 
     public List<Event> events = new ArrayList<>();
-    String title = "";
-    String descripcion = "";
-    String fecha = "";
-    String hora = "";
-    String minutos = "";
-    String imagen = "";
+    private String title = "";
+    private String descripcion = "";
+    private String fecha = "";
+    private String hora = "";
+    private String minutos = "";
+    private String imagen = "";
+
+    private boolean dataIsOk() {
+        return !fecha.equals("");
+    }
 
     public void parseEvents(String filePath){
         try {
@@ -55,16 +57,14 @@ public class XMLParser {
                 }
 
                 public void endElement(String uri, String localName,  String qName) throws SAXException {
-                    if(qName.equalsIgnoreCase("item")){
-                        if(fecha != "") {
-                            Event event = anyEvent()
-                                    .withTitle(title)
-                                    .withDescription(descripcion)
-                                    .withDate(new LocalDate(fecha))
-                                    .withImgUrl("http://disfrutemosba.buenosaires.gob.ar/imagenes/imagegallery/"+imagen)
-                                    .build();
-                            events.add(event);
-                        }
+                    if(qName.equalsIgnoreCase("item") && dataIsOk()){
+                        Event event = anyEvent()
+                                .withTitle(title)
+                                .withDescription(descripcion)
+                                .withDate(new LocalDate(fecha))
+                                .withImgUrl("http://disfrutemosba.buenosaires.gob.ar/imagenes/imagegallery/"+imagen)
+                                .build();
+                        events.add(event);
                     }
                 }
 

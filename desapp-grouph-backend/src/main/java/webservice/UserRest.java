@@ -1,13 +1,11 @@
 package webservice;
 
-import model.events.Event;
 import model.users.Profile;
 import model.users.User;
 import static model.builders.UserBuilder.*;
 
 import service.EventService;
 import service.UserService;
-import webservice.dtos.SimpleBool;
 
 import java.util.List;
 
@@ -80,11 +78,11 @@ public class UserRest {
     @Produces("application/json")
     public Response existsUser(@PathParam("username") final String username) {
         try {
-            User user = userService.findByUserName(username);
-            return Response.ok(new SimpleBool(true)).build();
+            userService.findByUserName(username);
+            return Response.ok(true).build();
         }
         catch (Exception e){
-            return Response.ok(new SimpleBool(false)).build();
+            return Response.ok(false).build();
         }
     }
 
