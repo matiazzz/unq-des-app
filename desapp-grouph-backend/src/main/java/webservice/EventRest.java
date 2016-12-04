@@ -31,6 +31,51 @@ public class EventRest {
 	}
 
 	@GET
+	@Path("/getFreeEvents")
+	@Produces("application/json")
+	public Response getFreeEvents(){
+		List<Event> events = eventService.getFreeEvents();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	@GET
+	@Path("/getWithFriendsEvents")
+	@Produces("application/json")
+	public Response getWithFriendsEvents(){
+		List<Event> events = eventService.getWithFriendsEvents();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	@GET
+	@Path("/getTodayEvents")
+	@Produces("application/json")
+	public Response getTodayEvents(){
+		List<Event> events = eventService.getTodayEvents();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	@GET
+	@Path("/getWithCoupleEvents")
+	@Produces("application/json")
+	public Response getWithCoupleEvents(){
+		List<Event> events = eventService.getWithCoupleEvents();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	@GET
+	@Path("/getSuprisedMeEvents")
+	@Produces("application/json")
+	public Response getSuprisedMeEvents(){
+		List<Event> events = eventService.getSuprisedMeEvents();
+		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		return Response.ok(events).build();
+	}
+
+	@GET
 	@Path("/getAll")
 	@Produces("application/json")
 	public Response getAll() {

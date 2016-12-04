@@ -1,7 +1,7 @@
 'use strict';
 
-//var url = 'https://unq-des-app.herokuapp.com/rest/';
-var url = 'http://localhost:8080/rest/';
+var url = 'https://unq-des-app.herokuapp.com/rest/';
+//var url = 'http://localhost:8080/desapp-grouph-backend/rest/';
 
 angular.module('desappGrouphFrontendApp')
     .service('eventServices', function ($http) {
@@ -18,6 +18,38 @@ angular.module('desappGrouphFrontendApp')
                     url: url + 'event/' + idEvent
                 });
             },
+
+            getFreeEvents: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/getFreeEvents'
+                });
+            },
+            getWithFriendsEvents: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/getWithFriendsEvents'
+                });
+            },
+            getTodayEvents: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/getTodayEvents'
+                });
+            },
+            getWithCoupleEvents: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/getWithCoupleEvents'
+                });
+            },
+            getSuprisedMeEvents: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'event/getSuprisedMeEvents'
+                });
+            },
+
             getMostPopulars: function (idEvent) {
                 return $http({
                     method: 'get',

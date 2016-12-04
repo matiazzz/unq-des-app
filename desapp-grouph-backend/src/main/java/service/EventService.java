@@ -44,5 +44,19 @@ public class EventService extends GenericService<Event> {
         return eventDAO.search(word);
     }
 
+    @Transactional
+    public List<Event> getFreeEvents() { return eventDAO.getFreeEvents(); }
+
+    @Transactional
+    public List<Event> getWithFriendsEvents() { return eventDAO.getWithFriendsEvents(); }
+
+    @Transactional
+    public List<Event> getTodayEvents() { return eventDAO.getTodayEvents(); }
+
+    @Transactional
+    public List<Event> getWithCoupleEvents() { return eventDAO.getWithCoupleEvents(); }
+
+    @Transactional
+    public List<Event> getSuprisedMeEvents() { return eventDAO.getSuprisedMeEvents(); }
 
 }

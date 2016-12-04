@@ -39,6 +39,9 @@ angular
         controller: 'SearchEventCtrl',
         controllerAs: 'search-events'
       })
+      .when('/proposals', {
+        templateUrl: 'views/proposals.html',
+      })
       .when('/select-event-type', {
         templateUrl: 'views/select-event-type.html',
         controller: 'CreateEventCtrl'
@@ -75,6 +78,7 @@ angular
       'APPNAME': 'Where we go?',
       'HOME': 'Home',
       'EVENTS': 'Events',
+      'PROPOSAL': 'Proposals',
       'SEARCH': 'Search',
       'login': 'Login',
       'logout': 'Logout',
@@ -95,6 +99,7 @@ angular
       'APPNAME': '¿A dónde vamos?',
       'HOME': 'Inicio',
       'EVENTS': 'Eventos',
+      'PROPOSAL': 'Propuestas',
       'SEARCH': 'Buscar',
       'login': 'Iniciar sesión',
       'logout': 'Salir',
