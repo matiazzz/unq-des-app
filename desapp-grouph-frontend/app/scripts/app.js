@@ -41,6 +41,7 @@ angular
       })
       .when('/proposals', {
         templateUrl: 'views/proposals.html',
+        controller: 'ProposalsCtrl'
       })
       .when('/select-event-type', {
         templateUrl: 'views/select-event-type.html',

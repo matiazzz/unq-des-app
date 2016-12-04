@@ -20,5 +20,18 @@
 </div>
 
 <br>
+<!--  -->
+<div class="container" ng-if="!showMsg">
+  <div class="row" style="display:flex; flex-wrap: wrap;">
+    <div class="col-sm-12 col-md-4" ng-repeat="event in events">
+      <div class="thumbnail eventPreview">
+        <img ng-click="showEventDetail(event.id)" class="img-event" ng-src="{{event.urlImg}}" alt="...">
+        <div class="caption">
+          <h4 ng-click="showEventDetail(event.id)">{{event.title}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
+<br>
