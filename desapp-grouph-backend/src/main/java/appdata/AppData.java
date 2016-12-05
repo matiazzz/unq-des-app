@@ -73,14 +73,23 @@ public class AppData {
         e1.setType(new MusicEvent());
         e4.setType(new MusicEvent());
         e7.setType(new MusicEvent());
+        e1.setUrlImg("http://blog.feebbo.com/wp-content/uploads/2015/10/M%C3%BAsica.jpg");
+        e4.setUrlImg("http://blog.feebbo.com/wp-content/uploads/2015/10/M%C3%BAsica.jpg");
+        e7.setUrlImg("http://blog.feebbo.com/wp-content/uploads/2015/10/M%C3%BAsica.jpg");
 
         e2.setType(new MovieEvent());
         e5.setType(new MovieEvent());
         e8.setType(new MovieEvent());
+        e2.setUrlImg("http://www.isecpost.com.ar/wp-content/uploads/2015/05/video_cine_10.jpg");
+        e5.setUrlImg("http://www.isecpost.com.ar/wp-content/uploads/2015/05/video_cine_10.jpg");
+        e8.setUrlImg("http://www.isecpost.com.ar/wp-content/uploads/2015/05/video_cine_10.jpg");
 
         e3.setType(new FoodEvent());
         e6.setType(new FoodEvent());
         e9.setType(new FoodEvent());
+        e3.setUrlImg("https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?w=1260&h=750&auto=compress&cs=tinysrgb");
+        e6.setUrlImg("https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?w=1260&h=750&auto=compress&cs=tinysrgb");
+        e9.setUrlImg("https://images.pexels.com/photos/2232/vegetables-italian-pizza-restaurant.jpg?w=1260&h=750&auto=compress&cs=tinysrgb");
 
         generalService.getEventService().save(e1);
         generalService.getEventService().save(e2);

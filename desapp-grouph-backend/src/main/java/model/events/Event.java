@@ -120,4 +120,8 @@ public class Event extends model.Entity {
         this.type = type;
     }
 
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
+
 }
