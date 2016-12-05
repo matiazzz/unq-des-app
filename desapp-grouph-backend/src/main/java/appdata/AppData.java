@@ -59,15 +59,15 @@ public class AppData {
 
     private void createEvents(){
         Event e1 = anyEvent().withTitle("Event 1").withDescription("Description Event 1").withDateYesterday().build();
-        Event e2 = anyEvent().withTitle("Event 2").withDescription("Description Event 2").withDateYesterday().build();
-        Event e3 = anyEvent().withTitle("Event 3").withDescription("Description Event 3").withDateYesterday().build();
+        Event e2 = anyEvent().withTitle("Event 2").withDescription("Description Event 2").withDateYesterday().withPrice(100).build();
+        Event e3 = anyEvent().withTitle("Event 3").withDescription("Description Event 3").withDateYesterday().withPrice(200).build();
 
-        Event e4 = anyEvent().withTitle("Event 4").withDescription("Description Event 4").withDateToday().build();
+        Event e4 = anyEvent().withTitle("Event 4").withDescription("Description Event 4").withDateToday().withPrice(431).build();
         Event e5 = anyEvent().withTitle("Event 5").withDescription("Description Event 5").withDateToday().build();
-        Event e6 = anyEvent().withTitle("Event 6").withDescription("Description Event 6").withDateToday().build();
+        Event e6 = anyEvent().withTitle("Event 6").withDescription("Description Event 6").withDateToday().withPrice(65).build();
 
-        Event e7 = anyEvent().withTitle("Event 7").withDescription("Description Event 7").withDateTomorrow().build();
-        Event e8 = anyEvent().withTitle("Event 8").withDescription("Description Event 8").withDateTomorrow().build();
+        Event e7 = anyEvent().withTitle("Event 7").withDescription("Description Event 7").withDateTomorrow().withPrice(567).build();
+        Event e8 = anyEvent().withTitle("Event 8").withDescription("Description Event 8").withDateTomorrow().withPrice(987).build();
         Event e9 = anyEvent().withTitle("Event 9").withDescription("Description Event 9").withDateTomorrow().build();
 
         e1.setType(new MusicEvent());
