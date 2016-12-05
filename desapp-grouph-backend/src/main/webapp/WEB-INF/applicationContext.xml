@@ -33,6 +33,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<jaxrs:serviceBeans>
 			<ref bean="eventRest" />
 			<ref bean="userRest" />
+			<ref bean="appDataRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -62,6 +63,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<bean id="userRest" class="webservice.UserRest">
 		<property name="userService" ref="service.user" />
 		<property name="eventService" ref="service.event" />
+	</bean>
+
+	<bean id="appDataRest" class="webservice.AppDataRest">
 	</bean>
 
 	<bean id="initData" class="appdata.AppData" init-method="initData">

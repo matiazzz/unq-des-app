@@ -95,6 +95,27 @@ public class UserRest {
         return Response.ok().build();
     }
 
+    @POST
+    @Path("/updateProfile")
+    @Produces("application/json")
+    public Response updateProfile(@FormParam("username") String username,
+                                  @FormParam("musicalGenres") String[] musicalGenres,
+                                  @FormParam("movieGenres") String[] movieGenres,
+                                  @FormParam("foodTypes") String[] foodTypes) {
+
+        try {
+            User user = userService.findByUserName(username);
+            user.addMusicGenres(musicalGenres);
+            user.addFoodTypes(movieGenres);
+            user.addMovieGenres(foodTypes);
+            userService.update(user);
+        }
+        catch (Exception e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+        return Response.ok().build();
+    }
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }

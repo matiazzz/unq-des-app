@@ -106,10 +106,53 @@ angular.module('desappGrouphFrontendApp')
                     url: url + 'user/getByUsername/' + username
                 });
             },
+            getProfile: function (username) {
+                return $http({
+                    method: 'get',
+                    url: url + 'user/getProfile/' + username
+                });
+            },
             exists: function (username) {
                 return $http({
                     method: 'get',
                     url: url + 'user/exists/' + username
+                });
+            },
+            updateProfile: function (username, musicalGenres, movieGenres, foodTypes) {
+                return $http({
+                    method: 'post',
+                    url: url + 'user/updateProfile',
+                    data: $.param({
+                      username: username,
+                      musicalGenres: musicalGenres,
+                      movieGenres: movieGenres,
+                      foodTypes: foodTypes
+                    }),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
+            }
+        };
+});
+
+angular.module('desappGrouphFrontendApp')
+    .service('appDataService', function ($http) {
+        return {
+            getMusicGenres: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'appData/musicGenres'
+                });
+            },
+            getMovieGenres: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'appData/movieGenres'
+                });
+            },
+            getFoodTypes: function () {
+                return $http({
+                    method: 'get',
+                    url: url + 'appData/foodTypes'
                 });
             }
         };

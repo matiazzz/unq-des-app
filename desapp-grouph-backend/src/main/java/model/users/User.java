@@ -240,4 +240,25 @@ public class User extends model.Entity {
     public void setGoing(Events going) {
         this.going = going;
     }
+
+    public void addMusicGenres(String[] musicalGenres) {
+        for (String musicGenre : musicalGenres) {
+            profile.addMusicalGenre(MusicalGenre.valueOf(musicGenre));
+            System.out.println(musicGenre);
+        }
+    }
+
+    public void addMovieGenres(String[] movieGenres) {
+        for (String movieGenre : movieGenres) {
+            profile.addMovieGenre(MovieGenre.valueOf(movieGenre));
+            System.out.println(movieGenre);
+        }
+    }
+
+    public void addFoodTypes(String[] foodTypes) {
+        for (String foodType : foodTypes) {
+            profile.addFoodType(FoodType.valueOf(foodType));
+            System.out.println(foodType);
+        }
+    }
 }
