@@ -31,7 +31,7 @@ angular.module('desappGrouphFrontendApp').controller('ProposalsCtrl', function (
 	}
 
 	$scope.filterGetSuprisedMeEvents = function(){
-		$http.get('https://unq-des-app.herokuapp.com/rest/event/getSuprisedMeEvents').then(function(response) {
+		$http.get('https://unq-des-app.herokuapp.com/rest/event/getSurprisedMeEvents').then(function(response) {
         $scope.events = response.data;
     	});
 	}

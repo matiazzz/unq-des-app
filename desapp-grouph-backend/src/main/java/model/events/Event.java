@@ -116,4 +116,8 @@ public class Event extends model.Entity {
         return attendees;
     }
 
+    public void setType(EventType type) {
+        this.type = type;
+    }
+
 }

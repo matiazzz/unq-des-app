@@ -40,10 +40,10 @@ public class EventRest {
 	}
 
 	@GET
-	@Path("/getWithFriendsEvents")
+	@Path("/getWithFriendsEvents/{userName}")
 	@Produces("application/json")
-	public Response getWithFriendsEvents(){
-		List<Event> events = eventService.getWithFriendsEvents();
+	public Response getWithFriendsEvents(@PathParam("userName") String userName){
+		List<Event> events = eventService.getWithFriendsEvents(userService.findByUserName(userName));
 		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
 		return Response.ok(events).build();
 	}
@@ -58,19 +58,19 @@ public class EventRest {
 	}
 
 	@GET
-	@Path("/getWithCoupleEvents")
+	@Path("/getWithCoupleEvents/{userName}")
 	@Produces("application/json")
-	public Response getWithCoupleEvents(){
-		List<Event> events = eventService.getWithCoupleEvents();
+	public Response getWithCoupleEvents(@PathParam("userName") String userName){
+		List<Event> events = eventService.getWithCoupleEvents(userService.findByUserName(userName));
 		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
 		return Response.ok(events).build();
 	}
 
 	@GET
-	@Path("/getSuprisedMeEvents")
+	@Path("/getSurprisedMeEvents/{userName}")
 	@Produces("application/json")
-	public Response getSuprisedMeEvents(){
-		List<Event> events = eventService.getSuprisedMeEvents();
+	public Response getSurprisedMeEvents(@PathParam("userName") String userName){
+		List<Event> events = eventService.getSuprisedMeEvents(userService.findByUserName(userName));
 		if (events.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
 		return Response.ok(events).build();
 	}

@@ -2,6 +2,7 @@ package persistence;
 
 import model.events.Event;
 import model.users.Profile;
+import model.users.User;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -71,11 +72,6 @@ public class EventDAO extends HibernateGenericDAO<Event> implements GenericRepos
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public List<Event> getWithFriendsEvents() {
-        return findAll(); //TODO
-    }
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<Event> getTodayEvents() {
         return (List<Event>) this.getHibernateTemplate().execute(new HibernateCallback() {
             @Override
@@ -88,13 +84,32 @@ public class EventDAO extends HibernateGenericDAO<Event> implements GenericRepos
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public List<Event> getWithCoupleEvents() {
+    public List<Event> getWithCoupleEvents(User user) {
         return findAll(); //TODO
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public List<Event> getSuprisedMeEvents() {
-        return findAll(); //TODO
+    public List<Event> getSuprisedMeEvents(User user) {
+        return findAll().stream()
+                .filter(event -> user.possiblyLikes(event))
+                .collect(Collectors.toList());
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public List<Event> getWithFriendsEvents(User user) {
+        return filterEvents(findAll(), user.getProfile()).stream()
+                .filter(event -> likeEvent(user.getFriends(), event))
+                .collect(Collectors.toList());
+    }
+
+    public List<Event> filterEvents(List<Event> events, Profile profile) {
+        return events.stream()
+                .filter(event -> event.compareTo(profile))
+                .collect(Collectors.toList());
+    }
+
+    public boolean likeEvent(List<User> users, Event event){
+        return users.stream().anyMatch(user -> event.compareTo(user.getProfile()));
     }
 
 }
