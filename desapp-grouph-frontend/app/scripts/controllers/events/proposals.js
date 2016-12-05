@@ -6,31 +6,31 @@ angular.module('desappGrouphFrontendApp').controller('ProposalsCtrl', function (
         $scope.events = response.data;
     });
 
-	function filterGetFreeEvents(){
+    $scope.filterGetFreeEvents = function(){
 		$http.get('https://unq-des-app.herokuapp.com/rest/event/getFreeEvents').then(function(response) {
         $scope.events = response.data;
     	});
-	}
+	};
 
-	function filterGetWithFriendsEvents(){
+	$scope.filterGetWithFriendsEvents = function(){
 		$http.get('https://unq-des-app.herokuapp.com/rest/event/getWithFriendsEvents').then(function(response) {
         $scope.events = response.data;
     	});
 	}
 
-	function filterGetTodayEvents(){
+	$scope.filterGetTodayEvents = function(){
 		$http.get('https://unq-des-app.herokuapp.com/rest/event/getTodayEvents').then(function(response) {
         $scope.events = response.data;
     	});
 	}
 
-	function filterGetWithCoupleEvents(){
+	$scope.filterGetWithCoupleEvents = function(){
 		$http.get('https://unq-des-app.herokuapp.com/rest/event/getWithCoupleEvents').then(function(response) {
         $scope.events = response.data;
     	});
 	}
 
-	function filterGetSuprisedMeEvents(){
+	$scope.filterGetSuprisedMeEvents = function(){
 		$http.get('https://unq-des-app.herokuapp.com/rest/event/getSuprisedMeEvents').then(function(response) {
         $scope.events = response.data;
     	});
