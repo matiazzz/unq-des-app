@@ -14,10 +14,17 @@ public class LoggerService {
 
     @Before("execution(* webservice.*.*(..))")
     public void before(JoinPoint jp){
-        log.info("Service: " + jp.getSignature().getName() + " Arguments: ");
-        Object[] args = jp.getArgs();
-        for(Object arg: args){
-            log.info(arg);
+        log.info("Service: " + jp.getSignature().getName() + " Arguments: " + this.getArguments(jp));
+    }
+
+    private String getArguments(JoinPoint jp){
+        String arguments = "";
+        Object[] jpArgs = jp.getArgs();
+
+        for(Object arg: jpArgs){
+            arguments = arguments + " " + arg;
         }
+
+        return arguments;
     }
 }

@@ -1,6 +1,7 @@
 package service;
 
 import model.events.Event;
+import model.users.User;
 import org.springframework.transaction.annotation.Transactional;
 import persistence.EventDAO;
 
@@ -44,5 +45,19 @@ public class EventService extends GenericService<Event> {
         return eventDAO.search(word);
     }
 
+    @Transactional
+    public List<Event> getFreeEvents() { return eventDAO.getFreeEvents(); }
+
+    @Transactional
+    public List<Event> getWithFriendsEvents(User user) { return eventDAO.getWithFriendsEvents(user); }
+
+    @Transactional
+    public List<Event> getTodayEvents() { return eventDAO.getTodayEvents(); }
+
+    @Transactional
+    public List<Event> getWithCoupleEvents(User user) { return eventDAO.getWithCoupleEvents(user); }
+
+    @Transactional
+    public List<Event> getSuprisedMeEvents(User user) { return eventDAO.getSuprisedMeEvents(user); }
 
 }

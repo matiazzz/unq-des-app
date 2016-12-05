@@ -1,0 +1,39 @@
+
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="filterGetFreeEvents()" translate='FREE'></button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="filterGetWithFriendsEvents()" translate='WITHFRIENDS'></button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="filterGetTodayEvents()" translate='TODAY'></button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="filterGetWithCoupleEvents()" translate='WITHCOUPLE'></button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="filterGetSuprisedMeEvents()" translate='SUPRISEDME'></button>
+  </div>
+
+</div>
+
+<br>
+
+<div class="container" ng-if="!showMsg">
+  <div class="row" style="display:flex; flex-wrap: wrap;">
+    <div class="col-sm-12 col-md-4" ng-repeat="event in events">
+      <div class="thumbnail eventPreview" ng-controller="ShowEventDetailCtrl">
+        <img ng-click="showEventDetail(event.id)" class="img-event" ng-src="{{event.urlImg}}" alt="...">
+        <div class="caption">
+          <h4 ng-click="showEventDetail(event.id)">{{event.title}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<!-- FALTA PAGINACION -->

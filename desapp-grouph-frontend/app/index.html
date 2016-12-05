@@ -48,6 +48,7 @@
             <ul class="nav navbar-nav" ng-controller="HeaderCtrl">
               <li ng-class="{ active: isActive('/')}"><a href="#/" translate="HOME"></a></li>
               <li ng-class="{ active: isActive('/search-events')}"><a ng-href="#/search-events" translate="EVENTS"></a></li>
+              <li ng-class="{ active: isActive('/proposals')}"><a ng-href="#/proposals" translate="PROPOSAL"></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-center">
               <li>
@@ -151,6 +152,7 @@
         <script src="scripts/controllers/users/profile.js"></script>
         <script src="scripts/controllers/users/create-user.js"></script>
         <script src="scripts/controllers/events/show-event-detail.js"></script>
+        <script src="scripts/controllers/events/proposals.js"></script>
         <script src="scripts/apprun.js"></script>
         <!-- endbuild -->
 </body>

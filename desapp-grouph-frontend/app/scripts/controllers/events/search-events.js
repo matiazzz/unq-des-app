@@ -7,7 +7,7 @@ angular.module('desappGrouphFrontendApp')
     $scope.showMsg = false;
     $scope.searching = false;
     $scope.word = '';
-
+    
     function calculatePages(items, itemsPerPage) {
       if ((items / itemsPerPage) > 0) {
         return parseInt(items / itemsPerPage + 1);
