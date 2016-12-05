@@ -107,7 +107,7 @@ public class AppData {
         musicEvent1.addMusicGenre(ROCK);
         Event event1 = new Event(new EventData("Black Sabbath en Argentina",
                 "Black Sabbath por última vez en vivo en Argentina",
-                musicEvent1, 0, new Place("Estadio Velez", ""), new LocalDate(2016, 11, 26), new LocalTime(21, 0),
+                musicEvent1, 1000, new Place("Estadio Velez", ""), new LocalDate(2016, 11, 26), new LocalTime(21, 0),
                 3, "https://i.ytimg.com/vi/Usqq2amB3QE/hqdefault.jpg", true));
 
         MusicEvent musicEvent2 = new MusicEvent();
