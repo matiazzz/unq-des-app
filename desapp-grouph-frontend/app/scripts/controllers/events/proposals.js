@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('desappGrouphFrontendApp').controller('ProposalsCtrl', function ($scope, $http) {
+angular.module('desappGrouphFrontendApp').controller('ProposalsCtrl', function ($scope, $http, loggedUser) {
 
 	$http.get('https://unq-des-app.herokuapp.com/rest/event/getAll').then(function(response) {
         $scope.events = response.data;
@@ -13,7 +13,7 @@ angular.module('desappGrouphFrontendApp').controller('ProposalsCtrl', function (
 	};
 
 	$scope.filterGetWithFriendsEvents = function(){
-		$http.get('https://unq-des-app.herokuapp.com/rest/event/getWithFriendsEvents').then(function(response) {
+		$http.get('https://unq-des-app.herokuapp.com/rest/event/getWithFriendsEvents/' + loggedUser.getUsername()).then(function(response) {
         $scope.events = response.data;
     	});
 	}
@@ -25,13 +25,13 @@ angular.module('desappGrouphFrontendApp').controller('ProposalsCtrl', function (
 	}
 
 	$scope.filterGetWithCoupleEvents = function(){
-		$http.get('https://unq-des-app.herokuapp.com/rest/event/getWithCoupleEvents').then(function(response) {
+		$http.get('https://unq-des-app.herokuapp.com/rest/event/getWithCoupleEvents/' + loggedUser.getUsername()).then(function(response) {
         $scope.events = response.data;
     	});
 	}
 
 	$scope.filterGetSuprisedMeEvents = function(){
-		$http.get('https://unq-des-app.herokuapp.com/rest/event/getSurprisedMeEvents').then(function(response) {
+		$http.get('https://unq-des-app.herokuapp.com/rest/event/getSurprisedMeEvents/' + loggedUser.getUsername()).then(function(response) {
         $scope.events = response.data;
     	});
 	}
