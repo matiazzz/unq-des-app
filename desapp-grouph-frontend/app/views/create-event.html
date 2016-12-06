@@ -16,51 +16,65 @@
   </div>
 </div>
 
-<form ng-if="isAuthenticated">
-  <h3 class="text-center"> Crear evento </h3>
-  <div class="form-group">
-    <label>Nombre del evento</label>
-    <input class="form-control" ng-model="event.title" placeholder="Nombre del evento" required>
-  </div>
-  <hr />
-  <div class="form-group">
-    <label for="exampleTextarea">Descripción</label>
-    <textarea class="form-control" rows="3" ng-model="event.description" placeholder="Escriba una descripción del evento." required></textarea>
-  </div>
-  <hr />
-  <div class="form-group">
-    <label>Lugar del evento</label>
-    <input class="form-control" ng-model="event.place.name" placeholder="Nombre del lugar" required>
-    <input class="form-control" ng-model="event.place.address" placeholder="Dirección del lugar" required>
-  </div>
-  <hr />
-  <div class="form-group">
-    <label for="exampleInputFile">Imágen</label>
-    <input class="form-control" ng-model="event.imgUrl" placeholder="Url de una imágen (opcional)">
-  </div>
-  <hr />
-  <div class="row">
-    <div class="col-md-6">
+<h3 class="text-center">Crear evento nuevo</h3>
+<hr/>
+<form name="eventForm" ng-submit="createEvent()" novalidate>
 
-      <div style="display:inline-block; min-height:290px;">
-        <label>Fecha del evento</label>
-        <div uib-datepicker ng-model="dt" class="well well-sm" ng-change="setDate(dt)" datepicker-options="options"></div>
+    <!-- EVENT NAME -->
+    <div class="form-group" ng-class="{ 'has-error' : eventForm.title.$invalid && !eventForm.title.$pristine }">
+        <label>Nombre del evento</label>
+        <input type="text" name="title" class="form-control" ng-model="event.title" placeholder="Nombre del evento" required>
+        <p ng-show="eventForm.title.$invalid && !eventForm.title.$pristine" class="help-block">Ingrese el titulo para el evento.</p>
+    </div>
+    <hr/>
+    <!-- EVENT DESCRIPTION -->
+    <div class="form-group" ng-class="{ 'has-error' : eventForm.description.$invalid && !eventForm.description.$pristine }">
+        <label>Descripción</label>
+        <textarea type="text" name="description" class="form-control" ng-model="event.description" ng-minlength="10" ng-maxlength="1000" placeholder="Descripción para el evento" required></textarea>
+        <p ng-show="eventForm.description.$error.minlength" class="help-block">Descripción muy corta.</p>
+        <p ng-show="eventForm.description.$error.maxlength" class="help-block">Descripción muy larga.</p>
+    </div>
+    <hr/>
+    <!-- EVENT PLACE -->
+    <div class="form-group has-feedback">
+      <label class="control-label">Lugar del evento</label>
+      <input class="form-control" ng-model="event.place.name" placeholder="Nombre del lugar" required>
+      <input class="form-control" ng-model="event.place.address" placeholder="Dirección del lugar" required>
+      <p ng-show="eventForm.place.name.$invalid && !eventForm.place.name.$pristine" class="help-block">Ingrese el nombre del lugar.</p>
+      <p ng-show="eventForm.place.address.$invalid && !eventForm.place.address.$pristine" class="help-block">Ingrese la dirección del lugar.</p>
+    </div>
+    <hr/>
+    <!-- EVENT IMAGE -->
+    <div class="form-group" ng-class="{ 'has-error' : eventForm.urlImg.$invalid && !eventForm.urlImg.$pristine }">
+      <label for="urlImg" class="control-label">Imágen</label>
+      <input name="imgUrl" class="form-control" type="url" ng-model="event.imgUrl" placeholder="Url de una imágen" required>
+      <p ng-show="eventForm.imgUrl.$invalid && !eventForm.imgUrl.$pristine" class="help-block">Ingrese la url completa de una imágen.(Ej: http://imagen.jpg)</p>
+    </div>
+    <hr/>
+    <!-- EVENT DATE -->
+    <div class="row">
+      <div class="col-md-6">
+        <div style="display:inline-block; min-height:290px;">
+          <label class="control-label">Fecha del evento</label>
+          <div uib-datepicker ng-model="dt" class="well well-sm" ng-change="setDate(dt)" datepicker-options="options"></div>
+        </div>
       </div>
+      <div class="col-md-6">
+        <label>Horario del evento</label>
+        <div uib-timepicker ng-model="mytime" hour-step="hstep" minute-step="mstep" ng-change="setTime(mytime)" show-meridian="ismeridian"></div>
+      </div>
+      <pre class="alert alert-info"><em>{{dt | date:'fullDate' }}</em></pre>
+      <pre class="alert alert-info">{{mytime | date:'shortTime' }}</pre>
     </div>
-    <div class="col-md-6">
-      <label>Horario del evento</label>
-      <div uib-timepicker ng-model="mytime" hour-step="hstep" minute-step="mstep" ng-change="setTime(mytime)" show-meridian="ismeridian"></div>
+    <hr/>
+    <!-- EVENT PRICE -->
+    <div class="form-group" ng-class="{ 'has-error' : eventForm.price.$invalid && !eventForm.price.$pristine }">
+      <label class="control-label">Precio del evento</label>
+      <input name="price" class="form-control" type="number" min="0" ng-model="event.price" placeholder="Precio del evento" data-error="Ingrese el precio de entrada del evento en números." required>
+      <p ng-show="eventForm.price.$invalid && !eventForm.price.$pristine" class="help-block">Ingrese el precio del evento (en números).</p>
     </div>
-    <pre class="alert alert-info"><em>{{dt | date:'fullDate' }}</em></pre>
-    <pre class="alert alert-info">{{mytime | date:'shortTime' }}</pre>
-  </div>
-  <hr />
-  <div class="form-group">
-    <label>Precio del evento</label>
-    <input class="form-control" ng-model="event.price" placeholder="Precio del evento" required>
-  </div>
-  <hr />
-  <button type="submit" class="btn btn-primary" ng-click="createEvent()">Crear evento</button>
+    <hr/>
+    <button type="submit" class="btn btn-success" ng-disabled="eventForm.$invalid">Crear evento</button>
 
 </form>
 <br>
