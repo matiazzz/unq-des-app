@@ -40,6 +40,7 @@ module.exports = function(config) {
       'bower_components/angular-material/angular-material.js',
       'bower_components/ngmap/build/scripts/ng-map.js',
       'bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
+      'bower_components/bootstrap-validator/dist/validator.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

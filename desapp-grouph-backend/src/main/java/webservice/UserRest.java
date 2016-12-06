@@ -96,6 +96,25 @@ public class UserRest {
     }
 
     @POST
+    @Path("/updateName")
+    @Produces("application/json")
+    public Response updateName(@FormParam("username") String username,
+                               @FormParam("name") String name,
+                               @FormParam("lastName") String lastName) {
+
+        try {
+            User user = userService.findByUserName(username);
+            user.setName(name);
+            user.setLastName(lastName);
+            userService.update(user);
+        }
+        catch (Exception e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+        return Response.ok().build();
+    }
+
+    @POST
     @Path("/updateProfile")
     @Produces("application/json")
     public Response updateProfile(@FormParam("username") String username,

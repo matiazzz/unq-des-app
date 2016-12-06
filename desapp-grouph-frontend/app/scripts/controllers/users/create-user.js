@@ -12,6 +12,15 @@ angular.module('desappGrouphFrontendApp')
       }
     );
 
+    userServices.getByUsername(loggedUser.getUsername()).then(
+      function(response) {
+        $scope.user = response.data;
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
+
     appDataService.getMusicGenres().then(
       function(response) {
         $scope.musicGenres = response.data;
@@ -41,6 +50,10 @@ angular.module('desappGrouphFrontendApp')
 
     $scope.updateProfile = function() {
       userServices.updateProfile(loggedUser.getUsername(), ["POP"], ["DRAMA"], ["PASTA"]);
+    };
+
+    $scope.updateUserInfo = function() {
+      userServices.updateName(loggedUser.getUsername(), $scope.user.name, $scope.user.lastName);
     };
 
     $scope.checkMusicTag = function(tag) {

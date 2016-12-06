@@ -1,7 +1,7 @@
 'use strict';
 
 var url = 'https://unq-des-app.herokuapp.com/rest/';
-//var url = 'http://localhost:8080/desapp-grouph-backend/rest/';
+//var url = 'http://localhost:8080/rest/';
 
 angular.module('desappGrouphFrontendApp')
     .service('eventServices', function ($http) {
@@ -159,6 +159,18 @@ angular.module('desappGrouphFrontendApp')
                       musicalGenres: musicalGenres,
                       movieGenres: movieGenres,
                       foodTypes: foodTypes
+                    }),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
+            },
+            updateName: function (username, newName, newLastName) {
+                return $http({
+                    method: 'post',
+                    url: url + 'user/updateName',
+                    data: $.param({
+                      username: username,
+                      name: newName,
+                      lastName: newLastName
                     }),
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 });

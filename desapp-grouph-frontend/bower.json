@@ -21,7 +21,8 @@
     "angular-ui-router": "~0.3.1",
     "angular-material": "1.1.1",
     "ngmap": "1.17.8",
-    "angular-dynamic-locale": "0.1.32"
+    "angular-dynamic-locale": "0.1.32",
+    "bootstrap-validator": "0.11.7"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
